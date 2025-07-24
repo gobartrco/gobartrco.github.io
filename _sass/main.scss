@@ -4,6 +4,24 @@
 @tailwind components;
 @tailwind utilities;
 
+button, a {
+    &.cta {
+        display: inline-block;
+        background-color: #9852b5;
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 5px;
+        font-size: 1.4rem;
+        font-weight: 100;
+        border: none;
+        cursor: pointer;
+        transition: background-color .2s ease-in-out;
+        &:hover, &:active {
+            background-color: #7a3e8f;
+        }
+    }
+}
+
 header#hero {
     background-image:
         url('/assets/img/bg-hero.jpg'),
@@ -57,20 +75,12 @@ header#hero {
     }
     #cta {
         padding-left: 100px;
-        button, a {
-            background-color: #9852b5;
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 5px;
-            font-size: 1.4rem;
-            font-weight: 100;
-            border: none;
-            cursor: pointer;
+        .cta {
             margin-left: 1rem;
-            transition: background-color .2s ease-in-out;
-            &:hover {
-                background-color: #7a3e8f;
-            }
+        }
+        p {
+            font-size: 1.2rem;
+            font-weight: 200;
         }
     }
 }
@@ -138,26 +148,71 @@ header#hero {
 }
 
 #key-features {
-    padding: 7rem 10rem 0;
+    padding: 7rem 20rem 0;
     background-color: black;
     color: white;
     .feature {
-        margin-bottom: 10rem;
+        margin-bottom: 5rem;
+        padding-bottom: 5rem;
+        border-bottom: 1px solid oklch(20% 0 0);
+        &:last-child {
+            border-bottom: none;
+        }
+        svg {
+            width: 100px;
+            height: 100px;
+            margin-bottom: 1rem;
+            stroke: #9852b5 !important;
+        }
     }
     h2 {
         font-size: 2rem;
         font-weight: 400;
-        line-height: 1.5rem;
-        margin-bottom: 2rem;
+        line-height: 2.2rem;
+        margin-bottom: 1rem;
     }
     h3 {
         font-size: 1.6rem;
         font-weight: 200;
-        line-height: 1.5rem;
+        line-height: 2.2rem;
         margin-bottom: 2.5rem;
     }
     p {
         font-size: 1.4rem;
         font-weight: 100;
+    }
+}
+
+#signup {
+    padding: 5rem 10rem;
+    background-color: oklch(25.7% .09 281.288);
+    color: white;
+    text-align: center;
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 2.2rem;
+        margin-bottom: 1rem;
+    }
+    .cta {
+        margin-top: 2rem;
+    }
+}
+
+footer {
+    background-color: black;
+    color: oklch(43.9% 0 0);
+    padding: 3rem 10rem;
+    text-align: center;
+    font-weight: 200;
+    p {
+        font-size: 1.2rem;
+    }
+    a {
+        color: oklch(55.6% 0 0);
+        transition: color .2s ease-in-out;
+        &:hover, &:active {
+            color: white;
+        }
     }
 }
