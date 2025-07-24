@@ -200,9 +200,6 @@
       max-width: 96rem;
     }
   }
-  .mx-auto {
-    margin-inline: auto;
-  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
@@ -211,9 +208,6 @@
   }
   .grid {
     display: grid;
-  }
-  .max-w-screen-2xl {
-    max-width: var(--breakpoint-2xl);
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -227,14 +221,8 @@
   .justify-center {
     justify-content: center;
   }
-  .justify-start {
-    justify-content: flex-start;
-  }
   .gap-2 {
     gap: calc(var(--spacing) * 2);
-  }
-  .gap-3 {
-    gap: calc(var(--spacing) * 3);
   }
   .gap-4 {
     gap: calc(var(--spacing) * 4);
@@ -324,8 +312,37 @@ body {
     }
   }
 }
+#container {
+  max-width: var(--breakpoint-2xl);
+  margin-inline: auto;
+  min-width: 640px;
+}
+#logo {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: calc(var(--spacing) * 3);
+}
 nav {
-  padding: 2rem 0;
+  padding-block: calc(var(--spacing) * 8);
+  padding-inline: calc(var(--spacing) * 8);
+  @media (width >= 40rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  @media (width >= 80rem) {
+    padding-inline: calc(var(--spacing) * 8);
+  }
+  @media (width >= 96rem) {
+    padding-inline: calc(var(--spacing) * 0);
+  }
+  display: flex;
+  align-items: center;
   #logo {
     img {
       width: 48px;
@@ -396,6 +413,8 @@ input[type="email"] {
   color: oklch(14.5% 0 0);
 }
 body#page-home header#hero {
+  display: grid;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   background-image: url('/assets/img/bg-hero.jpg'),
         radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%,
             rgba(30, 26, 76, 1) 33%,
@@ -406,7 +425,21 @@ body#page-home header#hero {
   background-blend-mode: soft-light, normal;
   text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
   section {
-    padding: 9rem 15rem 10rem;
+    padding-top: calc(var(--spacing) * 36);
+    padding-bottom: calc(var(--spacing) * 40);
+    padding-inline: calc(var(--spacing) * 10);
+    @media (width >= 40rem) {
+      padding-inline: calc(var(--spacing) * 10);
+    }
+    @media (width >= 48rem) {
+      padding-inline: calc(var(--spacing) * 20);
+    }
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 40);
+    }
+    @media (width >= 64rem) {
+      padding-inline: calc(var(--spacing) * 60);
+    }
   }
   a:not(.cta) {
     color: white;
@@ -443,8 +476,15 @@ body#page-home header#hero {
   }
   #features {
     margin-bottom: 1rem;
-    margin-left: 40px;
+    @media (width >= 40rem) {
+      margin-left: calc(var(--spacing) * 0);
+    }
+    @media (width >= 48rem) {
+      margin-left: calc(var(--spacing) * 10);
+    }
     .feature {
+      display: flex;
+      gap: calc(var(--spacing) * 4);
       margin-bottom: 2.2rem;
       svg {
         stroke: #9852b5 !important;
@@ -468,7 +508,13 @@ body#page-home header#hero {
     }
   }
   #cta {
-    padding-left: 100px;
+    padding-left: calc(var(--spacing) * 0);
+    @media (width >= 48rem) {
+      padding-left: calc(var(--spacing) * 25);
+    }
+    display: flex;
+    gap: calc(var(--spacing) * 6);
+    align-items: center;
     p {
       font-size: 1.4rem;
       font-weight: 200;
@@ -476,7 +522,17 @@ body#page-home header#hero {
   }
 }
 #trade-protection {
-  padding: 5rem 10rem;
+  padding-block: calc(var(--spacing) * 20);
+  padding-inline: calc(var(--spacing) * 10);
+  @media (width >= 40rem) {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 40);
+  }
   background-color: oklch(14.5% 0 0);
   color: white;
   h2 {
@@ -490,6 +546,15 @@ body#page-home header#hero {
     font-weight: 100;
   }
   #tiers {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    gap: calc(var(--spacing) * 6);
     margin-top: 3rem;
     .tier {
       padding: 4rem 3rem 3rem;
@@ -498,18 +563,26 @@ body#page-home header#hero {
       border-style: solid;
       transition: border-color .2s ease-in-out;
       &.tier-basic {
-        border-color: oklch(62.3% 0.214 259.815);
+        border-color: var(--color-blue-500);
+        border-style: var(--tw-border-style);
+        border-width: 2px;
         svg {
           stroke: oklch(62.3% 0.214 259.815);
         }
       }
       &.tier-standard {
+        border-color: var(--color-violet-500);
+        border-style: var(--tw-border-style);
+        border-width: 2px;
         border-color: oklch(60.6% 0.25 292.717);
         svg {
           stroke: oklch(60.6% 0.25 292.717);
         }
       }
       &.tier-premium {
+        border-color: var(--color-amber-500);
+        border-style: var(--tw-border-style);
+        border-width: 2px;
         border-color: oklch(82.8% .189 84.429);
         svg {
           stroke: oklch(82.8% .189 84.429);
@@ -537,15 +610,29 @@ body#page-home header#hero {
   }
 }
 #key-features {
-  padding: 7rem 20rem 0;
+  padding-block: calc(var(--spacing) * 28);
+  padding-inline: calc(var(--spacing) * 10);
+  @media (width >= 40rem) {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 80);
+  }
   background-color: black;
   color: white;
   .feature {
+    display: flex;
+    gap: calc(var(--spacing) * 10);
     margin-bottom: 5rem;
     padding-bottom: 5rem;
     border-bottom: 1px solid oklch(20% 0 0);
     &:last-child {
       border-bottom: none;
+      padding-bottom: 0;
+      margin-bottom: 0;
     }
     svg {
       width: 100px;
@@ -572,7 +659,17 @@ body#page-home header#hero {
   }
 }
 #signup {
-  padding: 5rem 10rem;
+  padding-inline: calc(var(--spacing) * 10);
+  @media (width >= 40rem) {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 40);
+  }
+  padding-block: calc(var(--spacing) * 20);
   background-color: oklch(25.7% .09 281.288);
   color: white;
   text-align: center;
@@ -600,7 +697,17 @@ body#page-home header#hero {
 footer {
   background-color: black;
   color: oklch(43.9% 0 0);
-  padding: 3rem 10rem;
+  padding-inline: calc(var(--spacing) * 10);
+  @media (width >= 40rem) {
+    padding-inline: calc(var(--spacing) * 10);
+  }
+  @media (width >= 48rem) {
+    padding-inline: calc(var(--spacing) * 20);
+  }
+  @media (width >= 64rem) {
+    padding-inline: calc(var(--spacing) * 40);
+  }
+  padding-block: calc(var(--spacing) * 12);
   text-align: center;
   font-weight: 200;
   p {
@@ -616,6 +723,18 @@ footer {
 }
 body#page-contact {
   #contact-methods {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    @media (width >= 40rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    @media (width >= 48rem) {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    @media (width >= 64rem) {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+    gap: calc(var(--spacing) * 6);
     margin-top: 3rem;
     .contact-method {
       padding: 4rem 3rem 3rem;

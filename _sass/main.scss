@@ -47,8 +47,29 @@ body {
     }
 }
 
+#container {
+    @apply max-w-screen-2xl;
+    @apply mx-auto;
+    @apply min-w-[640px];
+}
+
+#logo {
+    @apply flex;
+    @apply items-center;
+    @apply justify-start;
+    @apply gap-3;
+}
+
 nav {
-    padding: 2rem 0;
+    @apply py-8;
+    @apply px-8;
+    @apply sm:px-8;
+    @apply md:px-8;
+    @apply lg:px-8;
+    @apply xl:px-8;
+    @apply 2xl:px-0;
+    @apply flex;
+    @apply items-center;
     #logo {
         img {
             width: 48px;
@@ -122,6 +143,8 @@ input[type="email"] {
 }
 
 body#page-home header#hero {
+    @apply grid;
+    @apply grid-cols-1;
     background-image:
         url('/assets/img/bg-hero.jpg'),
         radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%,
@@ -133,7 +156,13 @@ body#page-home header#hero {
     background-blend-mode: soft-light, normal;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
     section {
-        padding: 9rem 15rem 10rem;
+        @apply pt-36;
+        @apply pb-40;
+        @apply px-10;
+        @apply sm:px-10;
+        @apply md:px-20;
+        @apply lg:px-40;
+        @apply lg:px-60;
     }
     a:not(.cta) {
         color: white;
@@ -170,8 +199,11 @@ body#page-home header#hero {
     }
     #features {
         margin-bottom: 1rem;
-        margin-left: 40px;
+        @apply sm:ml-0;
+        @apply md:ml-10;
         .feature {
+            @apply flex;
+            @apply gap-4;
             margin-bottom: 2.2rem;
             svg {
                 stroke: #9852b5 !important;
@@ -195,7 +227,11 @@ body#page-home header#hero {
         }
     }
     #cta {
-        padding-left: 100px;
+        @apply pl-0;
+        @apply md:pl-25;
+        @apply flex;
+        @apply gap-6;
+        @apply items-center;
         p {
             font-size: 1.4rem;
             font-weight: 200;
@@ -204,7 +240,11 @@ body#page-home header#hero {
 }
 
 #trade-protection {
-    padding: 5rem 10rem;
+    @apply py-20;
+    @apply px-10;
+    @apply sm:px-10;
+    @apply md:px-20;
+    @apply lg:px-40;
     background-color: oklch(14.5% 0 0);
     color: white;
     h2 {
@@ -218,6 +258,11 @@ body#page-home header#hero {
         font-weight: 100;
     }
     #tiers {
+        @apply grid;
+        @apply grid-cols-1;
+        @apply sm:grid-cols-1;
+        @apply md:grid-cols-3;
+        @apply gap-6;
         margin-top: 3rem;
         .tier {
             padding: 4rem 3rem 3rem;
@@ -226,18 +271,23 @@ body#page-home header#hero {
             border-style: solid;
             transition: border-color .2s ease-in-out;
             &.tier-basic {
-                border-color: oklch(62.3% 0.214 259.815);
+                @apply border-blue-500;
+                @apply border-2;
                 svg {
                     stroke: oklch(62.3% 0.214 259.815);
                 }
             }
             &.tier-standard {
+                @apply border-violet-500;
+                @apply border-2;
                 border-color: oklch(60.6% 0.25 292.717);
                 svg {
                     stroke: oklch(60.6% 0.25 292.717);
                 }
             }
             &.tier-premium {
+                @apply border-amber-500;
+                @apply border-2;
                 border-color: oklch(82.8% .189 84.429);
                 svg {
                     stroke: oklch(82.8% .189 84.429);
@@ -266,15 +316,23 @@ body#page-home header#hero {
 }
 
 #key-features {
-    padding: 7rem 20rem 0;
+    @apply py-28;
+    @apply px-10;
+    @apply sm:px-10;
+    @apply md:px-20;
+    @apply lg:px-80;
     background-color: black;
     color: white;
     .feature {
+        @apply flex;
+        @apply gap-10;
         margin-bottom: 5rem;
         padding-bottom: 5rem;
         border-bottom: 1px solid oklch(20% 0 0);
         &:last-child {
             border-bottom: none;
+            padding-bottom: 0;
+            margin-bottom: 0;
         }
         svg {
             width: 100px;
@@ -302,7 +360,11 @@ body#page-home header#hero {
 }
 
 #signup {
-    padding: 5rem 10rem;
+    @apply px-10;
+    @apply sm:px-10;
+    @apply md:px-20;
+    @apply lg:px-40;
+    @apply py-20;
     background-color: oklch(25.7% .09 281.288);
     color: white;
     text-align: center;
@@ -332,7 +394,11 @@ body#page-home header#hero {
 footer {
     background-color: black;
     color: oklch(43.9% 0 0);
-    padding: 3rem 10rem;
+    @apply px-10;
+    @apply sm:px-10;
+    @apply md:px-20;
+    @apply lg:px-40;
+    @apply py-12;
     text-align: center;
     font-weight: 200;
     p {
@@ -349,6 +415,12 @@ footer {
 
 body#page-contact {
     #contact-methods {
+        @apply grid;
+        @apply grid-cols-1;
+        @apply sm:grid-cols-1;
+        @apply md:grid-cols-1;
+        @apply lg:grid-cols-3;
+        @apply gap-6;
         margin-top: 3rem;
         .contact-method {
             padding: 4rem 3rem 3rem;
