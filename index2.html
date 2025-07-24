@@ -54,7 +54,8 @@ id: home
         </div>
 
         <div id="cta" class="flex gap-6 items-center">
-            {% include email-form.html %}
+            <a href="{{ site.app_url }}/register" class="cta">Create an account</a>
+            <p>or <a href="{{ site.app_url }}"><strong>sign in</strong></a> to your account.</p>
         </div>
     </section>
 
@@ -124,8 +125,8 @@ id: home
 
 <div id="signup">
     <div>
-        <h2>Subscribe to receive updates</h2>
-        <p>Join our mailing list to receive updates about Bartr.</p>
-        {% include email-form.html %}
+        <h2>Create your account a start trading smarter!</h2>
+        <p>It&rsquo;s free to join and you can start trading in minutes.</p>
+        <a href="{{ site.app_url }}/register" class="cta">Create an account</a>
     </div>
 </div>
