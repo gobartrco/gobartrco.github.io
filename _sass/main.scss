@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-#hero {
+header#hero {
     background-image:
         url('/assets/img/bg-hero.jpg'),
         radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%,
@@ -14,13 +14,150 @@
     background-position: center, center;
     background-size: cover, cover;
     background-blend-mode: soft-light, normal;
+    padding: 10rem 15rem;
+    #logo {
+        margin-bottom: 6rem;
+        .text-logo {
+            font-size: 5.5rem;
+            line-height: 5.5rem;
+            font-weight: bold;
+            margin-top: 3px;
+        }
+        .text-slogan {
+            font-size: 1.4rem;
+            line-height: 1rem;
+            font-weight: 100;
+        }
+    }
+    #features {
+        margin-bottom: 1rem;
+        margin-left: 40px;
+        .feature {
+            margin-bottom: 2.2rem;
+            svg {
+                stroke: #9852b5 !important;
+            }
+            .icon {
+                width: 60px;
+            }
+            .content {
+                max-width: 500px;
+            }
+            h2 {
+                font-size: 2rem;
+                font-weight: 400;
+                line-height: 1.5rem;
+                margin-bottom: .8rem;
+            }
+            p {
+                font-size: 1.4rem;
+                font-weight: 100;
+            }
+        }
+    }
+    #cta {
+        padding-left: 100px;
+        button, a {
+            background-color: #9852b5;
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 5px;
+            font-size: 1.4rem;
+            font-weight: 100;
+            border: none;
+            cursor: pointer;
+            margin-left: 1rem;
+            transition: background-color .2s ease-in-out;
+            &:hover {
+                background-color: #7a3e8f;
+            }
+        }
+    }
 }
 
-.stroke-brand-purple {
-    stroke: #9852b5 !important;
+#trade-protection {
+    padding: 5rem 10rem;
+    background-color: oklch(14.5% 0 0);
+    color: white;
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        margin-bottom: .8rem;
+    }
+    p {
+        font-size: 1.4rem;
+        font-weight: 100;
+    }
+    #tiers {
+        margin-top: 3rem;
+        .tier {
+            padding: 4rem 3rem 3rem;
+            border-radius: 10px;
+            border-width: 3px;
+            border-style: solid;
+            transition: border-color .2s ease-in-out;
+            &.tier-basic {
+                border-color: oklch(62.3% 0.214 259.815);
+                svg {
+                    stroke: oklch(62.3% 0.214 259.815);
+                }
+            }
+            &.tier-standard {
+                border-color: oklch(60.6% 0.25 292.717);
+                svg {
+                    stroke: oklch(60.6% 0.25 292.717);
+                }
+            }
+            &.tier-premium {
+                border-color: oklch(82.8% .189 84.429);
+                svg {
+                    stroke: oklch(82.8% .189 84.429);
+                }
+            }
+            &:hover {
+                border-color: white;
+                svg {
+                    stroke: white;
+                }
+            }
+            svg {
+                margin-bottom: 1.5rem;
+                transition: stroke .2s ease-in-out;
+            }
+            h3 {
+                font-size: 1.6rem;
+                font-weight: 400;
+            }
+            p {
+                font-size: 1.2rem;
+                font-weight: 100;
+            }
+        }
+    }
 }
 
-.text-logo {
-    font-size: 5rem;
-    line-height: 5rem;
+#key-features {
+    padding: 7rem 10rem 0;
+    background-color: black;
+    color: white;
+    .feature {
+        margin-bottom: 10rem;
+    }
+    h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        margin-bottom: 2rem;
+    }
+    h3 {
+        font-size: 1.6rem;
+        font-weight: 200;
+        line-height: 1.5rem;
+        margin-bottom: 2.5rem;
+    }
+    p {
+        font-size: 1.4rem;
+        font-weight: 100;
+    }
 }

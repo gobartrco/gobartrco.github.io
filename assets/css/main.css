@@ -7,6 +7,10 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
+    --color-amber-500: oklch(76.9% 0.188 70.08);
+    --color-blue-500: oklch(62.3% 0.214 259.815);
+    --color-violet-500: oklch(60.6% 0.25 292.717);
+    --color-neutral-900: oklch(20.5% 0 0);
     --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
@@ -17,7 +21,6 @@
     --text-2xl--line-height: calc(2 / 1.5);
     --font-weight-light: 300;
     --font-weight-semibold: 600;
-    --font-weight-bold: 700;
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
   }
@@ -202,17 +205,8 @@
   .mx-auto {
     margin-inline: auto;
   }
-  .mt-3 {
-    margin-top: calc(var(--spacing) * 3);
-  }
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
-  }
-  .mb-10 {
-    margin-bottom: calc(var(--spacing) * 10);
-  }
-  .mb-15 {
-    margin-bottom: calc(var(--spacing) * 15);
   }
   .flex {
     display: flex;
@@ -220,23 +214,17 @@
   .grid {
     display: grid;
   }
-  .w-60 {
-    width: calc(var(--spacing) * 60);
-  }
-  .max-w-150 {
-    max-width: calc(var(--spacing) * 150);
-  }
   .max-w-screen-2xl {
     max-width: var(--breakpoint-2xl);
   }
   .grid-cols-1 {
     grid-template-columns: repeat(1, minmax(0, 1fr));
   }
+  .grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
   .items-center {
     align-items: center;
-  }
-  .justify-end {
-    justify-content: flex-end;
   }
   .justify-start {
     justify-content: flex-start;
@@ -247,14 +235,40 @@
   .gap-4 {
     gap: calc(var(--spacing) * 4);
   }
+  .gap-6 {
+    gap: calc(var(--spacing) * 6);
+  }
+  .border {
+    border-style: var(--tw-border-style);
+    border-width: 1px;
+  }
+  .border-2 {
+    border-style: var(--tw-border-style);
+    border-width: 2px;
+  }
+  .border-amber-500 {
+    border-color: var(--color-amber-500);
+  }
+  .border-blue-500 {
+    border-color: var(--color-blue-500);
+  }
+  .border-violet-500 {
+    border-color: var(--color-violet-500);
+  }
   .bg-black {
     background-color: var(--color-black);
+  }
+  .bg-neutral-900 {
+    background-color: var(--color-neutral-900);
   }
   .px-50 {
     padding-inline: calc(var(--spacing) * 50);
   }
-  .py-30 {
-    padding-block: calc(var(--spacing) * 30);
+  .pt-10 {
+    padding-top: calc(var(--spacing) * 10);
+  }
+  .pb-12 {
+    padding-bottom: calc(var(--spacing) * 12);
   }
   .text-2xl {
     font-size: var(--text-2xl);
@@ -263,10 +277,6 @@
   .text-xl {
     font-size: var(--text-xl);
     line-height: var(--tw-leading, var(--text-xl--line-height));
-  }
-  .font-bold {
-    --tw-font-weight: var(--font-weight-bold);
-    font-weight: var(--font-weight-bold);
   }
   .font-light {
     --tw-font-weight: var(--font-weight-light);
@@ -280,7 +290,7 @@
     color: var(--color-white);
   }
 }
-#hero {
+header#hero {
   background-image: url('/assets/img/bg-hero.jpg'),
         radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%,
             rgba(30, 26, 76, 1) 33%,
@@ -289,13 +299,155 @@
   background-position: center, center;
   background-size: cover, cover;
   background-blend-mode: soft-light, normal;
+  padding: 10rem 15rem;
+  #logo {
+    margin-bottom: 6rem;
+    .text-logo {
+      font-size: 5.5rem;
+      line-height: 5.5rem;
+      font-weight: bold;
+      margin-top: 3px;
+    }
+    .text-slogan {
+      font-size: 1.4rem;
+      line-height: 1rem;
+      font-weight: 100;
+    }
+  }
+  #features {
+    margin-bottom: 1rem;
+    margin-left: 40px;
+    .feature {
+      margin-bottom: 2.2rem;
+      svg {
+        stroke: #9852b5 !important;
+      }
+      .icon {
+        width: 60px;
+      }
+      .content {
+        max-width: 500px;
+      }
+      h2 {
+        font-size: 2rem;
+        font-weight: 400;
+        line-height: 1.5rem;
+        margin-bottom: .8rem;
+      }
+      p {
+        font-size: 1.4rem;
+        font-weight: 100;
+      }
+    }
+  }
+  #cta {
+    padding-left: 100px;
+    button, a {
+      background-color: #9852b5;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 5px;
+      font-size: 1.4rem;
+      font-weight: 100;
+      border: none;
+      cursor: pointer;
+      margin-left: 1rem;
+      transition: background-color .2s ease-in-out;
+      &:hover {
+        background-color: #7a3e8f;
+      }
+    }
+  }
 }
-.stroke-brand-purple {
-  stroke: #9852b5 !important;
+#trade-protection {
+  padding: 5rem 10rem;
+  background-color: oklch(14.5% 0 0);
+  color: white;
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-bottom: .8rem;
+  }
+  p {
+    font-size: 1.4rem;
+    font-weight: 100;
+  }
+  #tiers {
+    margin-top: 3rem;
+    .tier {
+      padding: 4rem 3rem 3rem;
+      border-radius: 10px;
+      border-width: 3px;
+      border-style: solid;
+      transition: border-color .2s ease-in-out;
+      &.tier-basic {
+        border-color: oklch(62.3% 0.214 259.815);
+        svg {
+          stroke: oklch(62.3% 0.214 259.815);
+        }
+      }
+      &.tier-standard {
+        border-color: oklch(60.6% 0.25 292.717);
+        svg {
+          stroke: oklch(60.6% 0.25 292.717);
+        }
+      }
+      &.tier-premium {
+        border-color: oklch(82.8% .189 84.429);
+        svg {
+          stroke: oklch(82.8% .189 84.429);
+        }
+      }
+      &:hover {
+        border-color: white;
+        svg {
+          stroke: white;
+        }
+      }
+      svg {
+        margin-bottom: 1.5rem;
+        transition: stroke .2s ease-in-out;
+      }
+      h3 {
+        font-size: 1.6rem;
+        font-weight: 400;
+      }
+      p {
+        font-size: 1.2rem;
+        font-weight: 100;
+      }
+    }
+  }
 }
-.text-logo {
-  font-size: 5rem;
-  line-height: 5rem;
+#key-features {
+  padding: 7rem 10rem 0;
+  background-color: black;
+  color: white;
+  .feature {
+    margin-bottom: 10rem;
+  }
+  h2 {
+    font-size: 2rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  h3 {
+    font-size: 1.6rem;
+    font-weight: 200;
+    line-height: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+  p {
+    font-size: 1.4rem;
+    font-weight: 100;
+  }
+}
+@property --tw-border-style {
+  syntax: "*";
+  inherits: false;
+  initial-value: solid;
 }
 @property --tw-font-weight {
   syntax: "*";
@@ -304,6 +456,7 @@
 @layer properties {
   @supports ((-webkit-hyphens: none) and (not (margin-trim: inline))) or ((-moz-orient: inline) and (not (color:rgb(from red r g b)))) {
     *, ::before, ::after, ::backdrop {
+      --tw-border-style: solid;
       --tw-font-weight: initial;
     }
   }
