@@ -12,12 +12,9 @@
         <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     
     </head>
-    <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-default">
+    <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-home">
         <div id="container" class="max-w-screen-2xl mx-auto">
-            {% include navigation.html %}
-            <section>
-                {{ content }}
-            </section>
+            {{ content }}
             {% include footer.html %}
         </div>
     </body>

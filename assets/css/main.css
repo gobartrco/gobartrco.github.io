@@ -10,7 +10,6 @@
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-violet-500: oklch(60.6% 0.25 292.717);
-    --color-black: #000;
     --color-white: #fff;
     --spacing: 0.25rem;
     --breakpoint-2xl: 96rem;
@@ -257,9 +256,6 @@
   .border-violet-500 {
     border-color: var(--color-violet-500);
   }
-  .bg-black {
-    background-color: var(--color-black);
-  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -280,9 +276,89 @@
     color: var(--color-white);
   }
 }
+body {
+  background-color: black;
+  color: white;
+  &.layout-default {
+    section {
+      padding: 4rem 3rem;
+      h1 {
+        font-size: 2.5rem;
+        line-height: 2.5rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        font-size: 2rem;
+        line-height: 2rem;
+        font-weight: 400;
+        margin-bottom: 1.5rem;
+        margin-top: 2rem;
+      }
+      p {
+        font-size: 1.4rem;
+        line-height: 1.8rem;
+        font-weight: 200;
+        margin-bottom: 1rem;
+      }
+      footer {
+        margin-top: 3rem;
+      }
+      a {
+        color: white;
+        transition: color .2s ease-in-out;
+        &:hover, &:active {
+          color: #9852b5;
+        }
+      }
+      hr {
+        border-color: oklch(20% 0 0);
+        margin: 3rem 0;
+      }
+    }
+  }
+}
+nav {
+  padding: 2rem 0;
+  #logo {
+    img {
+      width: 48px;
+      height: 48px;
+    }
+    .text-logo {
+      font-size: 2rem;
+      line-height: 2rem;
+      font-weight: 600;
+    }
+    .text-slogan {
+      font-size: 1.4rem;
+      line-height: 1rem;
+      font-weight: 100;
+      display: none;
+    }
+  }
+  ul {
+    font-size: 1.5rem;
+    font-weight: 200;
+    display: flex;
+    gap: 2rem;
+    justify-content: flex-end;
+    margin-left: auto;
+    li {
+      a {
+        color: white;
+        transition: color .2s ease-in-out;
+        &:hover, &:active {
+          color: #9852b5;
+        }
+      }
+    }
+  }
+}
 button, a {
   &.cta {
     display: inline-block;
+    background: linear-gradient(180deg,rgba(166, 132, 255, 1) 0%, rgba(166, 132, 255, 0) 100%);
     background-color: #9852b5;
     color: white;
     padding: 1rem 2rem;
@@ -292,12 +368,15 @@ button, a {
     border: none;
     cursor: pointer;
     transition: background-color .2s ease-in-out;
+    text-shadow: 0 -2px 1px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
     &:hover, &:active {
-      background-color: #7a3e8f;
+      color: white;
+      background-color: rgba(166, 132, 255, 1);
     }
   }
 }
-header#hero {
+body#page-home header#hero {
   background-image: url('/assets/img/bg-hero.jpg'),
         radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%,
             rgba(30, 26, 76, 1) 33%,
@@ -306,9 +385,30 @@ header#hero {
   background-position: center, center;
   background-size: cover, cover;
   background-blend-mode: soft-light, normal;
-  padding: 10rem 15rem;
+  text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
+  section {
+    padding: 9rem 15rem 10rem;
+  }
+  a:not(.cta) {
+    color: white;
+    transition: color .2s ease-in-out;
+    &:hover, &:active {
+      color: #9852b5;
+    }
+  }
+  strong {
+    font-weight: 700;
+  }
   #logo {
     margin-bottom: 6rem;
+    color: white;
+    &:hover, &:active {
+      color: white;
+    }
+    img {
+      width: 100px;
+      height: 100px;
+    }
     .text-logo {
       font-size: 5.5rem;
       line-height: 5.5rem;
@@ -319,6 +419,7 @@ header#hero {
       font-size: 1.4rem;
       line-height: 1rem;
       font-weight: 100;
+      display: inline;
     }
   }
   #features {
@@ -353,7 +454,7 @@ header#hero {
       margin-left: 1rem;
     }
     p {
-      font-size: 1.2rem;
+      font-size: 1.4rem;
       font-weight: 200;
     }
   }
@@ -483,6 +584,29 @@ footer {
     transition: color .2s ease-in-out;
     &:hover, &:active {
       color: white;
+    }
+  }
+}
+body#page-contact {
+  #contact-methods {
+    margin-top: 3rem;
+    .contact-method {
+      padding: 4rem 3rem 3rem;
+      border-color: oklch(58.5% .233 277.117);
+      border-radius: 10px;
+      border-width: 3px;
+      border-style: solid;
+      transition: border-color .2s ease-in-out;
+      svg {
+        stroke: oklch(58.5% .233 277.117);
+        transition: stroke .2s ease-in-out;
+      }
+      &:hover {
+        border-color: white;
+        svg {
+          stroke: white;
+        }
+      }
     }
   }
 }

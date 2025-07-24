@@ -5,6 +5,7 @@ description: >-
   Bartr is a safe, peer-to-peer marketplace for trading physical items with real people. Enjoy secure swaps, financial protection, and built-in trust systems.
 baseurl: ""
 url: "https://www.gobartr.co"
+app_url: "https://app.gobartr.co"
 
 # Build settings
 plugins:
