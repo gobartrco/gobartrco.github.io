@@ -207,6 +207,9 @@
   .mb-2 {
     margin-bottom: calc(var(--spacing) * 2);
   }
+  .block {
+    display: block;
+  }
   .flex {
     display: flex;
   }
@@ -305,7 +308,7 @@ body {
       }
       p {
         font-size: 1.4rem;
-        line-height: 1.8rem;
+        line-height: 2.2rem;
         font-weight: 200;
         margin-bottom: 1.5rem;
       }
@@ -329,8 +332,13 @@ body {
         margin-left: 2rem;
         margin-bottom: 3rem;
         margin-top: 3rem;
+        font-weight: 100;
         li {
           font-size: 1.4rem;
+          margin-bottom: .5rem;
+          ul {
+            margin-top: .5rem;
+          }
         }
       }
       table {
