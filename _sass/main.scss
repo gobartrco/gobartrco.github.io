@@ -212,7 +212,6 @@ input[type="text"] {
 
 
 #mc_embed_signup {
-    margin-left: 1rem;
     input.mce_inline_error { 
         color: oklch(63.7% .237 25.331);
         max-width: 450px !important;
@@ -273,7 +272,7 @@ body#page-home header#hero {
         font-weight: 700;
     }
     #logo {
-        margin-bottom: 6rem;
+        margin-bottom: 10rem;
         color: white;
         &:hover, &:active {
             color: white;
@@ -296,6 +295,7 @@ body#page-home header#hero {
         }
     }
     #features {
+        @apply md:ml-10;
         margin-bottom: 3rem;
         .feature {
             @apply flex;
@@ -307,13 +307,10 @@ body#page-home header#hero {
             .icon {
                 width: 60px;
             }
-            .content {
-                max-width: 650px;
-            }
             h2 {
-                font-size: 2rem;
+                font-size: 2.5rem;
                 font-weight: 400;
-                line-height: 2rem;
+                line-height: 2.75rem;
                 margin-bottom: 1rem;
             }
             p {
@@ -327,6 +324,7 @@ body#page-home header#hero {
         @apply flex;
         @apply gap-6;
         @apply items-center;
+        @apply md:ml-10;
         p {
             font-size: 1.4rem;
             font-weight: 200;
@@ -340,7 +338,7 @@ body#page-home header#hero {
     @apply sm:px-10;
     @apply md:px-20;
     @apply lg:px-40;
-    background-color: oklch(14.5% 0 0);
+    @apply bg-neutral-900;
     color: white;
     h2 {
         font-size: 2rem;
