@@ -12,7 +12,6 @@
     --color-indigo-400: oklch(67.3% 0.182 276.935);
     --color-violet-500: oklch(60.6% 0.25 292.717);
     --color-neutral-900: oklch(20.5% 0 0);
-    --color-neutral-950: oklch(14.5% 0 0);
     --color-white: #fff;
     --spacing: 0.25rem;
     --breakpoint-2xl: 96rem;
@@ -602,7 +601,7 @@ body#page-home header#hero {
         margin-bottom: 1rem;
       }
       p {
-        font-size: 1.4rem;
+        font-size: 1.6rem;
         font-weight: 100;
         max-width: 500px;
       }
