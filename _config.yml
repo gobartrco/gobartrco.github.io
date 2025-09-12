@@ -1,11 +1,11 @@
 title: Bartr
 slogan: Trade Smarter
-email: support@gobartr.co
+email: support@bartr.co
 description: >-
   Swap guitars, amps, pedals, synths, drums, and recording gear with other musicians. Bartr adds deposits, structured terms, ratings, and dispute resolution for safer trades.
 baseurl: ""
-url: "https://www.gobartr.co"
-app_url: "https://app.gobartr.co"
+url: "https://www.bartr.co"
+app_url: "https://app.bartr.co"
 
 # Build settings
 plugins:
