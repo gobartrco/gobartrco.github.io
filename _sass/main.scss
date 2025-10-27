@@ -243,14 +243,14 @@ body#page-home header#hero {
     @apply grid;
     @apply grid-cols-1;
     background-image:
-        url('/assets/img/hero-guitar.jpg'),
+        url('/assets/img/bg-hero3.jpg'),
         radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%,
             rgba(30, 26, 76, 1) 33%,
             rgba(67, 45, 216, 1) 80%,
             rgba(124, 134, 255, 1) 100%);
     background-position: bottom center;
     background-size: cover, cover;
-    background-blend-mode: soft-light, normal;
+    background-blend-mode: screen, normal;
     text-shadow: 0 2px 1px rgba(0, 0, 0, 0.25);
     section {
         @apply pt-36;
@@ -546,4 +546,8 @@ body#page-contact {
             }
         }
     }
+}
+
+.underline {
+    text-decoration: underline;
 }
