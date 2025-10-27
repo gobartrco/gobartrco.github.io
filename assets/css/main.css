@@ -238,6 +238,9 @@
   .gap-6 {
     gap: calc(var(--spacing) * 6);
   }
+  .text-center {
+    text-align: center;
+  }
   .text-2xl {
     font-size: var(--text-2xl);
     line-height: var(--tw-leading, var(--text-2xl--line-height));
@@ -534,7 +537,7 @@ body#page-home header#hero {
     font-weight: 700;
   }
   #logo {
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
     color: white;
     &:hover, &:active {
       color: white;
@@ -597,7 +600,7 @@ body#page-home header#hero {
         font-size: 1.8rem;
         font-weight: 400;
         line-height: 2.75rem;
-        margin-bottom: 1rem;
+        margin-bottom: .5rem;
       }
       p {
         font-size: 1.3rem;
