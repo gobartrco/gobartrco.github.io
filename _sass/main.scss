@@ -163,8 +163,8 @@ nav {
 
 button, a {
     &.cta {
-        @apply bg-gradient-to-b from-amber-400 to-amber-600;
-        @apply bg-gradient-to-b hover:from-amber-400 hover:to-amber-500;
+        @apply bg-gradient-to-b from-yellow-500 to-yellow-700;
+        @apply bg-gradient-to-b hover:from-yellow-500 hover:to-yellow-600;
         display: inline-block;
         color: white;
         padding: 1rem 2rem;
@@ -476,7 +476,7 @@ body#page-home header#hero {
     @apply md:px-20;
     @apply lg:px-40;
     @apply py-20;
-    background-color: oklch(25.7% .09 281.288);
+    background-color: var(--color-indigo-950);
     color: white;
     text-align: center;
     h2 {
@@ -493,6 +493,13 @@ body#page-home header#hero {
     p {
         font-size: 1.4rem;
     }
+    a:not(.cta) {
+        color: white;
+        transition: color .2s ease-in-out;
+        &:hover, &:active {
+            color: #9852b5;
+        }
+    }
 }
 
 footer {
@@ -503,18 +510,6 @@ footer {
     @apply md:px-20;
     @apply lg:px-40;
     @apply py-12;
-    text-align: center;
-    font-weight: 200;
-    p {
-        font-size: 1.2rem;
-    }
-    a {
-        color: oklch(55.6% 0 0);
-        transition: color .2s ease-in-out;
-        &:hover, &:active {
-            color: white;
-        }
-    }
 }
 
 body#page-contact {
