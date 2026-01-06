@@ -163,23 +163,19 @@ nav {
 
 button, a {
     &.cta {
+        @apply bg-gradient-to-b from-amber-400 to-amber-600;
+        @apply bg-gradient-to-b hover:from-amber-400 hover:to-amber-500;
         display: inline-block;
-        background: linear-gradient(180deg,rgba(166, 132, 255, 1) 0%, rgba(166, 132, 255, 0) 100%);
-        background-color: #9852b5;
         color: white;
         padding: 1rem 2rem;
         border-radius: 5px;
         font-size: 1.4rem;
-        font-weight: 100;
+        font-weight: 400;
         border: none;
         cursor: pointer;
         transition: background-color .2s ease-in-out, box-shadow .2s ease-in-out;
-        text-shadow: 0 -2px 1px rgba(0, 0, 0, 0.25);
+        text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.25);
         box-shadow: 0 2px 3px rgba(0, 0, 0, 0.25);
-        &:hover, &:active {
-            color: white;
-            background-color: rgba(166, 132, 255, 1);
-        }
         &:focus,
         &:active {
             outline: none;
