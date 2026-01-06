@@ -4,7 +4,7 @@ title: Swap real gear with real people, safely
 id: home
 ---
 
-<header id="hero">
+<header id="hero" class="grid grid-cols-1">
 
     <section>
         {% include logo.html %}
@@ -44,8 +44,9 @@ id: home
             </div>
         </div>
 
-        <div id="cta">
-            {% include email-form.html %}
+        <div id="cta" class="flex gap-6 items-center">
+            <a href="{{ site.app_url }}/register" class="cta">Create an account</a>
+            <p>or <a href="{{ site.app_url }}" class="underline"><strong>sign in</strong></a> to your account.</p>
         </div>
     </section>
 
