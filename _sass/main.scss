@@ -338,14 +338,24 @@ body#page-home header#hero {
             }
         }
     }
-    #cta {
-        @apply flex;
-        @apply gap-6;
-        @apply items-center;
+    #callout {
         @apply md:ml-10;
-        p {
-            font-size: 1.4rem;
+        & > p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
             font-weight: 200;
+            max-width: 500px;
+            padding: 0 1rem;
+        }
+        #cta {
+            @apply flex;
+            @apply gap-6;
+            @apply items-center;
+            margin-bottom: 1.5rem;
+            p {
+                font-size: 1.4rem;
+                font-weight: 200;
+            }
         }
     }
 }
@@ -499,6 +509,28 @@ body#page-home header#hero {
         &:hover, &:active {
             color: #9852b5;
         }
+    }
+}
+
+#fine-print {
+    @apply px-10;
+    @apply sm:px-10;
+    @apply md:px-20;
+    @apply lg:px-40;
+    @apply pt-12;
+    color: var(--color-zinc-500);
+    h2 {
+        @apply text-xs;
+        @apply font-medium;
+    }
+    ul {
+        @apply list-disc;
+        @apply list-inside;
+        @apply pl-4;
+        @apply text-xs;
+        @apply font-light;
+        @apply mt-4;
+        @apply mb-4;
     }
 }
 
