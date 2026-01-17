@@ -11,15 +11,18 @@
           gtag('config', 'G-D7WSDH961S');
         </script>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width">
-        <meta name="description" content="{{ site.description }}">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="description" content="{{ site.description }}" />
+        <meta property="og:image" content="/assets/img/share.png" />
+        <meta property="og:image:width" content="1024" />
+        <meta property="og:image:height" content="1024" />
     
         <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }} | {{site.slogan}}</title>
 
-        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">    
-        <link rel="shortcut icon" media="all" type="image/png" href="/img/favicon.png"/>
-        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" /> 
+        <link rel="shortcut icon" media="all" type="image/png" href="/img/favicon.png" />
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
     
     </head>
     <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-default">
