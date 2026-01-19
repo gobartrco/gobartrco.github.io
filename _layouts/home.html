@@ -40,5 +40,62 @@
             </main>
             {% include footer.html %}
         </div>
+        <script>
+            // Load listings micro-frontend using Module Federation Enhanced
+            (async function() {
+                const container = document.getElementById('listings-widget-container');
+                if (!container) return;
+                
+                try {
+                    const remoteUrl = '{{ "/assets/js/widgets/listings/" | relative_url }}';
+                    
+                    // Load the remote entry script
+                    await new Promise((resolve, reject) => {
+                        const script = document.createElement('script');
+                        script.src = remoteUrl + 'remoteEntry.js';
+                        script.type = 'text/javascript';
+                        script.async = true;
+                        
+                        script.onload = resolve;
+                        script.onerror = () => {
+                            console.warn('Listings widget remote entry not found, skipping widget load');
+                            reject(new Error('Failed to load remote entry'));
+                        };
+                        
+                        document.head.appendChild(script);
+                    });
+                    
+                    // Wait for Module Federation runtime to be available
+                    let retries = 0;
+                    while (!window.__FEDERATION__ && retries < 50) {
+                        await new Promise(resolve => setTimeout(resolve, 100));
+                        retries++;
+                    }
+                    
+                    if (!window.__FEDERATION__) {
+                        throw new Error('Module Federation runtime not available');
+                    }
+                    
+                    // Load the remote module
+                    const module = await window.__FEDERATION__.loadRemote('listings/./App');
+                    
+                    if (module && module.mount) {
+                        // Use the mount function if available
+                        module.mount('listings-widget-container');
+                    } else if (module && (module.default || module.App)) {
+                        // Fallback: render the component directly
+                        const React = await import('https://esm.sh/react@19');
+                        const ReactDOM = await import('https://esm.sh/react-dom@19/client');
+                        const AppComponent = module.default || module.App;
+                        const root = ReactDOM.createRoot(container);
+                        root.render(React.createElement(AppComponent));
+                    } else {
+                        console.warn('Listings widget module loaded but no mount function or component found');
+                    }
+                } catch (error) {
+                    console.error('Error loading listings widget:', error);
+                }
+            })();
+        </script>
     </body>
 </html>

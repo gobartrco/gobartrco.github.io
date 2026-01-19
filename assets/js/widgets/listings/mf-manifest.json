@@ -1,0 +1,96 @@
+{
+  "id": "listings",
+  "name": "listings",
+  "metaData": {
+    "name": "listings",
+    "type": "app",
+    "buildInfo": {
+      "buildVersion": "0.0.1",
+      "buildName": "listings"
+    },
+    "remoteEntry": {
+      "name": "listings.js",
+      "path": "",
+      "type": "global"
+    },
+    "types": {
+      "path": "",
+      "name": "",
+      "zip": "@mf-types.zip",
+      "api": "@mf-types.d.ts"
+    },
+    "globalName": "listings",
+    "pluginVersion": "0.8.12",
+    "prefetchInterface": false,
+    "publicPath": "/assets/js/widgets/listings/"
+  },
+  "shared": [
+    {
+      "id": "listings:react-dom",
+      "name": "react-dom",
+      "version": "19.2.3",
+      "singleton": true,
+      "requiredVersion": "^19.2.3",
+      "assets": {
+        "js": {
+          "async": [
+            "988.js"
+          ],
+          "sync": [
+            "700.js",
+            "952.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    },
+    {
+      "id": "listings:react",
+      "name": "react",
+      "version": "19.2.3",
+      "singleton": true,
+      "requiredVersion": "^19.2.3",
+      "assets": {
+        "js": {
+          "async": [],
+          "sync": [
+            "988.js"
+          ]
+        },
+        "css": {
+          "async": [],
+          "sync": []
+        }
+      }
+    }
+  ],
+  "remotes": [],
+  "exposes": [
+    {
+      "id": "listings:App",
+      "name": "App",
+      "assets": {
+        "js": {
+          "sync": [
+            "868.js",
+            "__federation_expose_App.js"
+          ],
+          "async": [
+            "988.js",
+            "700.js"
+          ]
+        },
+        "css": {
+          "sync": [
+            "__federation_expose_App.css"
+          ],
+          "async": []
+        }
+      },
+      "path": "./App"
+    }
+  ]
+}
