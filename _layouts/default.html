@@ -10,27 +10,34 @@
         
           gtag('config', 'G-D7WSDH961S');
         </script>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width">
+        <meta name="description" content="{{ site.description }}">
 
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="description" content="{{ site.description }}" />
-        <meta property="og:image" content="/assets/img/og-share.png" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
+        <meta property="og:title" content="{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }} | {{site.slogan}}">
+        <meta property="og:description" content="{{ site.description }}">
+        <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
+        <meta property="og:type" content="website">
+        <meta property="og:site_name" content="{{ site.title }}">
+        <meta property="og:locale" content="en_US">
+        <meta property="og:image" content="{{ site.url }}/assets/img/share.png">
+        <meta property="og:image:width" content="1024">
+        <meta property="og:image:height" content="1024">
     
         <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }} | {{site.slogan}}</title>
 
-        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}" /> 
-        <link rel="shortcut icon" media="all" type="image/png" href="/img/favicon.png" />
-        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}" />
+        <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">    
+        <link rel="shortcut icon" type="image/svg+xml" href="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz4KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIEFkb2JlIElsbHVzdHJhdG9yIDI5LjIuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPgo8c3ZnIHZlcnNpb249IjEuMSIgaWQ9IkxheWVyXzIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IgoJIHdpZHRoPSI4MzBweCIgaGVpZ2h0PSI4MzBweCIgdmlld0JveD0iMCAwIDgzMCA4MzAiIHN0eWxlPSJlbmFibGUtYmFja2dyb3VuZDpuZXcgMCAwIDgzMCA4MzA7IiB4bWw6c3BhY2U9InByZXNlcnZlIj4KPHN0eWxlIHR5cGU9InRleHQvY3NzIj4KCS5zdDB7ZmlsbDojNEQ3MkI4O30KCS5zdDF7ZmlsbDojOEU0NEFEO30KPC9zdHlsZT4KPHBhdGggY2xhc3M9InN0MCIgZD0iTTYzLjksNDM5LjJjMCwwLTY1LjctNzguOCwwLTIwMC43YzYyLjQtMTE1LjcsMjA4LjItMTA1LjksMjA4LjItMTA1LjloMTc3LjVWNDcuNmMwLDAtNC40LTY5LjEsNDMuNS0zMS44CglzMjQ2LjMsMTg2LjksMjQ2LjMsMTg2LjlzNDEuMSwzMi44LDAsNjMuN1M0OTMuMSw0NDcuMSw0OTMuMSw0NDcuMXMtNDMuNSwyNy41LTQzLjUtMzMuN2MwLTcwLjMsMC04NS45LDAtODUuOQoJcy0xMzIuOS01LjEtMTkwLjQsMTAuN2MtNTguNSwxNi4xLTExMi4zLDQ3LjYtMTU3LjUsMTAyLjlDODAuNyw0NjYuOSw2My45LDQzOS4yLDYzLjksNDM5LjJ6Ii8+CjxwYXRoIGNsYXNzPSJzdDEiIGQ9Ik03NjYuMSwzOTAuOGMwLDAsNjUuNyw3OC44LDAsMjAwLjdjLTYyLjQsMTE1LjctMjA4LjIsMTA1LjktMjA4LjIsMTA1LjlIMzgwLjR2ODQuOWMwLDAsNC40LDY5LjEtNDMuNSwzMS44CglTOTAuNiw2MjcuMyw5MC42LDYyNy4zcy00MS4xLTMyLjgsMC02My43czI0Ni4zLTE4MC43LDI0Ni4zLTE4MC43czQzLjUtMjcuNSw0My41LDMzLjdjMCw3MC4zLDAsODUuOSwwLDg1LjlzMTMyLjksNS4xLDE5MC40LTEwLjcKCWM1OC41LTE2LjEsMTEyLjMtNDcuNiwxNTcuNS0xMDIuOUM3NDkuMywzNjMuMSw3NjYuMSwzOTAuOCw3NjYuMSwzOTAuOHoiLz4KPC9zdmc+Cg==" />
+        <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
     
     </head>
-    <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-default">
-        <div id="container">
-            {% include navigation.html %}
-            <section class="content">
+    <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-home">
+        <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
+            {% include header.html %}
+            <main>
                 {{ content }}
-            </section>
+            </main>
             {% include footer.html %}
         </div>
     </body>

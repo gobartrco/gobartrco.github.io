@@ -1,0 +1,57 @@
+{% assign img_url = include.img_url | default: 'https://placehold.co/960x960' %}
+{% assign item_id = include.item_id %}
+{% assign title = include.title %}
+{% assign username = include.username %}
+{% assign description = include.description %}
+
+<div
+  class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all overflow-hidden relative group"
+>
+  <a href="{{ site.app_url }}/items/{{ item_id }}" class="block cursor-pointer"
+    ><div class="aspect-square w-full bg-white dark:bg-black relative">
+      <picture class="flex w-full h-full justify-center"
+        ><source
+          srcset="{{ img_url }}"
+          media="(max-width: 639px)" />
+        <source
+          srcset="{{ img_url }}"
+          media="(min-width: 640px) and (max-width: 767px)" />
+        <source
+          srcset="{{ img_url }}"
+          media="(min-width: 768px) and (max-width: 1023px)" />
+        <source
+          srcset="{{ img_url }}"
+          media="(min-width: 1024px) and (max-width: 1279px)" />
+        <source
+          srcset="{{ img_url }}"
+          media="(min-width: 1280px)" />
+        <img alt="{{ title }}" src="{{ img_url }}"
+      /></picture>
+    </div>
+    <div class="p-4 space-y-3">
+      <div class="items-start justify-between">
+        <h3
+          class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 transition-colors line-clamp-1"
+        >
+          {{ title }}
+        </h3>
+        <h4
+          class="text-sm font-semibold text-zinc-600 dark:text-zinc-400 line-clamp-1 mb-2"
+        >
+          Listed by @{{ username }}
+        </h4>
+      </div>
+      <div class="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">
+        {{ description }}
+      </div>
+      <div class="pt-3">
+        <a href="{{ site.app_url }}/items/{{ item_id }}" class="btn btn-primary btn-md w-full">
+          <span>View Listing</span>
+          <span class="btn-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+          </span>
+        </a>
+      </div>
+    </div>
+  </a>
+</div>

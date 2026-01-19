@@ -1,0 +1,87 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.header-container {
+  @apply bg-white;
+  @apply dark:bg-zinc-900;
+  @apply border-b;
+  @apply border-zinc-200;
+  @apply dark:border-zinc-800;
+  @apply sticky;
+  @apply top-0;
+  @apply z-50;
+}
+
+.header-content {
+  @apply flex;
+  @apply justify-between;
+  @apply items-center;
+  @apply h-24;
+  @apply mx-auto;
+  nav.primary-navigation {
+    @apply h-full;
+    ul {
+      @apply flex;
+      @apply list-none;
+      @apply m-0;
+      @apply p-0;
+      @apply h-full;
+      @apply items-center;
+      @apply justify-center;
+      li > a {
+        @apply flex;
+        @apply items-center;
+        @apply px-4;
+        @apply py-2;
+        @apply text-zinc-600;
+        @apply hover:text-black;
+        @apply dark:text-zinc-500;
+        @apply dark:hover:text-white;
+        @apply transition-colors;
+        @apply duration-300;
+        @apply text-sm;
+        @apply font-semibold;
+      }
+    }
+  }
+  nav.user-navigation {
+    ul {
+      @apply flex;
+      @apply list-none;
+      @apply gap-4;
+      @apply items-center;
+      @apply justify-center;
+      li > a:not(.btn) {
+        @apply px-2;
+        @apply py-2;
+        @apply text-zinc-600;
+        @apply hover:text-black;
+        @apply dark:text-zinc-500;
+        @apply dark:hover:text-white;
+        @apply transition-colors;
+        @apply duration-300;
+        @apply text-sm;
+        @apply font-semibold;
+      }
+    }
+  }
+}
+
+.wrapper-fixed {
+  .header-content {
+    @apply max-w-7xl;
+    @apply px-6;
+
+  }
+}
+
+.wrapper-fluid {
+  .header-content {
+    @apply w-full;
+    @apply px-6;
+    @apply xl:px-10;
+  }
+}

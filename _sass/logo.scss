@@ -1,0 +1,31 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.logo-default,
+.logo-icon {
+  @apply text-black;
+  @apply dark:text-white;
+  svg path {
+    &.logo-icon-top {
+      fill: #4D72B8;
+    }
+    &.logo-icon-bottom {
+      fill: #8E44AD;
+    }
+  }
+}
+
+.logo-grayscale,
+.logo-grayscale_icon {
+  @apply text-zinc-400;
+  @apply dark:text-zinc-500;
+  @apply hover:text-zinc-600;
+  @apply dark:hover:text-zinc-400;
+  @apply transition-colors;
+  svg path {
+    fill: currentColor;
+  }
+}

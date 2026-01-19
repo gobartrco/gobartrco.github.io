@@ -1,0 +1,51 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+section.section-container {
+  @apply w-full;
+  @apply py-15;
+  @apply text-zinc-900;
+  @apply dark:text-zinc-200;
+  & > .section-content {
+    @apply max-w-7xl;
+    @apply mx-auto;
+    @apply px-6;
+  }
+}
+
+.wrapper-fixed {
+  section.section-container > .section-content {
+    @apply max-w-7xl;
+    @apply mx-auto;
+    @apply px-6;
+  }
+}
+
+section.section-type-primary {
+  @apply bg-white;
+  @apply dark:bg-zinc-900;
+  @apply text-zinc-900;
+  @apply dark:text-zinc-200;
+}
+section.section-type-secondary {
+  @apply bg-zinc-100;
+  @apply dark:bg-zinc-950;
+  @apply text-zinc-900;
+  @apply dark:text-zinc-200;
+}
+section.section-type-tertiary {
+  @apply bg-indigo-100;
+  @apply dark:bg-indigo-950;
+  @apply text-zinc-900;
+  @apply dark:text-zinc-200;
+}
+section.section-type-hero {
+  background-image: radial-gradient(circle at 33% 33%, rgba(23, 23, 23, 1) 0%, rgba(30, 26, 76, 1) 33%, rgba(67, 45, 216, 1) 80%, rgba(124, 134, 255, 1) 100%);
+  background-position: bottom center;
+  background-size: cover;
+  background-blend-mode: screen, normal;
+  @apply text-zinc-200;
+}

@@ -21,9 +21,9 @@
         <meta property="og:type" content="website">
         <meta property="og:site_name" content="{{ site.title }}">
         <meta property="og:locale" content="en_US">
-        <meta property="og:image" content="/assets/img/og-share.png" />
-        <meta property="og:image:width" content="1024" />
-        <meta property="og:image:height" content="1024" />
+        <meta property="og:image" content="{{ site.url }}/assets/img/share.png">
+        <meta property="og:image:width" content="1024">
+        <meta property="og:image:height" content="1024">
     
         <title>{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }} | {{site.slogan}}</title>
 
@@ -33,8 +33,11 @@
     
     </head>
     <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-home">
-        <div id="container">
-            {{ content }}
+        <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
+            {% include header.html %}
+            <main>
+                {{ content }}
+            </main>
             {% include footer.html %}
         </div>
     </body>

@@ -12,5 +12,8 @@
     "build": "npm run postcss:build && bundle exec jekyll build",
     "start": "bundle exec jekyll serve --livereload",
     "postcss:build": "postcss _sass/main.scss -o assets/css/main.css --parser postcss-scss"
+  },
+  "dependencies": {
+    "prettier": "^3.8.0"
   }
 }

@@ -1,0 +1,106 @@
+@import "tailwindcss";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.btn {
+  @apply inline-flex;
+  @apply items-center;
+  @apply justify-center;
+  @apply rounded-md;
+  @apply transition-colors;
+  @apply cursor-pointer;
+}
+
+.btn-primary {
+  @apply bg-indigo-600;
+  @apply text-white;
+  @apply hover:bg-indigo-700;
+  @apply dark:bg-indigo-600;
+  @apply dark:text-white;
+  @apply dark:hover:bg-indigo-700;
+}
+
+.btn-secondary {
+  @apply bg-zinc-200;
+  @apply text-zinc-700;
+  @apply hover:bg-zinc-300;
+  @apply dark:bg-zinc-800;
+  @apply dark:text-zinc-300;
+  @apply dark:hover:bg-zinc-700;
+}
+
+.btn-tertiary {
+  @apply border;
+  @apply bg-transparent;
+  @apply text-zinc-700;
+  @apply border-zinc-300;
+  @apply hover:border-zinc-400;
+  @apply dark:bg-transparent;
+  @apply dark:text-zinc-300;
+  @apply dark:border-zinc-700;
+  @apply dark:hover:border-zinc-600;
+}
+
+.btn-destructive {
+  @apply bg-red-500;
+  @apply text-white;
+  @apply hover:bg-red-600;
+  @apply dark:bg-red-500;
+  @apply dark:text-white;
+  @apply dark:hover:bg-red-600;
+}
+
+.btn-callout {
+  @apply bg-gradient-to-b;
+  @apply from-yellow-500;
+  @apply to-amber-600;
+  @apply hover:from-yellow-500;
+  @apply hover:to-yellow-500;
+  @apply text-white;
+}
+
+.btn-sm {
+  @apply text-sm;
+  @apply px-4; 
+  @apply py-2;
+  @apply gap-2;
+  & > .btn-icon > svg {
+    @apply w-4.5;
+    @apply h-4.5;
+  }
+}
+
+.btn-md {
+  @apply text-base;
+  @apply px-4; 
+  @apply py-2;
+  @apply gap-2;
+  & > .btn-icon > svg {
+    @apply w-5;
+    @apply h-5;
+  }
+}
+
+.btn-lg {
+  @apply text-lg;
+  @apply px-5; 
+  @apply py-3;
+  @apply gap-3;
+  & > .btn-icon > svg {
+    @apply w-6;
+    @apply h-6;
+  }
+}
+
+.btn-xl {
+  @apply text-xl;
+  @apply px-6; 
+  @apply py-4;
+  @apply gap-3;
+  & > .btn-icon > svg {
+    @apply w-6;
+    @apply h-6;
+  }
+}
