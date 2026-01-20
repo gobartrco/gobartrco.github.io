@@ -1,0 +1,52 @@
+.txt {
+  @apply px-3;
+  @apply py-2;
+  @apply rounded-lg;
+  @apply bg-zinc-100 dark:bg-zinc-950;
+  @apply text-zinc-900 dark:text-zinc-100;
+  @apply focus:outline-none;
+  @apply focus:ring-2;
+  @apply focus:ring-indigo-500 dark:focus:ring-indigo-500;
+  @apply focus:border-indigo-500 dark:focus:border-indigo-500;
+  @apply focus:bg-white dark:focus:bg-black;
+  @apply placeholder:text-zinc-500 dark:placeholder:text-zinc-400;
+  @apply disabled:opacity-50;
+  @apply disabled:cursor-not-allowed;
+
+  &.error {
+    @apply border-red-300;
+  }
+}
+
+.txt-lg {
+  @apply text-lg;
+  @apply px-4;
+  @apply py-3;
+}
+
+.txt-xl {
+  @apply text-xl;
+  @apply px-6;
+  @apply py-4;
+}
+
+select.txt {
+  @apply appearance-none;
+  @apply cursor-pointer;
+
+  background-image: url("data:image/svg+xml;utf8,<svg fill='gray' height='12' viewBox='0 0 20 20' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M5 8l5 5 5-5H5z'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  background-size: 1rem;
+  padding-right: 2rem;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-image: url("data:image/svg+xml;utf8,<svg fill='dark-gray' height='12' viewBox='0 0 20 20' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M5 8l5 5 5-5H5z'/></svg>");
+  }
+}
+
+.txt-icon {
+  @apply pl-10;
+}

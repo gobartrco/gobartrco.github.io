@@ -4,13 +4,12 @@ title: Only available in the US
 id: blocked
 ---
 
-<div class="text-center">
-  <h1>Only available in the United States</h1>
-  <p>Bartr is currently only available in the United States. We are working on expanding to other countries soon.</p>
-  <hr />
-  <p class="font-semibold">Subscribe to get notified when we launch in your country.</p>
-</div>
-
+{% capture body %}
+<h2 class="text-3xl mb-2 text-center font-semibold">Only available in the United States</h2>
+<p class="font-extralight text-xl text-center mb-8">Bartr is currently only available in the United States. We are working on expanding to other countries soon.</p>
+<p class="font-semibold text-center mb-8">Subscribe to get notified when we launch in your country.</p>
 <div id="cta">
   {% include international-email-form.html %}
 </div>
+{% endcapture %}
+{% include section.html id="transparency" body=body %}
