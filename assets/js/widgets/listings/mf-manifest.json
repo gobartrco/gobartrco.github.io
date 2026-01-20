@@ -76,7 +76,7 @@
         "js": {
           "sync": [
             "868.js",
-            "__federation_expose_App.js"
+            "federation_expose_App.js"
           ],
           "async": [
             "988.js",
@@ -85,7 +85,7 @@
         },
         "css": {
           "sync": [
-            "__federation_expose_App.css"
+            "federation_expose_App.css"
           ],
           "async": []
         }

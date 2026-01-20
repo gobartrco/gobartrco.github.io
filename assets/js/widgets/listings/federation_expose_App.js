@@ -1,2 +1,2 @@
 "use strict";(self.webpackChunklistings=self.webpackChunklistings||[]).push([["874"],{70:function(e,t,n){n.r(t),n.d(t,{App:()=>i,mount:()=>r});var s=n(269);n(855);var d=n(140);n(557);let i=()=>(0,s.jsxs)("div",{className:"mt-10 text-3xl mx-auto max-w-6xl",children:[(0,s.jsx)("div",{children:"Name: listings"}),(0,s.jsx)("div",{children:"Framework: react-19"})]}),r=e=>{let t=document.getElementById(e);t&&d.createRoot(t).render((0,s.jsx)(i,{}))};"undefined"!=typeof window&&document.getElementById("app")&&d.createRoot(document.getElementById("app")).render((0,s.jsx)(i,{}))},557:function(e,t,n){e.exports={}}}]);
-//# sourceMappingURL=__federation_expose_App.js.map
+//# sourceMappingURL=federation_expose_App.js.map

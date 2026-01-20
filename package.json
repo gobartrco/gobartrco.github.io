@@ -9,8 +9,9 @@
     "tailwindcss": "^4.1.11"
   },
   "scripts": {
-    "build": "npm run build:widgets && npm run postcss:build && bundle exec jekyll build",
+    "build": "npm run build:widgets && npm run fix:federation && npm run postcss:build && bundle exec jekyll build",
     "build:widgets": "cd widgets/listings && npm install && npm run build",
+    "fix:federation": "node scripts/fix-federation-files.js",
     "start": "bundle exec jekyll serve --livereload",
     "postcss:build": "postcss _sass/main.scss -o assets/css/main.css --parser postcss-scss"
   },
