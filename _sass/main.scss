@@ -19,3 +19,31 @@ body,
 @import "./button.scss";
 @import "./text.scss";
 @import "./card.scss";
+
+
+
+#mce-success-response {
+  @apply text-green-600;
+  @apply dark:text-green-400;
+  @apply bg-green-50;
+  @apply dark:bg-green-950;
+  @apply rounded-lg;
+  @apply p-4;
+  @apply mb-2;
+}
+
+div.mce_inline_error {
+  @apply !text-red-500;
+  @apply dark:!text-red-400;
+  @apply !bg-red-50;
+  @apply dark:!bg-red-950;
+  @apply !rounded-lg;
+  @apply !p-4;
+  @apply !font-normal;
+  @apply !mb-2;
+}
+
+input.mce_inline_error {
+  @apply !border-red-500;
+  @apply dark:!border-red-500;
+}

@@ -14,7 +14,8 @@
   @apply disabled:cursor-not-allowed;
 
   &.error {
-    @apply border-red-300;
+    @apply border-red-500;
+    @apply dark:border-red-500;
   }
 }
 
@@ -44,6 +45,12 @@ select.txt {
   &:focus,
   &:active {
     background-image: url("data:image/svg+xml;utf8,<svg fill='dark-gray' height='12' viewBox='0 0 20 20' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M5 8l5 5 5-5H5z'/></svg>");
+  }
+
+  &.error,
+  &.mce_inline_error {
+    @apply border-red-500;
+    @apply dark:border-red-500;
   }
 }
 

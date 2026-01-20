@@ -7,12 +7,18 @@
       "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
-    --color-red-300: oklch(80.8% 0.114 19.571);
+    --color-red-50: oklch(97.1% 0.013 17.38);
+    --color-red-400: oklch(70.4% 0.191 22.216);
     --color-red-500: oklch(63.7% 0.237 25.331);
     --color-red-600: oklch(57.7% 0.245 27.325);
+    --color-red-950: oklch(25.8% 0.092 26.042);
     --color-amber-500: oklch(76.9% 0.188 70.08);
     --color-amber-600: oklch(66.6% 0.179 58.318);
     --color-yellow-500: oklch(79.5% 0.184 86.047);
+    --color-green-50: oklch(98.2% 0.018 155.826);
+    --color-green-400: oklch(79.2% 0.209 151.711);
+    --color-green-600: oklch(62.7% 0.194 149.214);
+    --color-green-950: oklch(26.6% 0.065 152.934);
     --color-blue-500: oklch(62.3% 0.214 259.815);
     --color-blue-600: oklch(54.6% 0.245 262.881);
     --color-indigo-100: oklch(93% 0.034 272.788);
@@ -2160,7 +2166,10 @@ section.section-type-hero {
     cursor: not-allowed;
   }
   &.error {
-    border-color: var(--color-red-300);
+    border-color: var(--color-red-500);
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      border-color: var(--color-red-500);
+    }
   }
 }
 .txt-lg {
@@ -2187,6 +2196,12 @@ select.txt {
   padding-right: 2rem;
   &:hover, &:focus, &:active {
     background-image: url("data:image/svg+xml;utf8,<svg fill='dark-gray' height='12' viewBox='0 0 20 20' width='12' xmlns='http://www.w3.org/2000/svg'><path d='M5 8l5 5 5-5H5z'/></svg>");
+  }
+  &.error, &.mce_inline_error {
+    border-color: var(--color-red-500);
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      border-color: var(--color-red-500);
+    }
   }
 }
 .txt-icon {
@@ -2353,6 +2368,40 @@ select.txt {
   }
 }
 @layer utilities;
+#mce-success-response {
+  color: var(--color-green-600);
+  &:where([data-theme=dark], [data-theme=dark] *) {
+    color: var(--color-green-400);
+  }
+  background-color: var(--color-green-50);
+  &:where([data-theme=dark], [data-theme=dark] *) {
+    background-color: var(--color-green-950);
+  }
+  border-radius: var(--radius-lg);
+  padding: calc(var(--spacing) * 4);
+  margin-bottom: calc(var(--spacing) * 2);
+}
+div.mce_inline_error {
+  color: var(--color-red-500) !important;
+  &:where([data-theme=dark], [data-theme=dark] *) {
+    color: var(--color-red-400) !important;
+  }
+  background-color: var(--color-red-50) !important;
+  &:where([data-theme=dark], [data-theme=dark] *) {
+    background-color: var(--color-red-950) !important;
+  }
+  border-radius: var(--radius-lg) !important;
+  padding: calc(var(--spacing) * 4) !important;
+  --tw-font-weight: var(--font-weight-normal) !important;
+  font-weight: var(--font-weight-normal) !important;
+  margin-bottom: calc(var(--spacing) * 2) !important;
+}
+input.mce_inline_error {
+  border-color: var(--color-red-500) !important;
+  &:where([data-theme=dark], [data-theme=dark] *) {
+    border-color: var(--color-red-500) !important;
+  }
+}
 @property --tw-space-y-reverse {
   syntax: "*";
   inherits: false;
