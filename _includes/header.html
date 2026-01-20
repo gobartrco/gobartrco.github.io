@@ -5,17 +5,17 @@
         {% include logo.html variant="default" size="lg" %}
       </div>
       <div class="block md:hidden flex items-center gap-4">
-        <!-- <a href="#">
+        <a href="#" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
-        </a> -->
+        </a>
         {% include logo.html variant="icon" size="md" %}
       </div>
-      <!-- <nav class="primary-navigation hidden md:block">
+      <nav class="primary-navigation hidden md:block">
         <ul>
-          <li><a href="#">How It Works</a></li>
-          <li><a href="#">Trade Protection</a></li>
+          <li><a href="/how-it-works">How It Works</a></li>
+          <li><a href="/trade-protection">Trade Protection</a></li>
         </ul>
-      </nav> -->
+      </nav>
     </div>
     <nav class="user-navigation block">
       <ul>
@@ -48,5 +48,13 @@
         </li>
       </ul>
     </nav> -->
+  </div>
+  <div id="mobile-menu" class="mobile-menu hidden md:hidden">
+    <nav class="primary-navigation">
+      <ul>
+        <li><a href="/how-it-works">How It Works</a></li>
+        <li><a href="/trade-protection">Trade Protection</a></li>
+      </ul>
+    </nav>
   </div>
 </header>
