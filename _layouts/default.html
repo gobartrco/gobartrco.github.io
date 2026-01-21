@@ -32,7 +32,8 @@
         <link rel="canonical" href="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 
         <script lang="javascript" src="{{ '/assets/js/mobile-menu.js' | relative_url }}"></script>
-    
+        <script lang="javascript" src="{{ '/assets/js/jquery-4.0.0.min.js' | relative_url }}"></script>
+
     </head>
     <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-home">
         <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
