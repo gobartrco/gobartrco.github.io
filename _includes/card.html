@@ -5,7 +5,7 @@
 {% assign description = include.description %}
 
 <div
-  class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all overflow-hidden relative group"
+  class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all overflow-hidden relative group flex flex-col"
 >
   <a href="{{ site.app_url }}/items/{{ item_id }}" class="block cursor-pointer"
     ><div class="aspect-square w-full bg-white dark:bg-black relative">
@@ -44,14 +44,14 @@
       <div class="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">
         {{ description }}
       </div>
-      <div class="pt-3">
-        <a href="{{ site.app_url }}/items/{{ item_id }}" class="btn btn-primary btn-md w-full">
-          <span>View Listing</span>
-          <span class="btn-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
-          </span>
-        </a>
-      </div>
+    </div>
+    <div class="p-4 mt-auto">
+      <a href="{{ site.app_url }}/items/{{ item_id }}" class="btn btn-primary btn-md w-full">
+        <span>View Listing</span>
+        <span class="btn-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+        </span>
+      </a>
     </div>
   </a>
 </div>
