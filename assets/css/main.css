@@ -406,8 +406,8 @@
   .max-w-110 {
     max-width: calc(var(--spacing) * 110);
   }
-  .max-w-120 {
-    max-width: calc(var(--spacing) * 120);
+  .max-w-130 {
+    max-width: calc(var(--spacing) * 130);
   }
   .max-w-150 {
     max-width: calc(var(--spacing) * 150);
@@ -786,6 +786,16 @@
   .lg\:grid-cols-4 {
     @media (width >= 64rem) {
       grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+  }
+  .dark\:block {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      display: block;
+    }
+  }
+  .dark\:hidden {
+    &:where([data-theme=dark], [data-theme=dark] *) {
+      display: none;
     }
   }
   .dark\:border-amber-400 {
