@@ -5,7 +5,7 @@ id: home
 ---
 
 {% capture body %}
-<h1 class="text-4xl text-zinc-100 dark:text-zinc-100">Trade the gear that fuels your sound!</h1>
+<h1 class="text-4xl text-zinc-100 dark:text-zinc-100">The safest way to trade music gear online.</h1>
 <p class="text-2xl font-thin text-zinc-100 dark:text-zinc-100 mt-6 mb-8 max-w-110">Swap guitars, amps, pedals, and studio gear with other musicians — safely, securely, and hassle-free.</p>
 <div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
     <div>
@@ -13,7 +13,7 @@ id: home
     </div>
     <div>
     <h2 class="text-2xl mb-2 font-semibold">Built-in protection</h2>
-    <p class="font-thin text-xl">Every trade includes structured negotiations, financial safeguards, and dispute resolution.</p>
+    <p class="font-thin text-xl">Every trade includes secure deposits, structured negotiations, and dispute resolution. <strong>If anything goes wrong, we pay you back.</strong></p>
     </div>
 </div>
 <div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
@@ -21,10 +21,15 @@ id: home
     <svg class="w-12 h-12 text-purple-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
     </div>
     <div>
-    <h2 class="text-2xl mb-2 font-semibold">Trust matters</h2>
-    <p class="font-thin text-xl">Reputation scores and user reviews help you trade with confidence.</p>
+    <h2 class="text-2xl mb-2 font-semibold">Trust & Transparency</h2>
+    <p class="font-thin text-xl">Don't leave anything to chance. User reputation scores and reviews let you know exactly who you're trading with.</p>
     </div>
 </div>
+<p class="flex gap-4">
+    <a href="{{ site.app_url }}/search" class="btn btn-primary btn-xl">Browse all listings</a>
+    <span class="h-full text-center my-auto font-semibold">or</span>
+    <a href="{{ site.app_url }}/register" class="btn btn-xl text-white bg-black/20 hover:bg-black/50">Sign up for free</a>
+</p>
 {% endcapture %}
 {% include section.html id="hero" type="hero" style="background-image: url('https://bartr.co/assets/img/bg-hero3.jpg'), radial-gradient(circle at 33% 33%, rgb(23, 23, 23) 0%, rgb(30, 26, 76) 33%, rgb(67, 45, 216) 80%, rgb(124, 134, 255) 100%);" body=body %}
 
@@ -47,7 +52,7 @@ id: home
 </script>
 <div class="mb-6 text-right">
     <a href="{{ site.app_url }}/search" class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-100">
-        <span>Browse All Listings</span>
+        <span>Browse all listings</span>
         <span class="btn-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
@@ -148,7 +153,7 @@ id: home
 <h2 class="text-3xl mb-2 text-center font-semibold">Ready to find your next sound?</h2>
 <p class="font-extralight text-xl text-center mb-8">Join for free, list your items at no cost, and receive <strong>30% off trade protection costs</strong> when you sign up today!</p>
 <div class="flex-col sm:flex-row flex gap-4 justify-center">
-    <a href="{{ site.app_url }}/register" class="btn btn-primary btn-xl">Sign up for free</a> <span class="h-full my-auto text-xl text-center sm:text-left">or <a href="{{ site.app_url }}" class="underline font-semibold">sign in</a> to your account.</span>
+    <a href="{{ site.app_url }}/register" class="btn btn-primary btn-xl">Sign up for free</a> <span class="h-full my-auto text-xl text-center sm:text-left"></span>
 </div>
 {% endcapture %}
 {% include section.html id="transparency" type="tertiary" body=body %}
