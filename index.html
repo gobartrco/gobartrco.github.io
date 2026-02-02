@@ -45,7 +45,7 @@ id: home
         $.ajax('https://app.bartr.co/api/items?limit=8&sort=random')
         .done(function(data) {
             $.each(data.items, function(index, item) {
-                $('#featured-listings').append(`{% include card.html item_id="${item.id}" title="${item.name}" username="${item.username}" description="${item.description || ''}" img_url="https://app.bartr.co/images/items/${item.image_uuids[0]}/640x640" %}`);
+                $('#featured-listings').append(`{% include card.html item_id="${item.id}" title="${item.name}" username="${item.username}" description="${item.description || ''}" img_url="https://app.bartr.co/images/items/${item.image_uuids[0]}/640x640" favorites="${item.favorites}" views="${item.views}" %}`);
             });
         });
     });
