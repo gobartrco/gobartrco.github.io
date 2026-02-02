@@ -3,6 +3,8 @@
 {% assign title = include.title %}
 {% assign username = include.username %}
 {% assign description = include.description %}
+{% assign views = include.views | default: 0 %}
+{% assign favorites = include.favorites | default: 0 %}
 
 <div
   class="bg-white dark:bg-zinc-900 rounded-lg border border-zinc-200 dark:border-zinc-800 hover:border-zinc-300 dark:hover:border-zinc-700 transition-all overflow-hidden relative group flex flex-col"
@@ -27,6 +29,10 @@
           media="(min-width: 1280px)" />
         <img alt="{{ title }}" src="{{ img_url }}"
       /></picture>
+      <div class="absolute bottom-2 left-2 flex items-center gap-1.5 bg-black/60 dark:bg-black/70 backdrop-blur-sm px-2 py-1 rounded-md text-white text-xs font-medium views-{{ views }}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-eye w-3.5 h-3.5" aria-hidden="true"><path d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0"></path><circle cx="12" cy="12" r="3"></circle></svg>
+        <span>{{ views }}</span>
+      </div>
     </div>
     <div class="p-4 space-y-3">
       <div class="items-start justify-between">
@@ -45,13 +51,17 @@
         {{ description }}
       </div>
     </div>
-    <div class="p-4 mt-auto">
+    <div class="flex p-4 mt-auto gap-2">
       <a href="{{ site.app_url }}/items/{{ item_id }}" class="btn btn-primary btn-md w-full">
         <span>View Listing</span>
         <span class="btn-icon">
           <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
       </a>
+        <a href="{{ site.app_url }}/items/{{ item_id }}" title="Add to favorites" disabled="" class="inline-flex justify-center items-center gap-1.5 btn btn-sm btn-tertiary ">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-heart h-4 w-4 shrink-0" aria-hidden="true"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"></path></svg>
+          <span class="tabular-nums favorites-{{ favorites }}">{{ favorites }}</span>
+        </a>
     </div>
   </a>
 </div>
