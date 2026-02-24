@@ -26,9 +26,9 @@ id: home
     </div>
 </div>
 <p class="flex gap-4">
-    <a href="{{ site.app_url }}/search" class="btn btn-primary btn-xl">Browse all listings</a>
+    <a href="{{ site.app_url }}/search" class="btn btn-xl bg-yellow-500 hover:bg-yellow-600 text-black">Browse listings</a>
     <span class="h-full text-center my-auto font-semibold">or</span>
-    <a href="{{ site.app_url }}/register" class="btn btn-xl text-white bg-black/20 hover:bg-black/50">Sign up for free</a>
+    <a href="{{ site.app_url }}/register" class="btn btn-xl text-white bg-black/40 hover:bg-black/70">Sign up for free</a>
 </p>
 {% endcapture %}
 {% include section.html id="hero" type="hero" style="background-image: url('https://bartr.co/assets/img/bg-hero3.jpg'), radial-gradient(circle at 33% 33%, rgb(23, 23, 23) 0%, rgb(30, 26, 76) 33%, rgb(67, 45, 216) 80%, rgb(124, 134, 255) 100%);" body=body %}
@@ -52,7 +52,7 @@ id: home
 </script>
 <div class="mb-6 text-right">
     <a href="{{ site.app_url }}/search" class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-100">
-        <span>Browse all listings</span>
+        <span>Browse listings</span>
         <span class="btn-icon">
             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
         </span>
