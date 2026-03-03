@@ -10,10 +10,12 @@
   },
   "scripts": {
     "build": "npm run postcss:build && bundle exec jekyll build",
-    "start": "bundle exec jekyll serve --livereload",
+    "start": "pm2 start ecosystem.config.cjs && pm2 save",
+    "stop": "pm2 stop ecosystem.config.cjs && pm2 delete ecosystem.config.cjs",
     "postcss:build": "postcss _sass/main.scss -o assets/css/main.css --parser postcss-scss"
   },
   "dependencies": {
+    "pm2": "^6.0.14",
     "prettier": "^3.8.0"
   }
 }
