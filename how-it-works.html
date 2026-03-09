@@ -14,7 +14,7 @@ permalink: /how-it-works/
       Here's everything you need to know about the process.
     </p>
   </div>
-  <div>
+  <div class="mt-8 md:mt-0">
     <img src="/assets/img/how-it-works-hero.svg" alt="How Trading Works on Bartr" class="w-full h-full object-cover" />
   </div>
 </div>
@@ -127,7 +127,7 @@ capture body %}
   </div>
 
   <!-- Step 8 -->
-  <div class="flex flex-col gap-8 items-start bg-yellow-500 text-white p-8">
+  <a href="{{ site.app_url }}/register" class="flex flex-col gap-8 items-start bg-yellow-500 text-white p-8 rounded-lg hover:scale-105 transition-all duration-300">
     <div class="flex-shrink-0">
       <span class="text-6xl font-bold text-black">08</span>
     </div>
@@ -136,11 +136,11 @@ capture body %}
       <p class="text-2xl font-light mb-4">
         Setup your free account and start trading gear today!
       </p>
-      <a href="{{ site.app_url }}/register" class="btn btn-xl bg-black text-white">
+      <div class="btn btn-xl bg-black text-white">
         Sign up for free
-      </a>
+      </div>
     </div>
-  </div>
+  </a>
 </div>
 {% endcapture %} 
 {% include section.html id="trading-process" body=body class="py-15" %}
