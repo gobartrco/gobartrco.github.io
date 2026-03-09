@@ -5,33 +5,43 @@ id: home
 ---
 
 {% capture body %}
-<h1 class="text-4xl text-zinc-100 dark:text-zinc-100">The safest way to trade music gear online.</h1>
-<p class="text-2xl font-thin text-zinc-100 dark:text-zinc-100 mt-6 mb-8 max-w-110">Swap guitars, amps, pedals, and studio gear with other musicians — safely, securely, and hassle-free.</p>
-<div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
+<div>
+    {% include header.html %}
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center pb-15 pt-15 md:pt-0">
     <div>
-    <svg class="w-12 h-12 text-purple-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check-icon lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+        <h1 class="text-6xl text-zinc-100 dark:text-zinc-100 font-bold">The safest way to trade music gear online.</h1>
+        <p class="text-2xl font-thin text-zinc-100 dark:text-zinc-100 mt-6 mb-8">Swap guitars, amps, pedals, and studio gear with other musicians — safely, securely, and hassle-free.</p>
+        <!-- <div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
+            <div>
+            <svg class="w-12 h-12 text-purple-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-shield-check-icon lucide-shield-check"><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div>
+            <h2 class="text-2xl mb-2 font-semibold">Built-in protection</h2>
+            <p class="font-thin text-xl">Every trade is protected with deposits and delivery confirmation. If someone ghosts or lies, we step in and make it right.</p>
+            </div>
+        </div> -->
+        <!-- <div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
+            <div>
+            <svg class="w-12 h-12 text-purple-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
+            </div>
+            <div>
+            <h2 class="text-2xl mb-2 font-semibold">Trust & Transparency</h2>
+            <p class="font-thin text-xl">Don't leave anything to chance. User reputation scores and reviews let you know exactly who you're trading with.</p>
+            </div>
+        </div> -->
+        <p class="flex gap-4">
+            <a href="{{ site.app_url }}/search" class="btn btn-xl bg-yellow-500 hover:bg-yellow-600 text-black">Browse listings</a>
+            <span class="h-full text-center my-auto font-semibold">or</span>
+            <a href="{{ site.app_url }}/register" class="btn btn-xl text-yellow-500 border-1 border-yellow-500 hover:border-white hover:text-white">Sign up for free</a>
+        </p>
     </div>
     <div>
-    <h2 class="text-2xl mb-2 font-semibold">Built-in protection</h2>
-    <p class="font-thin text-xl">Every trade is protected with deposits and delivery confirmation. If someone ghosts or lies, we step in and make it right.</p>
+        <img src="/assets/img/hero.svg" alt="Hero Image" class="w-full h-full object-cover" />
     </div>
 </div>
-<div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
-    <div>
-    <svg class="w-12 h-12 text-purple-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-badge-check-icon lucide-badge-check"><path d="M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76Z"/><path d="m9 12 2 2 4-4"/></svg>
-    </div>
-    <div>
-    <h2 class="text-2xl mb-2 font-semibold">Trust & Transparency</h2>
-    <p class="font-thin text-xl">Don't leave anything to chance. User reputation scores and reviews let you know exactly who you're trading with.</p>
-    </div>
-</div>
-<p class="flex gap-4">
-    <a href="{{ site.app_url }}/search" class="btn btn-xl bg-yellow-500 hover:bg-yellow-600 text-black">Browse listings</a>
-    <span class="h-full text-center my-auto font-semibold">or</span>
-    <a href="{{ site.app_url }}/register" class="btn btn-xl text-white bg-black/40 hover:bg-black/70">Sign up for free</a>
-</p>
 {% endcapture %}
-{% include section.html id="hero" type="hero" style="background-image: url('https://bartr.co/assets/img/bg-hero3.jpg'), radial-gradient(circle at 33% 33%, rgb(23, 23, 23) 0%, rgb(30, 26, 76) 33%, rgb(67, 45, 216) 80%, rgb(124, 134, 255) 100%);" body=body %}
+{% include section.html id="hero" type="hero" style="background-image:radial-gradient(circle at 33% 33%, rgb(23, 23, 23) 0%, rgb(30, 26, 76) 33%, rgb(67, 45, 216) 80%, rgb(124, 134, 255) 100%);" body=body class="dark" %}
 
 
 
@@ -60,7 +70,7 @@ id: home
 </div>
 <div id="featured-listings" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4"></div>
 {% endcapture %}
-{% include section.html id="featured-listings" title="Featured Listings" icon=icon body=body %}
+{% include section.html id="featured-listings" title="Featured Listings" icon=icon body=body class="py-15" %}
 
 
 
@@ -125,7 +135,7 @@ id: home
     </div>
 </div>
 {% endcapture %}
-{% include section.html id="how-it-works" title="How it Works" subtitle="Trading gear on Bartr is simple and secure:" icon=icon body=body %}
+{% include section.html id="how-it-works" title="How it Works" subtitle="Trading gear on Bartr is simple and secure:" icon=icon body=body class="py-15" %}
 
 
 
@@ -143,7 +153,7 @@ id: home
     </div>
 </div>
 {% endcapture %}
-{% include section.html id="transparency" body=body %}
+{% include section.html id="transparency" body=body class="py-15" %}
 
 
 
@@ -156,6 +166,6 @@ id: home
     <a href="{{ site.app_url }}/register" class="btn btn-primary btn-xl">Sign up for free</a> <span class="h-full my-auto text-xl text-center sm:text-left"></span>
 </div>
 {% endcapture %}
-{% include section.html id="transparency" type="tertiary" body=body %}
+{% include section.html id="transparency" type="tertiary" body=body class="py-15" %}
 
 

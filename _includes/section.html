@@ -1,4 +1,4 @@
-<section class="section-container section-container-fluid section-type-{{ include.type | default: 'primary' }}" {% if include.style %}style="{{ include.style }}"{% endif %}>
+<section class="section-container section-container-fluid section-type-{{ include.type | default: 'primary' }} {{ include.class }}" {% if include.style %}style="{{ include.style }}"{% endif %}>
   <div class="section-content">
     {% if include.title %}
       <div class="flex items-center gap-2 mb-4">

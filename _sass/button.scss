@@ -54,11 +54,9 @@
 
 .btn-callout {
   @apply bg-gradient-to-b;
-  @apply from-yellow-500;
-  @apply to-amber-600;
-  @apply hover:from-yellow-500;
-  @apply hover:to-yellow-500;
-  @apply text-white;
+  @apply bg-yellow-500;
+  @apply hover:bg-yellow-600;
+  @apply text-black;
 }
 
 .btn-sm {

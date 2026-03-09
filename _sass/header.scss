@@ -7,9 +7,6 @@
 .header-container {
   @apply bg-white;
   @apply dark:bg-zinc-900;
-  @apply border-b;
-  @apply border-zinc-200;
-  @apply dark:border-zinc-800;
   @apply sticky;
   @apply top-0;
   @apply z-50;
@@ -37,14 +34,14 @@
         @apply items-center;
         @apply px-4;
         @apply py-2;
-        @apply text-zinc-600;
-        @apply hover:text-black;
-        @apply dark:text-zinc-500;
-        @apply dark:hover:text-white;
+        @apply text-black/75;
+        @apply hover:text-black/100;
+        @apply dark:text-white/75;
+        @apply dark:hover:text-white/100;
         @apply transition-colors;
         @apply duration-300;
         @apply text-sm;
-        @apply font-semibold;
+        @apply font-normal;
       }
     }
   }
@@ -58,10 +55,10 @@
       li > a:not(.btn) {
         @apply px-2;
         @apply py-2;
-        @apply text-zinc-600;
-        @apply hover:text-black;
-        @apply dark:text-zinc-500;
-        @apply dark:hover:text-white;
+        @apply text-black/75;
+        @apply hover:text-black/100;
+        @apply dark:text-white/75;
+        @apply dark:hover:text-white/100;
         @apply transition-colors;
         @apply duration-300;
         @apply text-sm;
@@ -102,17 +99,20 @@
 }
 
 .wrapper-fixed {
-  .header-content {
-    @apply max-w-7xl;
-    @apply px-6;
-
+  .header-container {
+    .header-content {
+      @apply max-w-7xl;
+      @apply px-6;
+    }
   }
 }
 
 .wrapper-fluid {
-  .header-content {
-    @apply w-full;
-    @apply px-6;
-    @apply xl:px-10;
+  .header-container {
+    .header-content {
+      @apply w-full;
+      @apply px-6;
+      @apply xl:px-10;
+    }
   }
 }

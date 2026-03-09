@@ -1,57 +1,15 @@
-<header class="header-container">
-  <div class="header-content">
-    <div class="flex items-center gap-4 md:gap-10 h-full">
-      <div class="hidden md:block">
-        {% include logo.html variant="default" size="lg" %}
-      </div>
-      <div class="block md:hidden flex items-center gap-4">
-        <a href="#" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
-          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
-        </a>
-        {% include logo.html variant="icon" size="md" %}
-      </div>
-      <nav class="primary-navigation hidden md:block">
-        <ul>
-          <li><a href="https://app.bartr.co/search">Browse Listings</a></li>
-          <li><a href="/how-it-works">How It Works</a></li>
-          <li><a href="/trade-protection">Trade Protection</a></li>
-        </ul>
-      </nav>
+<div class="header-content">
+  <div class="flex items-center gap-4 md:gap-10 h-full">
+    <div class="hidden md:block">
+      {% include logo.html variant="default" size="lg" %}
     </div>
-    <nav class="user-navigation block">
-      <ul>
-        <!-- <li>
-          <a href="#" class="flex items-center gap-2">Get Help</a>
-        </li> -->
-        <li>
-          <a href="{{ site.app_url }}" class="btn btn-tertiary btn-md"
-            ><span><strong>Login</strong></span></a
-          >
-        </li>
-        <li>
-          <a href="{{ site.app_url }}/register" class="btn btn-primary btn-md"
-            ><span><strong>Sign Up</strong></span></a
-          >
-        </li>
-      </ul>
-    </nav>
-    <!-- <nav class="user-navigation block md:hidden">
-      <ul>
-        <li>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
-          </a>
-        </li>
-        <li>
-          <a href="#">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
-          </a>
-        </li>
-      </ul>
-    </nav> -->
-  </div>
-  <div id="mobile-menu" class="mobile-menu hidden md:hidden">
-    <nav class="primary-navigation">
+    <div class="block md:hidden flex items-center gap-4">
+      <a href="#" id="mobile-menu-toggle" aria-label="Toggle mobile menu">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu-icon lucide-menu"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg>
+      </a>
+      {% include logo.html variant="icon" size="md" %}
+    </div>
+    <nav class="primary-navigation hidden md:block">
       <ul>
         <li><a href="https://app.bartr.co/search">Browse Listings</a></li>
         <li><a href="/how-it-works">How It Works</a></li>
@@ -59,4 +17,44 @@
       </ul>
     </nav>
   </div>
-</header>
+  <nav class="user-navigation block">
+    <ul>
+      <!-- <li>
+        <a href="#" class="flex items-center gap-2">Get Help</a>
+      </li> -->
+      <li>
+        <a href="{{ site.app_url }}"
+          ><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-user-icon lucide-circle-user"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M7 20.662V19a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1.662"/></svg></a
+        >
+      </li>
+      <li>
+        <a href="{{ site.app_url }}/register" class="btn btn-callout btn-lg"
+          ><span>Sign Up</span></a
+        >
+      </li>
+    </ul>
+  </nav>
+  <!-- <nav class="user-navigation block md:hidden">
+    <ul>
+      <li>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-question-mark-icon lucide-circle-question-mark"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><path d="M12 17h.01"/></svg>
+        </a>
+      </li>
+      <li>
+        <a href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-round-icon lucide-user-round"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 0 0-16 0"/></svg>
+        </a>
+      </li>
+    </ul>
+  </nav> -->
+</div>
+<div id="mobile-menu" class="mobile-menu hidden md:hidden">
+  <nav class="primary-navigation">
+    <ul>
+      <li><a href="https://app.bartr.co/search">Browse Listings</a></li>
+      <li><a href="/how-it-works">How It Works</a></li>
+      <li><a href="/trade-protection">Trade Protection</a></li>
+    </ul>
+  </nav>
+</div>
