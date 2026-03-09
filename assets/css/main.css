@@ -266,6 +266,12 @@
   .left-2 {
     left: calc(var(--spacing) * 2);
   }
+  .order-1 {
+    order: 1;
+  }
+  .order-2 {
+    order: 2;
+  }
   .col-span-2 {
     grid-column: span 2 / span 2;
   }
@@ -677,14 +683,14 @@
   .py-15 {
     padding-block: calc(var(--spacing) * 15);
   }
+  .pt-0 {
+    padding-top: calc(var(--spacing) * 0);
+  }
   .pt-6 {
     padding-top: calc(var(--spacing) * 6);
   }
   .pt-8 {
     padding-top: calc(var(--spacing) * 8);
-  }
-  .pt-15 {
-    padding-top: calc(var(--spacing) * 15);
   }
   .pb-4 {
     padding-bottom: calc(var(--spacing) * 4);
@@ -916,6 +922,16 @@
       vertical-align: top;
     }
   }
+  .md\:order-1 {
+    @media (width >= 48rem) {
+      order: 1;
+    }
+  }
+  .md\:order-2 {
+    @media (width >= 48rem) {
+      order: 2;
+    }
+  }
   .md\:mt-0 {
     @media (width >= 48rem) {
       margin-top: calc(var(--spacing) * 0);
@@ -954,11 +970,6 @@
   .md\:p-12 {
     @media (width >= 48rem) {
       padding: calc(var(--spacing) * 12);
-    }
-  }
-  .md\:pt-0 {
-    @media (width >= 48rem) {
-      padding-top: calc(var(--spacing) * 0);
     }
   }
   .md\:pt-12 {

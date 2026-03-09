@@ -8,8 +8,8 @@ id: home
 <div>
     {% include header.html %}
 </div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center pb-15 pt-15 md:pt-0">
-    <div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-15 pt-0">
+    <div class="order-2 md:order-1">
         <h1 class="text-6xl text-zinc-100 dark:text-zinc-100 font-bold">The safest way to trade music gear online.</h1>
         <p class="text-2xl font-thin text-zinc-100 dark:text-zinc-100 mt-6 mb-8">Swap guitars, amps, pedals, and studio gear with other musicians — safely, securely, and hassle-free.</p>
         <!-- <div class="flex gap-4 mb-8 max-w-150 text-zinc-100">
@@ -30,13 +30,13 @@ id: home
             <p class="font-thin text-xl">Don't leave anything to chance. User reputation scores and reviews let you know exactly who you're trading with.</p>
             </div>
         </div> -->
-        <p class="flex gap-4">
+        <p class="flex flex-col md:flex-row gap-4">
             <a href="{{ site.app_url }}/search" class="btn btn-xl bg-yellow-500 hover:bg-yellow-600 text-black">Browse listings</a>
-            <span class="h-full text-center my-auto font-semibold">or</span>
+            <span class="h-full text-center my-auto font-semibold hidden md:block">or</span>
             <a href="{{ site.app_url }}/register" class="btn btn-xl text-yellow-500 border-1 border-yellow-500 hover:border-white hover:text-white">Sign up for free</a>
         </p>
     </div>
-    <div class="mt-8 md:mt-0">
+    <div class="mt-8 md:mt-0 order-1 md:order-2">
         <img src="/assets/img/hero.svg" alt="Hero Image" class="w-full h-full object-cover" />
     </div>
 </div>
