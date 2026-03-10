@@ -1,0 +1,73 @@
+---
+layout: default
+title: Contact Us
+id: contact
+permalink: /contact
+---
+
+
+{% capture body %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center pb-15 pt-0">
+  <div class="order-2 md:order-1">
+    <h1 class="text-6xl font-bold mb-6">Contact Us</h1>
+    <p class="text-2xl font-light mb-6">
+      Have a question, suggestion, or just want to say hello? We'd love to hear from you.
+    </p>
+    <p class="text-lg font-light mb-6 text-zinc-600 dark:text-zinc-400">
+      Whether you're looking for support, partnership opportunities, or simply want to learn more about what we do, feel free to reach out through any of the methods below. We'll get back to you as soon as we can.
+    </p>
+  </div>
+  <div class="mt-8 md:mt-0 order-1 md:order-2">
+    <img src="/assets/img/contact-hero.svg" alt="Contact Us" class="w-full h-full object-cover" />
+  </div>
+</div>
+{% endcapture %} 
+{% include section.html id="hero" body=body %}
+
+
+{% capture body %}
+<div class="grid grid-cols-1 md:grid-cols-3 gap-1 bg-zinc-100 dark:bg-zinc-800">
+
+  <div class="dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 mb-0">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600 dark:text-indigo-500 w-12 h-12 mb-4"><circle cx="12" cy="12" r="4"/><path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-4 8"/></svg>
+    <h2 class="text-3xl mb-4 font-normal">Email Us</h2>
+    <p class="text-lg font-light text-zinc-600 dark:text-zinc-400 mb-2">
+      For general inquiries or support:
+      <a href="mailto:support@bartr.co" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">support@bartr.co</a>
+    </p>
+    <p class="text-lg font-light text-zinc-600 dark:text-zinc-400">
+      For business or media inquiries:
+      <a href="mailto:partners@bartr.co" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-700 dark:hover:text-indigo-300">partners@bartr.co</a>
+    </p>
+  </div>
+
+  <div class="dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 mb-0">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600 dark:text-indigo-500 h-12 w-12 mb-4"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+    <h2 class="text-3xl mb-4 font-normal">Office Hours</h2>
+    <p class="text-lg font-light text-zinc-600 dark:text-zinc-400 mb-2 font-semibold">
+      Monday through Friday, 9am to 5pm CST.
+    </p>
+    <p class="text-lg font-light text-zinc-600 dark:text-zinc-400">
+      We try to respond to all messages within 1-2 business days.
+    </p>
+  </div>
+
+  <div class="dark:border-zinc-800 bg-white dark:bg-zinc-900 p-8 mb-0">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-indigo-600 dark:text-indigo-500 h-12 w-12 mb-4"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7"/><rect x="2" y="4" width="20" height="16" rx="2"/></svg>
+    <h2 class="text-3xl mb-4 font-normal">Mailing Address</h2>
+    <p class="text-lg font-light text-zinc-600 dark:text-zinc-400 mb-2">
+      Bartr LLC
+      <br />
+      5473 Blair Rd Ste 100
+      <br />
+      PMB 110408
+      <br />
+      Dallas, TX 75231-4227
+    </p>
+  </div>
+
+
+</div>
+
+{% endcapture %}
+{% include section.html id="protection-cost" body=body class="pb-15" %}

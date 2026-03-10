@@ -887,6 +887,13 @@
       }
     }
   }
+  .hover\:text-indigo-700 {
+    &:hover {
+      @media (hover: hover) {
+        color: var(--color-indigo-700);
+      }
+    }
+  }
   .hover\:text-indigo-900 {
     &:hover {
       @media (hover: hover) {
@@ -1142,6 +1149,15 @@
       &:hover {
         @media (hover: hover) {
           color: var(--color-indigo-100);
+        }
+      }
+    }
+  }
+  .dark\:hover\:text-indigo-300 {
+    &:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *) {
+      &:hover {
+        @media (hover: hover) {
+          color: var(--color-indigo-300);
         }
       }
     }
