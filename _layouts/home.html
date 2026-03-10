@@ -12,6 +12,9 @@
     </head>
     <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-home">
         <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
+            <header class="header-container block md:hidden">
+                {% include header.html %}
+            </header>
             <main>
                 {{ content }}
             </main>
