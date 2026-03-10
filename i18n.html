@@ -2,6 +2,7 @@
 layout: default
 title: Only available in the US
 id: blocked
+permalink: /i18n
 ---
 
 {% capture body %}
@@ -12,4 +13,4 @@ id: blocked
   {% include international-email-form.html %}
 </div>
 {% endcapture %}
-{% include section.html id="transparency" body=body %}
+{% include section.html id="transparency" body=body class="py-15" %}
