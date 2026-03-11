@@ -6,6 +6,29 @@
 #users-map-container .mapboxgl-canvas {
   outline: none;
 }
+#users-map-overlay {
+  @apply absolute;
+  @apply inset-x-0;
+  @apply top-0;
+  @apply z-10;
+  @apply bg-gradient-to-b;
+  @apply from-zinc-200/80;
+  @apply dark:from-black/80;
+  @apply to-transparent;
+  @apply dark:to-transparent;
+  @apply pt-9;
+  @apply pointer-events-none;
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    -webkit-mask-image: linear-gradient(to bottom, rgba(255, 255, 255, 1) 50%, rgba(255, 255, 255, 0) 100%);
+    z-index: 9;
+  }
+}
 .users-map-pin {
   display: flex;
   flex-direction: column;
