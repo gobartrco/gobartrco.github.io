@@ -75,16 +75,16 @@ id: home
 {% capture body %}
 <div class="relative mx-[-1.5rem]">
 
-    <div class="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-zinc-200/80 dark:from-black/80 to-transparent dark:to-transparent pt-9">
-    <div class="max-w-7xl mx-auto py-6 px-6">
-        <div class="flex items-center gap-2 mb-4">
-            <span class="flex items-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
-            </span>
-            <h2 class="text-2xl font-semibold">Look Who's Already on Bartr!</h2>
+    <div id="users-map-overlay">
+        <div class="max-w-7xl mx-auto py-6 px-6 z-99 relative">
+            <div class="flex items-center gap-2 mb-4">
+                <span class="flex items-center">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+                </span>
+                <h2 class="text-2xl font-semibold">Look Who's Already on Bartr!</h2>
+            </div>
+            <h3 class="text-xl font-light text-zinc-600 dark:text-zinc-400 mt-6 mb-8">These users are already trading gear...</h2>
         </div>
-        <h3 class="text-xl font-light text-zinc-600 dark:text-zinc-400 mt-6 mb-8">These users are already trading gear...</h2>
-    </div>
     </div>
 
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" rel="stylesheet" />
