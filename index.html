@@ -72,14 +72,11 @@ id: home
 {% endcapture %}
 {% include section.html id="featured-listings" title="Featured Listings" icon=icon body=body class="py-15" %}
 
-{% capture icon %}
-<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M7 10a5 5 0 1 1 10 0c0 4-5 9-5 9s-5-5-5-9"/><circle cx="12" cy="10" r="2"/></svg>
-{% endcapture %}
 {% capture body %}
 <!-- <div class="mb-6 text-right">
     <p class="text-sm text-zinc-600 dark:text-zinc-400">Live activity from real Bartr users across the United States.</p>
 </div> -->
-<div class="mx-[-1.5rem] md:mx-0">
+<div class="mx-[-1.5rem]">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" rel="stylesheet" />
     <style>
     </style>
@@ -88,22 +85,6 @@ id: home
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.js"></script>
 <script>
     (function () {
-        // US state code -> [lng, lat] (approximate state centroids for pin placement)
-        var stateCoords = {
-            AL: [-86.9023, 32.3182], AK: [-153.4937, 64.2008], AZ: [-111.0937, 34.0489], AR: [-92.3731, 34.9697],
-            CA: [-119.4179, 36.7783], CO: [-105.3111, 39.1130], CT: [-72.7554, 41.6032], DE: [-75.5277, 38.9108],
-            FL: [-81.5158, 27.6648], GA: [-83.6431, 32.1574], HI: [-155.5828, 19.8968], ID: [-114.7420, 44.0682],
-            IL: [-89.3985, 40.6331], IN: [-86.1349, 40.2672], IA: [-93.0977, 41.8780], KS: [-98.4842, 38.5266],
-            KY: [-84.2700, 37.6681], LA: [-91.9623, 31.1695], ME: [-69.4455, 45.2538], MD: [-76.6413, 39.0458],
-            MA: [-71.3824, 42.4072], MI: [-84.5361, 43.3266], MN: [-94.6859, 46.7296], MS: [-89.3985, 32.3547],
-            MO: [-91.8318, 37.9643], MT: [-110.3626, 46.8797], NE: [-99.9018, 41.2524], NV: [-116.4194, 38.8026],
-            NH: [-71.5724, 43.1939], NJ: [-74.4057, 40.0583], NM: [-105.8701, 34.5199], NY: [-75.4999, 43.2994],
-            NC: [-79.0193, 35.7596], ND: [-101.0020, 47.5515], OH: [-82.9071, 40.4173], OK: [-97.0929, 35.0078],
-            OR: [-120.5542, 43.8041], PA: [-77.1945, 41.2033], RI: [-71.4774, 41.5801], SC: [-81.1637, 33.8361],
-            SD: [-99.9018, 43.9695], TN: [-86.5804, 35.5175], TX: [-99.9018, 31.9686], UT: [-111.0937, 39.3210],
-            VT: [-72.5778, 44.5588], VA: [-78.6569, 37.4316], WA: [-120.7401, 47.7511], WV: [-80.4549, 38.5976],
-            WI: [-89.6165, 43.7844], WY: [-107.2903, 43.0760], DC: [-77.0369, 38.9072]
-        };
         var stateNameToCode = {
             "ALABAMA": "AL", "ALASKA": "AK", "ARIZONA": "AZ", "ARKANSAS": "AR", "CALIFORNIA": "CA", "COLORADO": "CO",
             "CONNECTICUT": "CT", "DELAWARE": "DE", "FLORIDA": "FL", "GEORGIA": "GA", "HAWAII": "HI", "IDAHO": "ID",
@@ -115,16 +96,39 @@ id: home
             "TENNESSEE": "TN", "TEXAS": "TX", "UTAH": "UT", "VERMONT": "VT", "VIRGINIA": "VA", "WASHINGTON": "WA",
             "WEST VIRGINIA": "WV", "WISCONSIN": "WI", "WYOMING": "WY", "DISTRICT OF COLUMBIA": "DC", "WASHINGTON DC": "DC", "WASHINGTON, DC": "DC"
         };
+        var validStateCodes = new Set(Object.values(stateNameToCode));
 
         function normalizeState(value) {
             if (!value) return null;
             var t = String(value).trim().toUpperCase();
-            if (stateCoords[t]) return t;
+            if (validStateCodes.has(t)) return t;
             return stateNameToCode[t] || null;
         }
 
         function escapeHtml(str) {
             return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        var geocodeCache = {};
+        function geocodeLocation(stateCode, city, token, callback) {
+            var query = (city && String(city).trim()) ? String(city).trim() + ", " + stateCode : stateCode;
+            var cacheKey = query.toLowerCase();
+            if (geocodeCache[cacheKey]) {
+                return callback(geocodeCache[cacheKey].slice());
+            }
+            var url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(query) + ".json?access_token=" + encodeURIComponent(token) + "&country=US&limit=1";
+            fetch(url)
+                .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error("Geocode failed")); })
+                .then(function (data) {
+                    if (data.features && data.features.length > 0 && data.features[0].center) {
+                        var lngLat = data.features[0].center.slice();
+                        geocodeCache[cacheKey] = lngLat;
+                        callback(lngLat);
+                    } else {
+                        callback(null);
+                    }
+                })
+                .catch(function () { callback(null); });
         }
 
         // Small random offset so multiple users in same state don't stack exactly
@@ -190,19 +194,22 @@ id: home
 
             function addUserPin(user) {
                 var stateCode = normalizeState(user.state);
-                if (!stateCode || !stateCoords[stateCode]) return;
-                var lngLat = jitter(stateCoords[stateCode].slice());
-                var el = createPinElement(user);
-                var marker = new mapboxgl.Marker({ element: el }).setLngLat(lngLat).addTo(map);
-                markers.push(marker);
-                var t = setTimeout(function () {
-                    removePin(marker);
-                }, 10000);
-                pinTimeouts.push(t);
-                while (markers.length > maxPins) {
-                    var old = markers.shift();
-                    if (old && old.remove) old.remove();
-                }
+                if (!stateCode) return;
+                geocodeLocation(stateCode, user.city, token, function (lngLat) {
+                    if (!lngLat) return;
+                    lngLat = jitter(lngLat);
+                    var el = createPinElement(user);
+                    var marker = new mapboxgl.Marker({ element: el }).setLngLat(lngLat).addTo(map);
+                    markers.push(marker);
+                    var t = setTimeout(function () {
+                        removePin(marker);
+                    }, 10000);
+                    pinTimeouts.push(t);
+                    while (markers.length > maxPins) {
+                        var old = markers.shift();
+                        if (old && old.remove) old.remove();
+                    }
+                });
             }
 
             var BATCH_SIZE = 25;
@@ -248,7 +255,7 @@ id: home
     })();
 </script>
 {% endcapture %}
-{% include section.html id="users-on-bartr" title="Look Who's Already on Bartr!" icon=icon body=body class="py-15" %}
+{% include section.html id="users-on-bartr" body=body width="full" %}
 
 
 {% capture icon %}
@@ -311,7 +318,7 @@ id: home
     </div>
 </div>
 {% endcapture %}
-{% include section.html id="how-it-works" title="How it Works" subtitle="Trading gear on Bartr is simple and secure:" icon=icon body=body class="py-15" %}
+{% include section.html id="how-it-works" title="How it Works" subtitle="Trading gear on Bartr is simple and secure:" type="secondary" icon=icon body=body class="py-15" %}
 
 
 

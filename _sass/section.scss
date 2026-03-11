@@ -8,16 +8,26 @@ section.section-container {
   @apply w-full;
   @apply text-zinc-900;
   @apply dark:text-zinc-200;
-  & > .section-content {
+  &.section-container-fluid > .section-content {
     @apply max-w-7xl;
+    @apply mx-auto;
+    @apply px-6;
+  }
+  &.section-container-full > .section-content {
+    @apply w-full;
     @apply mx-auto;
     @apply px-6;
   }
 }
 
 .wrapper-fixed {
-  section.section-container > .section-content {
+  section.section-container-fluid > .section-content {
     @apply max-w-7xl;
+    @apply mx-auto;
+    @apply px-6;
+  }
+  &.section-container-full > .section-content {
+    @apply w-full;
     @apply mx-auto;
     @apply px-6;
   }
