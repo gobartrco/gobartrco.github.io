@@ -1,6 +1,6 @@
 #users-map-container {
   width: 100%;
-  min-height: 500px;
+  min-height: 600px;
   overflow: hidden;
 }
 #users-map-container .mapboxgl-canvas {
@@ -20,10 +20,16 @@
   width: 32px;
   height: 32px;
   border-radius: 9999px;
-  border: 2px solid #fff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.35);
   object-fit: cover;
-  background: #0f172a;
+  @apply bg-zinc-900;
+  @apply dark:bg-zinc-200;
+  @apply shadow-sm;
+  @apply border-2;
+  @apply border-white;
+  @apply hover:scale-125;
+  @apply transition-all;
+  @apply duration-300;
+  @apply cursor-pointer;
 }
 .users-map-pin-dot {
   width: 10px;
@@ -36,11 +42,13 @@
 }
 .users-map-pin-label {
   margin-top: 4px;
-  padding: 4px 8px;
-  font-size: 11px;
-  line-height: 1.2;
-  color: #fff;
-  background: rgba(15, 23, 42, 0.9);
-  border-radius: 4px;
   white-space: nowrap;
+  @apply text-zinc-900;
+  @apply dark:text-zinc-200;
+  @apply bg-white/90;
+  @apply dark:bg-zinc-900/90;
+  @apply rounded-sm;
+  @applt text-xs;
+  @apply px-2;
+  @apply py-1;
 }
