@@ -7,6 +7,9 @@ baseurl: ""
 url: "https://bartr.co"
 app_url: "https://app.bartr.co"
 
+# Mapbox (for homepage users map). Get a free token at https://account.mapbox.com/
+mapbox_token: "pk.eyJ1IjoiYmFydHItaWFuIiwiYSI6ImNtbW03ZmU2NDI1ZDYycG9mN3Ywd3J0MTgifQ.C7iPASun6JJ0Z7yFT2U0Gw"
+
 # Build settings
 plugins:
   - jekyll-feed

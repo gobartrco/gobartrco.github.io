@@ -80,227 +80,143 @@ id: home
     <p class="text-sm text-zinc-600 dark:text-zinc-400">Live activity from real Bartr users across the United States.</p>
 </div>
 <div id="users-map-widget" class="max-w-5xl mx-auto">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" rel="stylesheet" />
     <style>
-        /* Prevent SVG "Expected length, auto" error from .h-auto / .w-auto and base layer */
-        svg.h-auto { height: unset !important; }
-        svg.w-auto { width: unset !important; }
-        #users-map-container { position: relative; width: 100%; min-height: 200px; }
-        #users-map-container img { display: block; width: 100%; max-width: 100%; }
-        #users-map-pins { z-index: 10; }
+        #users-map-container { width: 100%; min-height: 400px; border-radius: 0.5rem; overflow: hidden; }
+        #users-map-container .mapboxgl-canvas { outline: none; }
+        .users-map-pin { display: flex; flex-direction: column; align-items: center; text-align: center; pointer-events: none; }
+        .users-map-pin-avatar-wrapper { margin-bottom: 4px; }
+        .users-map-pin-avatar { width: 32px; height: 32px; border-radius: 9999px; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.35); object-fit: cover; background: #0f172a; }
+        .users-map-pin-dot { width: 10px; height: 10px; border-radius: 50%; background: #ef4444; box-shadow: 0 2px 8px rgba(0,0,0,0.3); border: 2px solid #fff; margin-top: 2px; }
+        .users-map-pin-label { margin-top: 4px; padding: 4px 8px; font-size: 11px; line-height: 1.2; color: #fff; background: rgba(15,23,42,0.9); border-radius: 4px; white-space: nowrap; }
     </style>
-    <div id="users-map-container" class="relative w-full overflow-hidden">
-        <img
-            src="/assets/img/us-map.svg"
-            alt="United States map"
-            class="w-full"
-        />
-        <div
-            id="users-map-pins"
-            class="pointer-events-none absolute inset-0"
-        ></div>
-    </div>
+    <div id="users-map-container"></div>
 </div>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.js"></script>
 <script>
     (function () {
-        // Bounding boxes [xMin, xMax, yMin, yMax] as % of map for random pin placement within each state
-        const stateBounds = {
-            AL: [58, 68, 65, 74],
-            AK: [2, 22, 82, 98],
-            AZ: [18, 32, 62, 75],
-            AR: [48, 58, 62, 72],
-            CA: [8, 22, 48, 78],
-            CO: [30, 42, 50, 62],
-            CT: [84, 89, 44, 50],
-            DE: [80, 84, 51, 56],
-            FL: [65, 82, 78, 95],
-            GA: [62, 70, 68, 76],
-            HI: [18, 28, 88, 96],
-            ID: [18, 32, 35, 52],
-            IL: [50, 58, 48, 56],
-            IN: [54, 62, 46, 54],
-            IA: [44, 52, 44, 52],
-            KS: [40, 50, 54, 66],
-            KY: [56, 66, 52, 62],
-            LA: [48, 58, 72, 82],
-            ME: [86, 95, 24, 38],
-            MD: [78, 84, 48, 56],
-            MA: [84, 90, 38, 46],
-            MI: [52, 64, 34, 50],
-            MN: [42, 52, 30, 44],
-            MS: [52, 62, 68, 78],
-            MO: [46, 56, 52, 62],
-            MT: [24, 38, 30, 46],
-            NE: [38, 48, 46, 56],
-            NV: [16, 28, 52, 66],
-            NH: [84, 90, 32, 40],
-            NJ: [80, 86, 42, 50],
-            NM: [28, 38, 62, 74],
-            NY: [76, 88, 34, 46],
-            NC: [68, 78, 56, 68],
-            ND: [36, 48, 26, 38],
-            OH: [58, 68, 44, 52],
-            OK: [40, 52, 60, 72],
-            OR: [10, 24, 40, 58],
-            PA: [72, 80, 42, 52],
-            RI: [87, 90, 42, 46],
-            SC: [66, 74, 62, 72],
-            SD: [36, 48, 40, 50],
-            TN: [56, 66, 58, 68],
-            TX: [38, 54, 70, 86],
-            UT: [22, 32, 54, 66],
-            VT: [82, 87, 30, 38],
-            VA: [72, 80, 52, 62],
-            WA: [12, 24, 30, 46],
-            WV: [68, 74, 48, 56],
-            WI: [48, 56, 34, 44],
-            WY: [26, 38, 42, 52],
-            DC: [79, 82, 51, 55]
+        // US state code -> [lng, lat] (approximate state centroids for pin placement)
+        var stateCoords = {
+            AL: [-86.9023, 32.3182], AK: [-153.4937, 64.2008], AZ: [-111.0937, 34.0489], AR: [-92.3731, 34.9697],
+            CA: [-119.4179, 36.7783], CO: [-105.3111, 39.1130], CT: [-72.7554, 41.6032], DE: [-75.5277, 38.9108],
+            FL: [-81.5158, 27.6648], GA: [-83.6431, 32.1574], HI: [-155.5828, 19.8968], ID: [-114.7420, 44.0682],
+            IL: [-89.3985, 40.6331], IN: [-86.1349, 40.2672], IA: [-93.0977, 41.8780], KS: [-98.4842, 38.5266],
+            KY: [-84.2700, 37.6681], LA: [-91.9623, 31.1695], ME: [-69.4455, 45.2538], MD: [-76.6413, 39.0458],
+            MA: [-71.3824, 42.4072], MI: [-84.5361, 43.3266], MN: [-94.6859, 46.7296], MS: [-89.3985, 32.3547],
+            MO: [-91.8318, 37.9643], MT: [-110.3626, 46.8797], NE: [-99.9018, 41.2524], NV: [-116.4194, 38.8026],
+            NH: [-71.5724, 43.1939], NJ: [-74.4057, 40.0583], NM: [-105.8701, 34.5199], NY: [-75.4999, 43.2994],
+            NC: [-79.0193, 35.7596], ND: [-101.0020, 47.5515], OH: [-82.9071, 40.4173], OK: [-97.0929, 35.0078],
+            OR: [-120.5542, 43.8041], PA: [-77.1945, 41.2033], RI: [-71.4774, 41.5801], SC: [-81.1637, 33.8361],
+            SD: [-99.9018, 43.9695], TN: [-86.5804, 35.5175], TX: [-99.9018, 31.9686], UT: [-111.0937, 39.3210],
+            VT: [-72.5778, 44.5588], VA: [-78.6569, 37.4316], WA: [-120.7401, 47.7511], WV: [-80.4549, 38.5976],
+            WI: [-89.6165, 43.7844], WY: [-107.2903, 43.0760], DC: [-77.0369, 38.9072]
         };
-
-        function getRandomPointInState(stateCode) {
-            const b = stateBounds[stateCode];
-            if (!b) return null;
-            return {
-                x: b[0] + Math.random() * (b[1] - b[0]),
-                y: b[2] + Math.random() * (b[3] - b[2])
-            };
-        }
-
-        const stateNameToCode = {
-            "ALABAMA": "AL",
-            "ALASKA": "AK",
-            "ARIZONA": "AZ",
-            "ARKANSAS": "AR",
-            "CALIFORNIA": "CA",
-            "COLORADO": "CO",
-            "CONNECTICUT": "CT",
-            "DELAWARE": "DE",
-            "FLORIDA": "FL",
-            "GEORGIA": "GA",
-            "HAWAII": "HI",
-            "IDAHO": "ID",
-            "ILLINOIS": "IL",
-            "INDIANA": "IN",
-            "IOWA": "IA",
-            "KANSAS": "KS",
-            "KENTUCKY": "KY",
-            "LOUISIANA": "LA",
-            "MAINE": "ME",
-            "MARYLAND": "MD",
-            "MASSACHUSETTS": "MA",
-            "MICHIGAN": "MI",
-            "MINNESOTA": "MN",
-            "MISSISSIPPI": "MS",
-            "MISSOURI": "MO",
-            "MONTANA": "MT",
-            "NEBRASKA": "NE",
-            "NEVADA": "NV",
-            "NEW HAMPSHIRE": "NH",
-            "NEW JERSEY": "NJ",
-            "NEW MEXICO": "NM",
-            "NEW YORK": "NY",
-            "NORTH CAROLINA": "NC",
-            "NORTH DAKOTA": "ND",
-            "OHIO": "OH",
-            "OKLAHOMA": "OK",
-            "OREGON": "OR",
-            "PENNSYLVANIA": "PA",
-            "RHODE ISLAND": "RI",
-            "SOUTH CAROLINA": "SC",
-            "SOUTH DAKOTA": "SD",
-            "TENNESSEE": "TN",
-            "TEXAS": "TX",
-            "UTAH": "UT",
-            "VERMONT": "VT",
-            "VIRGINIA": "VA",
-            "WASHINGTON": "WA",
-            "WEST VIRGINIA": "WV",
-            "WISCONSIN": "WI",
-            "WYOMING": "WY",
-            "DISTRICT OF COLUMBIA": "DC",
-            "WASHINGTON DC": "DC",
-            "WASHINGTON, DC": "DC"
+        var stateNameToCode = {
+            "ALABAMA": "AL", "ALASKA": "AK", "ARIZONA": "AZ", "ARKANSAS": "AR", "CALIFORNIA": "CA", "COLORADO": "CO",
+            "CONNECTICUT": "CT", "DELAWARE": "DE", "FLORIDA": "FL", "GEORGIA": "GA", "HAWAII": "HI", "IDAHO": "ID",
+            "ILLINOIS": "IL", "INDIANA": "IN", "IOWA": "IA", "KANSAS": "KS", "KENTUCKY": "KY", "LOUISIANA": "LA",
+            "MAINE": "ME", "MARYLAND": "MD", "MASSACHUSETTS": "MA", "MICHIGAN": "MI", "MINNESOTA": "MN", "MISSISSIPPI": "MS",
+            "MISSOURI": "MO", "MONTANA": "MT", "NEBRASKA": "NE", "NEVADA": "NV", "NEW HAMPSHIRE": "NH", "NEW JERSEY": "NJ",
+            "NEW MEXICO": "NM", "NEW YORK": "NY", "NORTH CAROLINA": "NC", "NORTH DAKOTA": "ND", "OHIO": "OH", "OKLAHOMA": "OK",
+            "OREGON": "OR", "PENNSYLVANIA": "PA", "RHODE ISLAND": "RI", "SOUTH CAROLINA": "SC", "SOUTH DAKOTA": "SD",
+            "TENNESSEE": "TN", "TEXAS": "TX", "UTAH": "UT", "VERMONT": "VT", "VIRGINIA": "VA", "WASHINGTON": "WA",
+            "WEST VIRGINIA": "WV", "WISCONSIN": "WI", "WYOMING": "WY", "DISTRICT OF COLUMBIA": "DC", "WASHINGTON DC": "DC", "WASHINGTON, DC": "DC"
         };
 
         function normalizeState(value) {
             if (!value) return null;
-            const trimmed = String(value).trim().toUpperCase();
-            if (stateBounds[trimmed]) return trimmed;
-            return stateNameToCode[trimmed] || null;
+            var t = String(value).trim().toUpperCase();
+            if (stateCoords[t]) return t;
+            return stateNameToCode[t] || null;
         }
 
         function escapeHtml(str) {
-            return String(str || "")
-                .replace(/&/g, "&amp;")
-                .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;")
-                .replace(/"/g, "&quot;")
-                .replace(/'/g, "&#039;");
+            return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
         }
 
+        // Small random offset so multiple users in same state don't stack exactly
+        function jitter(lngLat, radiusDeg) {
+            radiusDeg = radiusDeg || 0.5;
+            return [lngLat[0] + (Math.random() - 0.5) * 2 * radiusDeg, lngLat[1] + (Math.random() - 0.5) * 2 * radiusDeg];
+        }
+
+        function createPinElement(user) {
+            var firstName = escapeHtml(user.first_name || "User");
+            var lastInitial = escapeHtml((user.last_name || "").charAt(0));
+            var username = escapeHtml(user.username || "user");
+            var el = document.createElement("div");
+            el.className = "users-map-pin";
+            el.innerHTML =
+                '<div class="users-map-pin-avatar-wrapper">' +
+                    '<img class="users-map-pin-avatar" src="https://app.bartr.co/images/users/' + username + '" alt="' + firstName + '\'s avatar" onerror="this.style.display=\'none\';" />' +
+                "</div>" +
+                '<div class="users-map-pin-label">' + firstName + (lastInitial ? " " + lastInitial + "." : "") + "</div>";
+            return el;
+        }
+
+        var apiBase = "https://app.bartr.co";
+        var maxPins = 60;
+        var pinTimeouts = [];
+
         function startWidget() {
-            const pinsContainer = document.getElementById("users-map-pins");
-            if (!pinsContainer) return;
-
-            const maxPins = 60;
-
-            function scheduleNext() {
-                const delay = Math.random() * 2000; // 0–2000ms
-                setTimeout(fetchAndPin, delay);
+            var container = document.getElementById("users-map-container");
+            if (!container) return;
+            var token = "{{ site.mapbox_token | strip }}";
+            if (!token) {
+                container.innerHTML = "<p class=\"text-zinc-500 dark:text-zinc-400 text-sm p-4\">Add <code>mapbox_token</code> to <code>_config.yml</code> to show the map. Get a free token at <a href=\"https://account.mapbox.com/\" class=\"underline\">mapbox.com</a>.</p>";
+                return;
             }
 
-            var apiBase = "https://app.bartr.co";
-            function fetchAndPin() {
+            mapboxgl.accessToken = token;
+            var map = new mapboxgl.Map({
+                container: "users-map-container",
+                style: "mapbox://styles/mapbox/dark-v11",
+                center: [-98, 39],
+                zoom: 3,
+                attributionControl: false
+            });
+
+            map.addControl(new mapboxgl.AttributionControl(), "bottom-right");
+            var markers = [];
+
+            function removePin(marker) {
+                if (marker && marker.remove) marker.remove();
+                var i = markers.indexOf(marker);
+                if (i !== -1) markers.splice(i, 1);
+            }
+
+            function addUserPin(user) {
+                var stateCode = normalizeState(user.state);
+                if (!stateCode || !stateCoords[stateCode]) return;
+                var lngLat = jitter(stateCoords[stateCode].slice());
+                var el = createPinElement(user);
+                var marker = new mapboxgl.Marker({ element: el }).setLngLat(lngLat).addTo(map);
+                markers.push(marker);
+                var t = setTimeout(function () {
+                    removePin(marker);
+                }, 10000);
+                pinTimeouts.push(t);
+                while (markers.length > maxPins) {
+                    var old = markers.shift();
+                    if (old && old.remove) old.remove();
+                }
+            }
+
+            function fetchAndAddPins() {
                 fetch(apiBase + "/api/users/search?sort=random&limit=1")
-                    .then(function (response) {
-                        if (!response.ok) throw new Error("Network error");
-                        return response.json();
-                    })
+                    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
                     .then(function (users) {
-                        if (!Array.isArray(users) || users.length === 0) return;
-                        var user = users[0];
-                        var stateCode = normalizeState(user.state);
-                        if (!stateCode) return;
-                        var coords = getRandomPointInState(stateCode);
-                        if (!coords) return;
-
-                        var pin = document.createElement("div");
-                        pin.className = "absolute flex flex-col items-center text-[10px] md:text-xs text-white";
-                        pin.style.left = coords.x + "%";
-                        pin.style.top = coords.y + "%";
-                        pin.style.transform = "translate(-50%, -100%)";
-                        pin.style.transition = "opacity 0.5s ease-out";
-
-                        var firstName = escapeHtml(user.first_name || "User");
-                        var lastInitial = escapeHtml((user.last_name || "").charAt(0));
-
-                        pin.innerHTML =
-                            '<div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500 shadow-lg mb-1 border border-white"></div>' +
-                            '<div class="px-1.5 py-1 md:px-2 md:py-1 rounded bg-black/80 backdrop-blur-sm whitespace-nowrap">' +
-                            firstName +
-                            (lastInitial ? " " + lastInitial + "." : "") +
-                            "</div>";
-
-                        pinsContainer.appendChild(pin);
-
-                        setTimeout(function () {
-                            pin.style.opacity = "0";
-                            setTimeout(function () {
-                                if (pin.parentNode) pin.parentNode.removeChild(pin);
-                            }, 500);
-                        }, 10000);
-
-                        while (pinsContainer.children.length > maxPins) {
-                            pinsContainer.removeChild(pinsContainer.firstChild);
-                        }
+                        if (Array.isArray(users) && users.length > 0) addUserPin(users[0]);
                     })
-                    .catch(function () {
-                        // Fail silently; try again on next tick.
-                    })
-                    .finally(scheduleNext);
+                    .catch(function () {})
+                    .finally(function () {
+                        setTimeout(fetchAndAddPins, 500 + Math.random() * 1500);
+                    });
             }
 
-            scheduleNext();
+            map.on("load", function () {
+                fetchAndAddPins();
+            });
         }
 
         if (document.readyState === "loading") {
