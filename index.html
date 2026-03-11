@@ -72,7 +72,246 @@ id: home
 {% endcapture %}
 {% include section.html id="featured-listings" title="Featured Listings" icon=icon body=body class="py-15" %}
 
+{% capture icon %}
+<svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M7 10a5 5 0 1 1 10 0c0 4-5 9-5 9s-5-5-5-9"/><circle cx="12" cy="10" r="2"/></svg>
+{% endcapture %}
+{% capture body %}
+<div class="mb-6 text-right">
+    <p class="text-sm text-zinc-600 dark:text-zinc-400">Live activity from real Bartr users across the United States.</p>
+</div>
+<div id="users-map-widget" class="max-w-5xl mx-auto">
+    <style>
+        /* Prevent SVG "Expected length, auto" error from .h-auto / .w-auto and base layer */
+        svg.h-auto { height: unset !important; }
+        svg.w-auto { width: unset !important; }
+        #users-map-container { position: relative; width: 100%; min-height: 200px; }
+        #users-map-container img { display: block; width: 100%; max-width: 100%; }
+        #users-map-pins { z-index: 10; }
+    </style>
+    <div id="users-map-container" class="relative w-full overflow-hidden">
+        <img
+            src="/assets/img/us-map.svg"
+            alt="United States map"
+            class="w-full"
+        />
+        <div
+            id="users-map-pins"
+            class="pointer-events-none absolute inset-0"
+        ></div>
+    </div>
+</div>
+<script>
+    (function () {
+        // Bounding boxes [xMin, xMax, yMin, yMax] as % of map for random pin placement within each state
+        const stateBounds = {
+            AL: [58, 68, 65, 74],
+            AK: [2, 22, 82, 98],
+            AZ: [18, 32, 62, 75],
+            AR: [48, 58, 62, 72],
+            CA: [8, 22, 48, 78],
+            CO: [30, 42, 50, 62],
+            CT: [84, 89, 44, 50],
+            DE: [80, 84, 51, 56],
+            FL: [65, 82, 78, 95],
+            GA: [62, 70, 68, 76],
+            HI: [18, 28, 88, 96],
+            ID: [18, 32, 35, 52],
+            IL: [50, 58, 48, 56],
+            IN: [54, 62, 46, 54],
+            IA: [44, 52, 44, 52],
+            KS: [40, 50, 54, 66],
+            KY: [56, 66, 52, 62],
+            LA: [48, 58, 72, 82],
+            ME: [86, 95, 24, 38],
+            MD: [78, 84, 48, 56],
+            MA: [84, 90, 38, 46],
+            MI: [52, 64, 34, 50],
+            MN: [42, 52, 30, 44],
+            MS: [52, 62, 68, 78],
+            MO: [46, 56, 52, 62],
+            MT: [24, 38, 30, 46],
+            NE: [38, 48, 46, 56],
+            NV: [16, 28, 52, 66],
+            NH: [84, 90, 32, 40],
+            NJ: [80, 86, 42, 50],
+            NM: [28, 38, 62, 74],
+            NY: [76, 88, 34, 46],
+            NC: [68, 78, 56, 68],
+            ND: [36, 48, 26, 38],
+            OH: [58, 68, 44, 52],
+            OK: [40, 52, 60, 72],
+            OR: [10, 24, 40, 58],
+            PA: [72, 80, 42, 52],
+            RI: [87, 90, 42, 46],
+            SC: [66, 74, 62, 72],
+            SD: [36, 48, 40, 50],
+            TN: [56, 66, 58, 68],
+            TX: [38, 54, 70, 86],
+            UT: [22, 32, 54, 66],
+            VT: [82, 87, 30, 38],
+            VA: [72, 80, 52, 62],
+            WA: [12, 24, 30, 46],
+            WV: [68, 74, 48, 56],
+            WI: [48, 56, 34, 44],
+            WY: [26, 38, 42, 52],
+            DC: [79, 82, 51, 55]
+        };
 
+        function getRandomPointInState(stateCode) {
+            const b = stateBounds[stateCode];
+            if (!b) return null;
+            return {
+                x: b[0] + Math.random() * (b[1] - b[0]),
+                y: b[2] + Math.random() * (b[3] - b[2])
+            };
+        }
+
+        const stateNameToCode = {
+            "ALABAMA": "AL",
+            "ALASKA": "AK",
+            "ARIZONA": "AZ",
+            "ARKANSAS": "AR",
+            "CALIFORNIA": "CA",
+            "COLORADO": "CO",
+            "CONNECTICUT": "CT",
+            "DELAWARE": "DE",
+            "FLORIDA": "FL",
+            "GEORGIA": "GA",
+            "HAWAII": "HI",
+            "IDAHO": "ID",
+            "ILLINOIS": "IL",
+            "INDIANA": "IN",
+            "IOWA": "IA",
+            "KANSAS": "KS",
+            "KENTUCKY": "KY",
+            "LOUISIANA": "LA",
+            "MAINE": "ME",
+            "MARYLAND": "MD",
+            "MASSACHUSETTS": "MA",
+            "MICHIGAN": "MI",
+            "MINNESOTA": "MN",
+            "MISSISSIPPI": "MS",
+            "MISSOURI": "MO",
+            "MONTANA": "MT",
+            "NEBRASKA": "NE",
+            "NEVADA": "NV",
+            "NEW HAMPSHIRE": "NH",
+            "NEW JERSEY": "NJ",
+            "NEW MEXICO": "NM",
+            "NEW YORK": "NY",
+            "NORTH CAROLINA": "NC",
+            "NORTH DAKOTA": "ND",
+            "OHIO": "OH",
+            "OKLAHOMA": "OK",
+            "OREGON": "OR",
+            "PENNSYLVANIA": "PA",
+            "RHODE ISLAND": "RI",
+            "SOUTH CAROLINA": "SC",
+            "SOUTH DAKOTA": "SD",
+            "TENNESSEE": "TN",
+            "TEXAS": "TX",
+            "UTAH": "UT",
+            "VERMONT": "VT",
+            "VIRGINIA": "VA",
+            "WASHINGTON": "WA",
+            "WEST VIRGINIA": "WV",
+            "WISCONSIN": "WI",
+            "WYOMING": "WY",
+            "DISTRICT OF COLUMBIA": "DC",
+            "WASHINGTON DC": "DC",
+            "WASHINGTON, DC": "DC"
+        };
+
+        function normalizeState(value) {
+            if (!value) return null;
+            const trimmed = String(value).trim().toUpperCase();
+            if (stateBounds[trimmed]) return trimmed;
+            return stateNameToCode[trimmed] || null;
+        }
+
+        function escapeHtml(str) {
+            return String(str || "")
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+        function startWidget() {
+            const pinsContainer = document.getElementById("users-map-pins");
+            if (!pinsContainer) return;
+
+            const maxPins = 60;
+
+            function scheduleNext() {
+                const delay = Math.random() * 2000; // 0–2000ms
+                setTimeout(fetchAndPin, delay);
+            }
+
+            var apiBase = "https://app.bartr.co";
+            function fetchAndPin() {
+                fetch(apiBase + "/api/users/search?sort=random&limit=1")
+                    .then(function (response) {
+                        if (!response.ok) throw new Error("Network error");
+                        return response.json();
+                    })
+                    .then(function (users) {
+                        if (!Array.isArray(users) || users.length === 0) return;
+                        var user = users[0];
+                        var stateCode = normalizeState(user.state);
+                        if (!stateCode) return;
+                        var coords = getRandomPointInState(stateCode);
+                        if (!coords) return;
+
+                        var pin = document.createElement("div");
+                        pin.className = "absolute flex flex-col items-center text-[10px] md:text-xs text-white";
+                        pin.style.left = coords.x + "%";
+                        pin.style.top = coords.y + "%";
+                        pin.style.transform = "translate(-50%, -100%)";
+                        pin.style.transition = "opacity 0.5s ease-out";
+
+                        var firstName = escapeHtml(user.first_name || "User");
+                        var lastInitial = escapeHtml((user.last_name || "").charAt(0));
+
+                        pin.innerHTML =
+                            '<div class="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-red-500 shadow-lg mb-1 border border-white"></div>' +
+                            '<div class="px-1.5 py-1 md:px-2 md:py-1 rounded bg-black/80 backdrop-blur-sm whitespace-nowrap">' +
+                            firstName +
+                            (lastInitial ? " " + lastInitial + "." : "") +
+                            "</div>";
+
+                        pinsContainer.appendChild(pin);
+
+                        setTimeout(function () {
+                            pin.style.opacity = "0";
+                            setTimeout(function () {
+                                if (pin.parentNode) pin.parentNode.removeChild(pin);
+                            }, 500);
+                        }, 10000);
+
+                        while (pinsContainer.children.length > maxPins) {
+                            pinsContainer.removeChild(pinsContainer.firstChild);
+                        }
+                    })
+                    .catch(function () {
+                        // Fail silently; try again on next tick.
+                    })
+                    .finally(scheduleNext);
+            }
+
+            scheduleNext();
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", startWidget);
+        } else {
+            startWidget();
+        }
+    })();
+</script>
+{% endcapture %}
+{% include section.html id="users-on-bartr" title="Look Who's Already on Bartr!" icon=icon body=body class="py-15" %}
 
 
 {% capture icon %}
