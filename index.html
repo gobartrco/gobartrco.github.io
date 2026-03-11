@@ -76,21 +76,14 @@ id: home
 <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M7 10a5 5 0 1 1 10 0c0 4-5 9-5 9s-5-5-5-9"/><circle cx="12" cy="10" r="2"/></svg>
 {% endcapture %}
 {% capture body %}
-<div class="mb-6 text-right">
+<!-- <div class="mb-6 text-right">
     <p class="text-sm text-zinc-600 dark:text-zinc-400">Live activity from real Bartr users across the United States.</p>
-</div>
-<div id="users-map-widget" class="max-w-5xl mx-auto">
+</div> -->
+<div class="mx-[-1.5rem] md:mx-0">
     <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" rel="stylesheet" />
     <style>
-        #users-map-container { width: 100%; min-height: 400px; border-radius: 0.5rem; overflow: hidden; }
-        #users-map-container .mapboxgl-canvas { outline: none; }
-        .users-map-pin { display: flex; flex-direction: column; align-items: center; text-align: center; pointer-events: none; }
-        .users-map-pin-avatar-wrapper { margin-bottom: 4px; }
-        .users-map-pin-avatar { width: 32px; height: 32px; border-radius: 9999px; border: 2px solid #fff; box-shadow: 0 2px 8px rgba(0,0,0,0.35); object-fit: cover; background: #0f172a; }
-        .users-map-pin-dot { width: 10px; height: 10px; border-radius: 50%; background: #ef4444; box-shadow: 0 2px 8px rgba(0,0,0,0.3); border: 2px solid #fff; margin-top: 2px; }
-        .users-map-pin-label { margin-top: 4px; padding: 4px 8px; font-size: 11px; line-height: 1.2; color: #fff; background: rgba(15,23,42,0.9); border-radius: 4px; white-space: nowrap; }
     </style>
-    <div id="users-map-container"></div>
+    <div id="users-map-container" class="rounded-0 md:rounded-lg"></div>
 </div>
 <script src="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.js"></script>
 <script>
@@ -147,9 +140,9 @@ id: home
             var el = document.createElement("div");
             el.className = "users-map-pin";
             el.innerHTML =
-                '<div class="users-map-pin-avatar-wrapper">' +
+                '<a href="https://app.bartr.co/user/' + username + '" class="users-map-pin-avatar-wrapper">' +
                     '<img class="users-map-pin-avatar" src="https://app.bartr.co/images/users/' + username + '" alt="' + firstName + '\'s avatar" onerror="this.style.display=\'none\';" />' +
-                "</div>" +
+                "</a>" +
                 '<div class="users-map-pin-label">' + firstName + (lastInitial ? " " + lastInitial + "." : "") + "</div>";
             return el;
         }
@@ -168,13 +161,23 @@ id: home
             }
 
             mapboxgl.accessToken = token;
+            var MAP_STYLES = { light: "mapbox://styles/mapbox/light-v11", dark: "mapbox://styles/mapbox/dark-v11" };
+            function isDarkMode() {
+                var el = document.documentElement;
+                return el.classList.contains("dark") || el.getAttribute("data-theme") === "dark";
+            }
+            function getMapStyle() { return isDarkMode() ? MAP_STYLES.dark : MAP_STYLES.light; }
             var map = new mapboxgl.Map({
                 container: "users-map-container",
-                style: "mapbox://styles/mapbox/dark-v11",
+                style: getMapStyle(),
                 center: [-98, 39],
-                zoom: 3,
+                zoom: 4,
                 attributionControl: false
             });
+            var themeObserver = new MutationObserver(function () {
+                if (map.isStyleLoaded()) map.setStyle(getMapStyle());
+            });
+            themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
 
             map.addControl(new mapboxgl.AttributionControl(), "bottom-right");
             var markers = [];
@@ -202,15 +205,33 @@ id: home
                 }
             }
 
+            var BATCH_SIZE = 25;
+            var DELAY_MIN = 500;
+            var DELAY_EXTRA = 1500;
+
+            function addBatchWithAnimation(users, index) {
+                if (!Array.isArray(users) || index >= users.length) {
+                    setTimeout(fetchAndAddPins, DELAY_MIN + Math.random() * DELAY_EXTRA);
+                    return;
+                }
+                addUserPin(users[index]);
+                setTimeout(function () {
+                    addBatchWithAnimation(users, index + 1);
+                }, DELAY_MIN + Math.random() * DELAY_EXTRA);
+            }
+
             function fetchAndAddPins() {
-                fetch(apiBase + "/api/users/search?sort=random&limit=1")
+                fetch(apiBase + "/api/users/search?sort=random&limit=" + BATCH_SIZE)
                     .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
                     .then(function (users) {
-                        if (Array.isArray(users) && users.length > 0) addUserPin(users[0]);
+                        if (Array.isArray(users) && users.length > 0) {
+                            addBatchWithAnimation(users, 0);
+                        } else {
+                            setTimeout(fetchAndAddPins, DELAY_MIN + Math.random() * DELAY_EXTRA);
+                        }
                     })
-                    .catch(function () {})
-                    .finally(function () {
-                        setTimeout(fetchAndAddPins, 500 + Math.random() * 1500);
+                    .catch(function () {
+                        setTimeout(fetchAndAddPins, DELAY_MIN + Math.random() * DELAY_EXTRA);
                     });
             }
 
