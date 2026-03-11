@@ -72,7 +72,200 @@ id: home
 {% endcapture %}
 {% include section.html id="featured-listings" title="Featured Listings" icon=icon body=body class="py-15" %}
 
+{% capture body %}
+<div class="relative mx-[-1.5rem]">
 
+    <div class="absolute inset-x-0 top-0 z-10 bg-gradient-to-b from-zinc-200/80 dark:from-black/80 to-transparent dark:to-transparent pt-9">
+    <div class="max-w-7xl mx-auto py-6 px-6">
+        <div class="flex items-center gap-2 mb-4">
+            <span class="flex items-center">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg>
+            </span>
+            <h2 class="text-2xl font-semibold">Look Who's Already on Bartr!</h2>
+        </div>
+        <h3 class="text-xl font-light text-zinc-600 dark:text-zinc-400 mt-6 mb-8">These users are already trading gear...</h2>
+    </div>
+    </div>
+
+    <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" rel="stylesheet" />
+    <style>
+    </style>
+    <div id="users-map-container" class="rounded-0 md:rounded-lg"></div>
+</div>
+<script src="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.js"></script>
+<script>
+    (function () {
+        var stateNameToCode = {
+            "ALABAMA": "AL", "ALASKA": "AK", "ARIZONA": "AZ", "ARKANSAS": "AR", "CALIFORNIA": "CA", "COLORADO": "CO",
+            "CONNECTICUT": "CT", "DELAWARE": "DE", "FLORIDA": "FL", "GEORGIA": "GA", "HAWAII": "HI", "IDAHO": "ID",
+            "ILLINOIS": "IL", "INDIANA": "IN", "IOWA": "IA", "KANSAS": "KS", "KENTUCKY": "KY", "LOUISIANA": "LA",
+            "MAINE": "ME", "MARYLAND": "MD", "MASSACHUSETTS": "MA", "MICHIGAN": "MI", "MINNESOTA": "MN", "MISSISSIPPI": "MS",
+            "MISSOURI": "MO", "MONTANA": "MT", "NEBRASKA": "NE", "NEVADA": "NV", "NEW HAMPSHIRE": "NH", "NEW JERSEY": "NJ",
+            "NEW MEXICO": "NM", "NEW YORK": "NY", "NORTH CAROLINA": "NC", "NORTH DAKOTA": "ND", "OHIO": "OH", "OKLAHOMA": "OK",
+            "OREGON": "OR", "PENNSYLVANIA": "PA", "RHODE ISLAND": "RI", "SOUTH CAROLINA": "SC", "SOUTH DAKOTA": "SD",
+            "TENNESSEE": "TN", "TEXAS": "TX", "UTAH": "UT", "VERMONT": "VT", "VIRGINIA": "VA", "WASHINGTON": "WA",
+            "WEST VIRGINIA": "WV", "WISCONSIN": "WI", "WYOMING": "WY", "DISTRICT OF COLUMBIA": "DC", "WASHINGTON DC": "DC", "WASHINGTON, DC": "DC"
+        };
+        var validStateCodes = new Set(Object.values(stateNameToCode));
+
+        function normalizeState(value) {
+            if (!value) return null;
+            var t = String(value).trim().toUpperCase();
+            if (validStateCodes.has(t)) return t;
+            return stateNameToCode[t] || null;
+        }
+
+        function escapeHtml(str) {
+            return String(str || "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
+        }
+
+        var geocodeCache = {};
+        function geocodeLocation(stateCode, city, token, callback) {
+            var query = (city && String(city).trim()) ? String(city).trim() + ", " + stateCode : stateCode;
+            var cacheKey = query.toLowerCase();
+            if (geocodeCache[cacheKey]) {
+                return callback(geocodeCache[cacheKey].slice());
+            }
+            var url = "https://api.mapbox.com/geocoding/v5/mapbox.places/" + encodeURIComponent(query) + ".json?access_token=" + encodeURIComponent(token) + "&country=US&limit=1";
+            fetch(url)
+                .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error("Geocode failed")); })
+                .then(function (data) {
+                    if (data.features && data.features.length > 0 && data.features[0].center) {
+                        var lngLat = data.features[0].center.slice();
+                        geocodeCache[cacheKey] = lngLat;
+                        callback(lngLat);
+                    } else {
+                        callback(null);
+                    }
+                })
+                .catch(function () { callback(null); });
+        }
+
+        // Small random offset so multiple users in same state don't stack exactly
+        function jitter(lngLat, radiusDeg) {
+            radiusDeg = radiusDeg || 0.5;
+            return [lngLat[0] + (Math.random() - 0.5) * 2 * radiusDeg, lngLat[1] + (Math.random() - 0.5) * 2 * radiusDeg];
+        }
+
+        function createPinElement(user) {
+            var firstName = escapeHtml(user.first_name || "User");
+            var lastInitial = escapeHtml((user.last_name || "").charAt(0));
+            var username = escapeHtml(user.username || "user");
+            var el = document.createElement("div");
+            el.className = "users-map-pin";
+            el.innerHTML =
+                '<a href="https://app.bartr.co/user/' + username + '" class="users-map-pin-avatar-wrapper">' +
+                    '<img class="users-map-pin-avatar" src="https://app.bartr.co/images/users/' + username + '" alt="' + firstName + '\'s avatar" onerror="this.style.display=\'none\';" />' +
+                "</a>" +
+                '<div class="users-map-pin-label">' + firstName + (lastInitial ? " " + lastInitial + "." : "") + "</div>";
+            return el;
+        }
+
+        var apiBase = "https://app.bartr.co";
+        var maxPins = 60;
+        var pinTimeouts = [];
+
+        function startWidget() {
+            var container = document.getElementById("users-map-container");
+            if (!container) return;
+            var token = "{{ site.mapbox_token | strip }}";
+            if (!token) {
+                container.innerHTML = "<p class=\"text-zinc-500 dark:text-zinc-400 text-sm p-4\">Add <code>mapbox_token</code> to <code>_config.yml</code> to show the map. Get a free token at <a href=\"https://account.mapbox.com/\" class=\"underline\">mapbox.com</a>.</p>";
+                return;
+            }
+
+            mapboxgl.accessToken = token;
+            var MAP_STYLES = { light: "mapbox://styles/mapbox/light-v11", dark: "mapbox://styles/mapbox/dark-v11" };
+            function isDarkMode() {
+                var el = document.documentElement;
+                return el.classList.contains("dark") || el.getAttribute("data-theme") === "dark";
+            }
+            function getMapStyle() { return isDarkMode() ? MAP_STYLES.dark : MAP_STYLES.light; }
+            var map = new mapboxgl.Map({
+                container: "users-map-container",
+                style: getMapStyle(),
+                center: [-98, 39],
+                zoom: 4,
+                attributionControl: false
+            });
+            var themeObserver = new MutationObserver(function () {
+                if (map.isStyleLoaded()) map.setStyle(getMapStyle());
+            });
+            themeObserver.observe(document.documentElement, { attributes: true, attributeFilter: ["class", "data-theme"] });
+
+            map.addControl(new mapboxgl.AttributionControl(), "bottom-right");
+            var markers = [];
+
+            function removePin(marker) {
+                if (marker && marker.remove) marker.remove();
+                var i = markers.indexOf(marker);
+                if (i !== -1) markers.splice(i, 1);
+            }
+
+            function addUserPin(user) {
+                var stateCode = normalizeState(user.state);
+                if (!stateCode) return;
+                geocodeLocation(stateCode, user.city, token, function (lngLat) {
+                    if (!lngLat) return;
+                    lngLat = jitter(lngLat);
+                    var el = createPinElement(user);
+                    var marker = new mapboxgl.Marker({ element: el }).setLngLat(lngLat).addTo(map);
+                    markers.push(marker);
+                    var t = setTimeout(function () {
+                        removePin(marker);
+                    }, 10000);
+                    pinTimeouts.push(t);
+                    while (markers.length > maxPins) {
+                        var old = markers.shift();
+                        if (old && old.remove) old.remove();
+                    }
+                });
+            }
+
+            var BATCH_SIZE = 25;
+            var DELAY_MIN = 500;
+            var DELAY_EXTRA = 1500;
+
+            function addBatchWithAnimation(users, index) {
+                if (!Array.isArray(users) || index >= users.length) {
+                    setTimeout(fetchAndAddPins, DELAY_MIN + Math.random() * DELAY_EXTRA);
+                    return;
+                }
+                addUserPin(users[index]);
+                setTimeout(function () {
+                    addBatchWithAnimation(users, index + 1);
+                }, DELAY_MIN + Math.random() * DELAY_EXTRA);
+            }
+
+            function fetchAndAddPins() {
+                fetch(apiBase + "/api/users/search?sort=random&limit=" + BATCH_SIZE)
+                    .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
+                    .then(function (users) {
+                        if (Array.isArray(users) && users.length > 0) {
+                            addBatchWithAnimation(users, 0);
+                        } else {
+                            setTimeout(fetchAndAddPins, DELAY_MIN + Math.random() * DELAY_EXTRA);
+                        }
+                    })
+                    .catch(function () {
+                        setTimeout(fetchAndAddPins, DELAY_MIN + Math.random() * DELAY_EXTRA);
+                    });
+            }
+
+            map.on("load", function () {
+                fetchAndAddPins();
+            });
+        }
+
+        if (document.readyState === "loading") {
+            document.addEventListener("DOMContentLoaded", startWidget);
+        } else {
+            startWidget();
+        }
+    })();
+</script>
+{% endcapture %}
+{% include section.html id="users-on-bartr" body=body width="full" %}
 
 
 {% capture icon %}
