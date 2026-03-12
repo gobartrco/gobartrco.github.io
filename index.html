@@ -181,11 +181,22 @@ id: home
                 return el.classList.contains("dark") || el.getAttribute("data-theme") === "dark";
             }
             function getMapStyle() { return isDarkMode() ? MAP_STYLES.dark : MAP_STYLES.light; }
+            function getResponsiveZoom() {
+                var w = window.innerWidth || document.documentElement.clientWidth || 0;
+                var minW = 640;
+                var maxW = 1200;
+                var minZ = 2.75;
+                var maxZ = 4;
+                if (w <= minW) return minZ;
+                if (w >= maxW) return maxZ;
+                var t = (w - minW) / (maxW - minW);
+                return minZ + t * (maxZ - minZ);
+            }
             var map = new mapboxgl.Map({
                 container: "users-map-container",
                 style: getMapStyle(),
                 center: [-98, 39],
-                zoom: 4,
+                zoom: getResponsiveZoom(),
                 attributionControl: false
             });
             var themeObserver = new MutationObserver(function () {
@@ -195,6 +206,18 @@ id: home
 
             map.addControl(new mapboxgl.AttributionControl(), "bottom-right");
             var markers = [];
+
+            var resizeRaf = null;
+            window.addEventListener("resize", function () {
+                if (resizeRaf) return;
+                resizeRaf = window.requestAnimationFrame(function () {
+                    resizeRaf = null;
+                    var z = getResponsiveZoom();
+                    var current = map.getZoom();
+                    if (Math.abs(current - z) < 0.01) return;
+                    map.easeTo({ zoom: z, duration: 250 });
+                });
+            });
 
             function removePin(marker) {
                 if (marker && marker.remove) marker.remove();
