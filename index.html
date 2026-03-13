@@ -289,6 +289,17 @@ id: home
             }
 
             map.on("load", function () {
+                const layers = map.getStyle().layers;
+
+                layers.forEach(layer => {
+                    if (
+                    layer.type === "symbol" &&
+                    layer.layout &&
+                    layer.layout["text-field"]
+                    ) {
+                    map.setLayoutProperty(layer.id, "visibility", "none");
+                    }
+                });
                 fetchAndAddPins();
             });
         }
