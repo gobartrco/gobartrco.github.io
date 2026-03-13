@@ -75,3 +75,14 @@
   @apply px-2;
   @apply py-1;
 }
+
+#recent-searches-section {
+  @apply pointer-events-none;
+  @apply absolute;
+  @apply inset-x-0;
+  @apply bottom-0;
+  @apply z-99;
+  & > h3, & > p {
+    text-shadow: 0 3px 1px rgba(0, 0, 0, 1);
+  }
+}

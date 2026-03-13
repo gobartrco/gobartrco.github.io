@@ -244,6 +244,9 @@
   }
 }
 @layer utilities {
+  .pointer-events-auto {
+    pointer-events: auto;
+  }
   .visible {
     visibility: visible;
   }
@@ -348,6 +351,9 @@
   }
   .ml-2 {
     margin-left: calc(var(--spacing) * 2);
+  }
+  .ml-\[-\.75rem\] {
+    margin-left: -.75rem;
   }
   .line-clamp-1 {
     overflow: hidden;
@@ -484,6 +490,9 @@
   .flex-col {
     flex-direction: column;
   }
+  .flex-wrap {
+    flex-wrap: wrap;
+  }
   .items-center {
     align-items: center;
   }
@@ -565,6 +574,9 @@
   }
   .overflow-hidden {
     overflow: hidden;
+  }
+  .rounded-full {
+    border-radius: calc(infinity * 1px);
   }
   .rounded-lg {
     border-radius: var(--radius-lg);
@@ -670,11 +682,20 @@
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
   }
+  .px-3 {
+    padding-inline: calc(var(--spacing) * 3);
+  }
+  .px-4 {
+    padding-inline: calc(var(--spacing) * 4);
+  }
   .px-6 {
     padding-inline: calc(var(--spacing) * 6);
   }
   .py-1 {
     padding-block: calc(var(--spacing) * 1);
+  }
+  .py-3 {
+    padding-block: calc(var(--spacing) * 3);
   }
   .py-4 {
     padding-block: calc(var(--spacing) * 4);
@@ -799,6 +820,9 @@
   .text-zinc-100 {
     color: var(--color-zinc-100);
   }
+  .text-zinc-300 {
+    color: var(--color-zinc-300);
+  }
   .text-zinc-400 {
     color: var(--color-zinc-400);
   }
@@ -807,6 +831,9 @@
   }
   .text-zinc-600 {
     color: var(--color-zinc-600);
+  }
+  .text-zinc-800 {
+    color: var(--color-zinc-800);
   }
   .text-zinc-900 {
     color: var(--color-zinc-900);
@@ -993,6 +1020,12 @@
       vertical-align: middle;
     }
   }
+  .md\:text-sm {
+    @media (width >= 48rem) {
+      font-size: var(--text-sm);
+      line-height: var(--tw-leading, var(--text-sm--line-height));
+    }
+  }
   .lg\:col-span-2 {
     @media (width >= 64rem) {
       grid-column: span 2 / span 2;
@@ -1021,6 +1054,11 @@
   .dark\:border-black {
     &:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *) {
       border-color: var(--color-black);
+    }
+  }
+  .dark\:border-zinc-700 {
+    &:where(.dark, .dark *, [data-theme="dark"], [data-theme="dark"] *) {
+      border-color: var(--color-zinc-700);
     }
   }
   .dark\:border-zinc-800 {
@@ -2965,6 +3003,16 @@ select.txt {
   border-radius: var(--radius-sm);
   padding-inline: calc(var(--spacing) * 2);
   padding-block: calc(var(--spacing) * 1);
+}
+#recent-searches-section {
+  pointer-events: none;
+  position: absolute;
+  inset-inline: calc(var(--spacing) * 0);
+  bottom: calc(var(--spacing) * 0);
+  z-index: 99;
+  & > h3, & > p {
+    text-shadow: 0 3px 1px rgba(0, 0, 0, 1);
+  }
 }
 #mce-success-response {
   color: var(--color-green-600);
