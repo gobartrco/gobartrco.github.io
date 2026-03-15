@@ -199,7 +199,7 @@ id: home
                 var minW = 640;
                 var maxW = 1200;
                 var minZ = 2.75;
-                var maxZ = 4;
+                var maxZ = 3.75;
                 if (w <= minW) return minZ;
                 if (w >= maxW) return maxZ;
                 var t = (w - minW) / (maxW - minW);
@@ -210,7 +210,9 @@ id: home
                 style: getMapStyle(),
                 center: [-98, 39],
                 zoom: getResponsiveZoom(),
-                attributionControl: false
+                attributionControl: false,
+                projection: "mercator",
+                interactive: false
             });
             var themeObserver = new MutationObserver(function () {
                 if (map.isStyleLoaded()) map.setStyle(getMapStyle());
