@@ -1,7 +1,8 @@
 #users-map-container {
   width: 100%;
-  min-height: 600px;
   overflow: hidden;
+  @apply min-h-[700px];
+  @apply md:min-h-[600px];
 }
 #users-map-container .mapboxgl-canvas {
   outline: none;

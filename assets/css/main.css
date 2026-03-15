@@ -2884,8 +2884,11 @@ select.txt {
 }
 #users-map-container {
   width: 100%;
-  min-height: 600px;
   overflow: hidden;
+  min-height: 700px;
+  @media (width >= 48rem) {
+    min-height: 600px;
+  }
 }
 #users-map-container .mapboxgl-canvas {
   outline: none;

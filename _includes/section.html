@@ -1,13 +1,13 @@
 <section class="section-container section-container-{{ include.width | default: 'fluid' }} section-type-{{ include.type | default: 'primary' }} {{ include.class }}" {% if include.style %}style="{{ include.style }}"{% endif %}>
   <div class="section-content">
     {% if include.title %}
-      <div class="flex items-center gap-2 mb-4">
+      <div class="flex items-start gap-2 mb-4">
         {% if include.icon %}
           <span class="flex items-center">
             {{ include.icon }}
           </span>
         {% endif %}
-          <h2 class="text-2xl font-semibold">{{ include.title }}</h2>
+          <h2 class="text-3xl font-bold">{{ include.title }}</h2>
       </div>
       {% if include.subtitle %}
         <h3 class="text-xl font-light text-zinc-600 dark:text-zinc-400 mt-6 mb-8">{{ include.subtitle }}</h2>
