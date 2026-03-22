@@ -80,7 +80,6 @@
     --radius-lg: 0.5rem;
     --blur-sm: 8px;
     --blur-md: 12px;
-    --blur-lg: 16px;
     --default-transition-duration: 150ms;
     --default-transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     --default-font-family: var(--font-sans);
@@ -815,9 +814,6 @@
   }
   .text-zinc-100 {
     color: var(--color-zinc-100);
-  }
-  .text-zinc-300 {
-    color: var(--color-zinc-300);
   }
   .text-zinc-400 {
     color: var(--color-zinc-400);

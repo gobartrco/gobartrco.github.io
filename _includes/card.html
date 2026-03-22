@@ -1,6 +1,7 @@
 {% assign img_url = include.img_url | default: 'https://placehold.co/960x960' %}
 {% assign item_id = include.item_id %}
 {% assign title = include.title %}
+{% assign source = include.source %}
 {% assign username = include.username %}
 {% assign description = include.description %}
 {% assign views = include.views | default: 0 %}
@@ -42,11 +43,20 @@
         >
           {{ title }}
         </h3>
-        <h4
-          class="text-sm font-semibold text-zinc-600 dark:text-zinc-400 line-clamp-1 mb-2"
-        >
-          Listed by @{{ username }}
-        </h4>
+        {% if source == 'reverb' %}
+          <h4
+            class="text-sm font-semibold text-zinc-600 dark:text-zinc-400 line-clamp-1 mb-2"
+          >
+            Listed on Reverb.com
+          </h4>
+        {% endif %}
+        {% if source == 'bartr' %}
+          <h4
+            class="text-sm font-semibold text-zinc-600 dark:text-zinc-400 line-clamp-1 mb-2"
+          >
+            Listed by @{{ username }}
+          </h4>
+        {% endif %}
       </div>
       <div class="text-sm text-zinc-600 dark:text-zinc-400 line-clamp-3">
         {{ description }}
