@@ -276,6 +276,9 @@
   .static {
     position: static;
   }
+  .sticky {
+    position: sticky;
+  }
   .bottom-2 {
     bottom: calc(var(--spacing) * 2);
   }
