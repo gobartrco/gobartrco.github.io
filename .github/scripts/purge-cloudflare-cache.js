@@ -26,7 +26,6 @@ function validateConfig() {
   const missing = [];
   if (!config.apiToken) missing.push("CLOUDFLARE_API_TOKEN");
   if (!config.domain) missing.push("DOMAIN");
-  if (!config.subdomain) missing.push("SUBDOMAIN");
 
   if (missing.length > 0) {
     console.error(
@@ -146,7 +145,7 @@ async function main() {
 
     console.log("\n✅ CloudFlare cache purge completed!");
     console.log(
-      `🌐 Cached content for ${config.subdomain}.${config.domain} has been cleared.\n`,
+      `🌐 Cached content for ${config.subdomain && config.subdomain + "."}${config.domain} has been cleared.\n`,
     );
 
     process.exit(0);
