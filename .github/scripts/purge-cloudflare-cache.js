@@ -97,7 +97,7 @@ async function getZoneId() {
 
 // Purge cache for specific subdomain
 async function purgeCache(zoneId) {
-  const fullDomain = `${config.subdomain}.${config.domain}`;
+  const fullDomain = `${config.subdomain && config.subdomain + "."}${config.domain}`;
   console.log(`🗑️  Purging cache for ${fullDomain}...`);
 
   const options = {
