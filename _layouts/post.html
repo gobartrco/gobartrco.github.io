@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "tuhfuaihqr");
+        </script>
+        {% include head.html %}
+    </head>
+    <body {% if page.id %}id="page-{{ page.slug }}"{% endif %} class="layout-post">
+        <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
+            <header class="header-container">
+                {% include header.html %}
+            </header>
+            <main>
+                {% assign featured_src = nil %}
+                {% if page.image %}
+                    {% if page.image contains '://' %}
+                        {% assign featured_src = page.image %}
+                    {% else %}
+                        {% assign featured_src = page.image | prepend: '/' | replace: '//', '/' %}
+                    {% endif %}
+                {% endif %}
+                {% capture body %}
+                    {% if featured_src %}
+                        <img src="{{ featured_src | relative_url }}" alt="{{ page.title | escape }}" class="md:w-[50%] object-cover md:float-right md:ml-10 mb-6" fetchpriority="high" decoding="async" />
+                    {% endif %}
+                    <h1 class="text-3xl md:text-4xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">{{ page.title }}</h1>
+
+                    {{ content }}
+                {% endcapture %}
+                {% include section.html id="post" type="primary" body=body class="py-15" %}
+            </main>
+            {% include footer.html %}
+        </div>
+    </body>
+</html>

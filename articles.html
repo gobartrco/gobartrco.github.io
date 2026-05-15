@@ -1,0 +1,54 @@
+---
+layout: default
+title: Articles
+id: articles
+permalink: /articles
+---
+
+{% capture body %}
+<div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center pb-15 pt-15">
+  <div>
+    <h1 class="text-5xl md:text-6xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">Articles</h1>
+    <p class="text-xl md:text-2xl font-light max-w-2xl text-zinc-600 dark:text-zinc-400">
+      Guides and ideas for trading music gear more safely and confidently.
+    </p>
+  </div>
+</div>
+{% endcapture %}
+{% include section.html id="hero" body=body %}
+
+{% capture body %}
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-15 pt-15">
+  {% for post in site.posts %}
+    {% assign summary_text = post.summary | default: post.description %}
+    {% unless summary_text %}
+      {% assign summary_text = post.excerpt | strip_html | truncatewords: 48 %}
+    {% endunless %}
+    {% assign img_src = nil %}
+    {% if post.image %}
+      {% if post.image contains '://' %}
+        {% assign img_src = post.image %}
+      {% else %}
+        {% assign img_src = post.image | prepend: '/' | replace: '//', '/' %}
+      {% endif %}
+    {% endif %}
+    <article class="flex flex-col overflow-hidden rounded-lg border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-sm hover:border-violet-400/60 dark:hover:border-violet-500/50 transition-colors">
+      <a href="{{ post.url | relative_url }}" class="group flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 rounded-lg">
+        <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 shrink-0">
+          {% if img_src %}
+            <img src="{{ img_src | relative_url }}" alt="{{ post.title | escape }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy" width="640" height="400" />
+          {% else %}
+            <div class="w-full h-full flex items-center justify-center text-zinc-400 dark:text-zinc-500 text-sm font-medium">Bartr</div>
+          {% endif %}
+        </div>
+        <div class="flex flex-col flex-1 p-6 gap-3">
+          <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{{ post.title }}</h2>
+          <p class="text-base font-light text-zinc-600 dark:text-zinc-400 leading-relaxed flex-1">{{ summary_text }}</p>
+          <span class="text-violet-600 dark:text-violet-400 font-medium text-sm">Read article →</span>
+        </div>
+      </a>
+    </article>
+  {% endfor %}
+</div>
+{% endcapture %}
+{% include section.html id="listing" type="secondary" body=body %}
