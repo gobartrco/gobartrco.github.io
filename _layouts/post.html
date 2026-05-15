@@ -29,7 +29,7 @@
                         <img src="{{ featured_src | relative_url }}" alt="{{ page.title | escape }}" class="md:w-[50%] object-cover md:float-right md:ml-10 mb-6" fetchpriority="high" decoding="async" />
                     {% endif %}
                     <h1 class="text-3xl md:text-4xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">{{ page.title }}</h1>
-
+                    <p class="text-md font-semibold text-zinc-500 dark:text-zinc-100">Published on {{ page.date | date: "%B %d, %Y" }}</p>
                     {{ content }}
                 {% endcapture %}
                 {% include section.html id="post" type="primary" body=body class="py-15" %}
