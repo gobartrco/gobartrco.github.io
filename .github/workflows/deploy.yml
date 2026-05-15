@@ -78,3 +78,14 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+      - name: Purge Cache
+        shell: bash
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          DOMAIN: ${{ vars.DOMAIN }}
+          SUBDOMAIN: ${{ vars.SUBDOMAIN }}
+        run: |
+          set -euo pipefail
+          echo "🗑️  Purging CloudFlare cache..."
+          chmod +x .github/scripts/purge-cloudflare-cache.js
+          node .github/scripts/purge-cloudflare-cache.js
