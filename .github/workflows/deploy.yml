@@ -22,7 +22,31 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # Build job
+  Tag_release:
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install project
+        run: npm install --no-audit --no-fund --legacy-peer-deps
+
+      - name: Tag release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          npx semantic-release
+
   build:
     runs-on: ubuntu-latest
     steps:
@@ -46,7 +70,6 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
-  # Deployment job
   deploy:
     environment:
       name: github-pages
