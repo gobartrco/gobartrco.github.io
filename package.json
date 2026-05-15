@@ -1,4 +1,12 @@
 {
+  "name": "bartr",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.html",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
   "devDependencies": {
     "@tailwindcss/postcss": "^4.1.11",
     "autoprefixer": "^10.4.21",
