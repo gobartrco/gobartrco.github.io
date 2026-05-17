@@ -3,7 +3,6 @@ layout: post
 slug: where-to-trade-guitar-amps-safely
 title:  "Where to Trade Guitar Amps Safely"
 description: "Wondering where to trade guitar amps? Compare local shops, classifieds, and musician marketplaces to find safer, fairer amp swaps online."
-summary: "Your amp still sounds great. It just does not sound like you anymore. That is usually when the search starts for where to trade guitar amps. Maybe your combo is too heavy for regular gigs, your high-gain head is overkill for home use, or you want to turn one solid amp into something that fits your current setup better. Trading can make more sense than selling for cash and starting over, but the best place to trade depends on what you care about most: speed, value, selection, or protection."
 image: assets/img/articles/where-to-trade-guitar-amps-safely.webp
 date:   2026-05-18 09:00:00 -0500
 ---

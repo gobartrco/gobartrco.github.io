@@ -3,7 +3,6 @@ layout: post
 slug: online-guitar-trade-marketplace-safe
 title:  "What Makes an Online Guitar Trade Marketplace Safe?"
 description: "An online guitar trade marketplace should do more than match listings. Here’s what makes trading guitars online safer, fairer, and easier."
-summary: "That dream trade usually starts the same way - you spot a guitar you actually want, message the owner, and start doing mental math on what you could swap. Then the doubts show up. Is the other person real? Are the photos current? Will they ship when they say they will? An online guitar trade marketplace only works if it handles those questions better than a random classifieds thread ever could."
 image: assets/img/articles/online-guitar-trade-marketplace-safe.webp
 date:   2026-05-15 09:00:00 -0500
 ---

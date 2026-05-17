@@ -3,8 +3,6 @@ layout: post
 slug: how-to-trade-music-gear-safely-online
 title:  "How to Trade Music Gear Safely Online"
 description: "Learn how to trade music gear safely with smart listings, verified terms, shipping proof, and platform protections that reduce scams."
-summary: "That vintage Jazzmaster you want is out there. So is the person offering it in exchange for your amp, a couple pedals, and a promise to ship \"tomorrow.\" That is exactly where trades go sideways. If you want to know how to trade music gear safely, the answer is not just finding the right deal. It is using a process that protects both sides when excitement starts to outrun common sense."
-description: "Learn how to trade music gear safely with smart listings, verified terms, shipping proof, and platform protections that reduce scams."
 image: assets/img/articles/how-to-trade-music-gear-safely-online.webp
 date:   2026-05-14 09:00:00 -0500
 ---

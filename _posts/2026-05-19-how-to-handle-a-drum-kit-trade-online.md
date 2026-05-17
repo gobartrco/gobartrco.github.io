@@ -3,7 +3,6 @@ layout: post
 slug: how-to-handle-a-drum-kit-trade-online
 title:  "How to Handle a Drum Kit Trade Online"
 description: "Learn how to manage a drum kit trade online with safer listings, fair value checks, shipping tips, and built-in protection that cuts common risks."
-summary: "A drum kit trade online can go bad faster than most gear swaps. Drums are bulky, easy to misdescribe, expensive to ship, and often made up of parts with very different values. One person says “complete kit,” the other assumes cymbals, hardware, and throne are included, and suddenly the deal is already off track."
 image: assets/img/articles/how-to-handle-a-drum-kit-trade-online.webp
 date:   2026-05-19 09:00:00 -0500
 ---

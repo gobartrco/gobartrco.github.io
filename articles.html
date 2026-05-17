@@ -18,8 +18,9 @@ permalink: /articles
 {% include section.html id="hero" body=body %}
 
 {% capture body %}
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-15 pt-15">
-  {% for post in site.posts %}
+<div class="pb-15">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pt-15">
+  {% for post in site.posts limit: 6 %}
     {% assign summary_text = post.summary | default: post.description %}
     {% unless summary_text %}
       {% assign summary_text = post.excerpt | strip_html | truncatewords: 48 %}
@@ -44,11 +45,40 @@ permalink: /articles
         <div class="flex flex-col flex-1 p-6 gap-3">
           <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{{ post.title }}</h2>
           <span class="text-md font-semibold text-zinc-500 dark:text-zinc-100">Published on {{ post.date | date: "%B %d, %Y" }}</span>
-          <p class="text-violet-600 dark:text-violet-400 font-medium text-md">Read article →</p>
+          <p class="flex items-center gap-2 text-violet-600 dark:text-violet-400 font-medium text-md">
+            <span>Read article</span>
+            <span class="text-sm text-zinc-500 dark:text-zinc-400 transition-margin duration-200 group-hover:ml-2">
+              <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500 dark:text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+            </span>
+          </p>
         </div>
       </a>
     </article>
   {% endfor %}
+</div>
+
+{% if site.posts.size > 6 %}
+<nav class="mt-15" aria-label="More articles">
+  <div class="flex items-start gap-2 mb-4"> 
+    <span class="flex items-center">
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 text-indigo-600 dark:text-indigo-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-newspaper-icon lucide-newspaper"><path d="M15 18h-5"/><path d="M18 14h-8"/><path d="M4 22h16a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2H8a2 2 0 0 0-2 2v16a2 2 0 0 1-4 0v-9a2 2 0 0 1 2-2h2"/><rect width="8" height="4" x="10" y="6" rx="1"/></svg>
+    </span>
+    <h2 class="text-3xl font-bold">More Articles</h2>
+  </div>
+  <div class="bg-white dark:bg-zinc-900 p-8 border border-zinc-200 dark:border-zinc-800 rounded-lg flex flex-col gap-4">
+    {% for post in site.posts offset: 6 %}
+      <div>
+        <a href="{{ post.url | relative_url }}" class="flex items-center gap-2 text-lg text-violet-600 dark:text-violet-400 hover:text-violet-800 dark:hover:text-violet-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 group">
+          <span>{{ post.title }}</span> 
+          <span class="text-sm text-zinc-500 dark:text-zinc-400 transition-margin duration-200 group-hover:ml-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500 dark:text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
+          </span>
+        </a>
+      </div>
+    {% endfor %}
+    </div>
+</nav>
+{% endif %}
 </div>
 {% endcapture %}
 {% include section.html id="listing" type="secondary" body=body %}
