@@ -2,7 +2,7 @@ name: Rebuild environment
 
 on:
   schedule:
-    - cron: '30 9 * * *'
+    - cron: '5 9 * * *'
       timezone: "America/Chicago"
 
   workflow_dispatch:
