@@ -4,7 +4,7 @@ slug: what-makes-a-good-recording-gear-swap-site
 title:  "What Makes a Good Recording Gear Swap Site?"
 description: "A recording gear swap site should do more than match listings. Learn what protects trades, reduces scams, and helps musicians swap with confidence."
 image: assets/img/articles/what-makes-a-good-recording-gear-swap-site.webp
-date:   2026-05-20 09:00:00 -0500
+date:   2026-05-20 00:00:00 -0500
 ---
 
 That "great deal" on a used interface can get expensive fast when the seller stops replying, the mic arrives with a noisy capsule, or the trade terms suddenly change mid-conversation. A recording gear swap site only works if it does more than put two users in the same chat. For musicians, producers, and studio owners, the real value is trust - not just inventory.

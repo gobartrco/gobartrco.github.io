@@ -4,7 +4,7 @@ slug: music-gear-trade-protection
 title:  "Music Gear Trade Protection Explained"
 description: "Music gear trade protection helps musicians avoid scams, ghosting, and bad swaps with deposits, verification, clear terms, and dispute support."
 image: assets/img/articles/music-gear-trade-protection.webp
-date:   2026-05-23 09:00:00 -0500
+date:   2026-05-23 00:00:00 -0500
 ---
 
 You find the exact pedal you want. The other person wants your overdrive plus a little cash. The photos look good, the messages feel normal, and then the trade goes sideways - the item never ships, arrives broken, or turns out to be a different version than advertised. That is exactly where music gear trade protection matters.
