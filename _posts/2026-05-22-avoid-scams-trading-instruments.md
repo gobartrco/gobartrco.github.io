@@ -4,7 +4,7 @@ slug: avoid-scams-trading-instruments
 title:  "How to Avoid Scams Trading Instruments"
 description: "Learn how to avoid scams trading instruments with smarter vetting, safer terms, proof checks, and protected swaps for music gear online."
 image: assets/img/articles/avoid-scams-trading-instruments.webp
-date:   2026-05-22 09:00:00 -0500
+date:   2026-05-22 00:00:00 -0500
 ---
 
 That "too good to pass up" trade is usually where the trouble starts. A vintage-style Jazzmaster for your mid-range pedalboard, a synth bundle from someone who needs to move fast, an amp swap with a seller who suddenly wants to take everything to DMs - musicians see these offers every day. If you want to avoid scams trading instruments, you need more than good instincts. You need a process.
