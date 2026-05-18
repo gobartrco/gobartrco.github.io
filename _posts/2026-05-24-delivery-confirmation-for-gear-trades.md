@@ -4,7 +4,7 @@ slug: delivery-confirmation-for-gear-trades
 title:  "Delivery Confirmation for Gear Trades"
 description: "Delivery confirmation for gear trades adds proof, accountability, and cleaner dispute handling so musicians can swap gear with more confidence."
 image: assets/img/articles/delivery-confirmation-for-gear-trades.webp
-date:   2026-05-24 09:00:00 -0500
+date:   2026-05-24 00:00:00 -0500
 ---
 
 You shipped a pedal. The other person says their synth is on the way. Then tracking stalls, messages get slower, and the whole trade starts to feel like a gamble. That is exactly why delivery confirmation for gear trades matters. When a swap depends on two strangers each doing their part, proof of delivery is not a nice extra. It is one of the basics that keeps a trade fair.
