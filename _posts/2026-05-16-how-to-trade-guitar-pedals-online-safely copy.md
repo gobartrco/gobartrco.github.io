@@ -4,7 +4,7 @@ slug: how-to-trade-guitar-pedals-online-safely
 title:  "How to Trade Guitar Pedals Online Safely"
 description: "Want to trade guitar pedals online without scams or ghosting? Learn how to value gear, vet traders, pack pedals, and swap with more confidence."
 image: assets/img/articles/how-to-trade-guitar-pedals-online-safely.webp
-date:   2026-05-16 09:00:00 -0500
+date:   2026-05-16 00:00:00 -0500
 ---
 
 That rare overdrive you want is out there. So is someone staring at your chorus pedal thinking the exact same thing. The appeal of trying new sounds without paying full retail is obvious, which is why more players want to trade guitar pedals online. The problem is that a great deal can turn into a bad experience fast when the trade depends on vague messages, shaky photos, or a stranger who disappears after you ship.
