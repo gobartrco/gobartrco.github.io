@@ -4,7 +4,7 @@ slug: where-to-trade-guitar-amps-safely
 title:  "Where to Trade Guitar Amps Safely"
 description: "Wondering where to trade guitar amps? Compare local shops, classifieds, and musician marketplaces to find safer, fairer amp swaps online."
 image: assets/img/articles/where-to-trade-guitar-amps-safely.webp
-date:   2026-05-18 09:00:00 -0500
+date:   2026-05-18 00:00:00 -0500
 ---
 
 Your amp still sounds great. It just does not sound like you anymore.
