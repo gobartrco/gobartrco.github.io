@@ -3191,7 +3191,7 @@ select.txt {
   }
 }
 body.layout-post {
-  main {
+  article {
     h1 {
       margin-bottom: calc(var(--spacing) * 6);
       font-size: var(--text-3xl);
