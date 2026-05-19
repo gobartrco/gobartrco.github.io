@@ -4,7 +4,7 @@ slug: swap-synthesizers-with-musicians
 title:  "How to Swap Synthesizers With Musicians"
 description: "Learn how to swap synthesizers with musicians safely, compare values, verify condition, and avoid scams with a structured trade process."
 image: assets/img/articles/swap-synthesizers-with-musicians.webp
-date:   2026-05-17 09:00:00 -0500
+date:   2026-05-17 00:00:00 -0500
 ---
 
 That old groovebox in the corner might be exactly what another producer wants, and their poly synth might be the piece your setup is missing. Plenty of musicians want to swap synthesizers with musicians instead of spending more cash, but the usual problem shows up fast: the trade sounds great until value gets fuzzy, photos are vague, or someone stops replying.

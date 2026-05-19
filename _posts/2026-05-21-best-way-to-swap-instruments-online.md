@@ -4,7 +4,7 @@ slug: best-way-to-swap-instruments-online
 title:  "Best Way to Swap Instruments Online"
 description: "The best way to swap instruments is using a protected trade process with clear terms, verified gear details, and delivery confirmation."
 image: assets/img/articles/best-way-to-swap-instruments-online.webp
-date:   2026-05-21 09:00:00 -0500
+date:   2026-05-21 00:00:00 -0500
 ---
 
 That "want to trade?" message can feel promising right up until the other person stops replying, changes the terms, or ships something that looks nothing like the photos. If you're trying to figure out the best way to swap instruments, the real answer is simple: use a process that protects both sides from the usual mess.
