@@ -2,7 +2,7 @@ name: Rebuild environment
 
 on:
   schedule:
-    - cron: "0 */1 * * *"
+    - cron: "0 13 * * *"
 
 permissions:
   contents: read
