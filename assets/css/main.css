@@ -943,6 +943,13 @@
       }
     }
   }
+  .group-hover\:scale-\[1\.05\] {
+    &:is(:where(.group):hover *) {
+      @media (hover: hover) {
+        scale: 1.05;
+      }
+    }
+  }
   .group-hover\:text-violet-600 {
     &:is(:where(.group):hover *) {
       @media (hover: hover) {
