@@ -4,5 +4,6 @@ slug:
 title:  ""
 description: ""
 image: assets/img/articles/what-makes-a-good-recording-gear-swap-site.webp
-date:   2026-05-29 09:00:00 -0500
+date:   YYYY-MM-DD 00:00:00 -0500
 ---
+
