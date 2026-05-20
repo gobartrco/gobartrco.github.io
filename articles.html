@@ -33,7 +33,7 @@ permalink: /articles
         {% assign img_src = post.image | prepend: '/' | replace: '//', '/' %}
       {% endif %}
     {% endif %}
-    <article class="bg-white overflow-hidden dark:bg-zinc-900 border border-zinc-200 dark:border-zinc-800 rounded-lg">
+    <article class="bg-white overflow-hidden dark:bg-zinc-900 border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 transition-all duration-200 rounded-lg">
       <a href="{{ post.url | relative_url }}" class="group flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 rounded-lg">
         <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 shrink-0">
           {% if img_src %}

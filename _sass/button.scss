@@ -11,6 +11,7 @@
   @apply rounded-md;
   @apply transition-colors;
   @apply cursor-pointer;
+  @apply font-medium;
 }
 
 .btn-primary {
@@ -64,6 +65,7 @@
   @apply px-4; 
   @apply py-2;
   @apply gap-2;
+  @apply text-xs;
   & > .btn-icon > svg {
     @apply w-4.5;
     @apply h-4.5;

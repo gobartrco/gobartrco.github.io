@@ -2641,6 +2641,8 @@ section.section-type-hero {
   transition-timing-function: var(--tw-ease, var(--default-transition-timing-function));
   transition-duration: var(--tw-duration, var(--default-transition-duration));
   cursor: pointer;
+  --tw-font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-medium);
 }
 .btn-primary {
   background-color: var(--color-indigo-600);
@@ -2753,6 +2755,8 @@ section.section-type-hero {
   padding-inline: calc(var(--spacing) * 4);
   padding-block: calc(var(--spacing) * 2);
   gap: calc(var(--spacing) * 2);
+  font-size: var(--text-xs);
+  line-height: var(--tw-leading, var(--text-xs--line-height));
   & > .btn-icon > svg {
     width: calc(var(--spacing) * 4.5);
     height: calc(var(--spacing) * 4.5);
