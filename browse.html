@@ -15,7 +15,7 @@ permalink: /browse
         Join our community of musicians trading guitars, amps, pedals, studio gear, and more.
     </p>
     <form action="{{ site.app_url }}/search" method="get" class="flex gap-2">
-      <input type="text" name="q" class="txt txt-lg w-full" placeholder="Search gear, brands, models, etc..." />
+      <input type="text" name="q" class="txt txt-lg w-full" placeholder="Search for gear, brands, models, etc..." />
       <button type="submit" class="btn btn-primary btn-lg">Search</button>
     </form>
   </div>
@@ -96,7 +96,7 @@ permalink: /browse
 <script>
   $(function () {
     var appUrl = {{ site.app_url | jsonify }};
-    $.ajax(appUrl + "/api/items?limit=12&sort=random")
+    $.ajax(appUrl + "/api/search?limit=12&sort=events&order=desc")
       .done(function (data) {
         $.each(data.items, function (index, item) {
           $("#featured-listings").append(
@@ -108,7 +108,7 @@ permalink: /browse
 </script>
 <div class="mb-6 text-right">
   <a href="{{ site.app_url }}/search" class="inline-flex items-center gap-2 text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-100">
-    <span>Browse listings</span>
+    <span>Browse all listings</span>
     <span class="btn-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-arrow-right-icon lucide-arrow-right"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
     </span>

@@ -36,7 +36,7 @@ id: category
   $(function () {
     var appUrl = {{ site.app_url | jsonify }};
     var categoryId = {{ category.category_id | jsonify }};
-    $.ajax(appUrl + "/api/search?category=" + categoryId + "&limit=12&sort=created&order=desc")
+    $.ajax(appUrl + "/api/search?category=" + categoryId + "&limit=12&sort=events&order=desc")
       .done(function (data) {
         if (!data.items || data.items.length === 0) {
           $("#category-listings").append(
