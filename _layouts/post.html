@@ -1,50 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <script type="text/javascript">
-        (function(c,l,a,r,i,t,y){
-            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-        })(window, document, "clarity", "script", "tuhfuaihqr");
-        </script>
-        {% include head.html %}
-    </head>
-    <body {% if page.id %}id="page-{{ page.slug }}"{% endif %} class="layout-post">
-        <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
-            <header class="header-container">
-                {% include header.html %}
-            </header>
-            <article>
-                {% assign featured_src = nil %}
-                {% if page.image %}
-                    {% if page.image contains '://' %}
-                        {% assign featured_src = page.image %}
-                    {% else %}
-                        {% assign featured_src = page.image | prepend: '/' | replace: '//', '/' %}
-                    {% endif %}
-                {% endif %}
-                {% capture body %}
-                    {% if featured_src %}
-                        <img src="{{ featured_src | relative_url }}" alt="{{ page.title | escape }}" class="md:w-[50%] object-cover md:float-right md:ml-10 mb-6" fetchpriority="high" decoding="async" />
-                    {% endif %}
-                    <h1 class="text-3xl md:text-4xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">{{ page.title }}</h1>
-                    <span class="text-md font-semibold text-zinc-500 dark:text-zinc-100">Published on {{ page.date | date: "%B %d, %Y" }}</span>
-                    {{ content }}
-                {% endcapture %}
-                {% include section.html id="post" type="primary" body=body class="py-15" %}
-            </article>
-            <main>
-                {% capture body %}
-                <h2 class="text-3xl mb-2 text-center font-bold">Ready to find your next sound?</h2>
-                <p class="font-extralight text-xl text-center mb-8">Join for free, list your items at no cost.</p>
-                <div class="flex-col sm:flex-row flex gap-4 justify-center">
-                    <a href="{{ site.app_url }}/register" class="btn btn-primary btn-xl">Sign up for free</a> <span class="h-full my-auto text-xl text-center sm:text-left"></span>
-                </div>
-                {% endcapture %}
-                {% include section.html id="transparency" type="tertiary" body=body class="py-15" %}
-            </main>
-            {% include footer.html %}
-        </div>
-    </body>
-</html>
+---
+layout: default
+id: post
+---
+
+{% capture body %}
+<nav class="text-sm text-zinc-600 dark:text-zinc-400 my-6">
+    <a href="{{ '/articles' | relative_url }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-100 hover:underline">Articles</a>
+    <span class="mx-2">/</span>
+    <span class="text-zinc-900 dark:text-zinc-100">{{ page.title }}</span>
+</nav>
+{% endcapture %}
+{% include section.html id="hero" body=body %}
+
+<article id="post-content">
+    {% assign featured_src = nil %}
+    {% if page.image %}
+        {% if page.image contains '://' %}
+            {% assign featured_src = page.image %}
+        {% else %}
+            {% assign featured_src = page.image | prepend: '/' | replace: '//', '/' %}
+        {% endif %}
+    {% endif %}
+    {% capture body %}
+        {% if featured_src %}
+            <img src="{{ featured_src | relative_url }}" alt="{{ page.title | escape }}" class="md:w-[50%] object-cover md:float-right md:ml-10 mb-6" fetchpriority="high" decoding="async" />
+        {% endif %}
+        <h1 id="title" class="text-5xl md:text-6xl font-bold mb-6 text-zinc-900 dark:text-zinc-100">{{ page.title }}</h1>
+        <span class="text-md font-semibold text-zinc-500 dark:text-zinc-100">Published on {{ page.date | date: "%B %d, %Y" }}</span>
+        {{ content }}
+    {% endcapture %}
+    {% include section.html id="post" type="primary" body=body class="pb-15" %}
+</article>
+
+<main>
+    {% capture body %}
+    <h2 class="text-3xl mb-2 text-center font-bold">Ready to find your next sound?</h2>
+    <p class="font-extralight text-xl text-center mb-8">Join for free, list your items at no cost.</p>
+    <div class="flex-col sm:flex-row flex gap-4 justify-center">
+        <a href="{{ site.app_url }}/register" class="btn btn-primary btn-xl">Sign up for free</a> <span class="h-full my-auto text-xl text-center sm:text-left"></span>
+    </div>
+    {% endcapture %}
+    {% include section.html id="transparency" type="tertiary" body=body class="py-15" %}
+</main>

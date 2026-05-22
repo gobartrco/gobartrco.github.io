@@ -1,6 +1,6 @@
 body.layout-post {
-    article {
-        h1 {
+    #post-content {
+        h1:not(#title) {
             @apply text-3xl md:text-4xl font-bold mb-6 text-zinc-900 dark:text-zinc-100;   
         }
         h2 {

@@ -10,7 +10,7 @@
         </script>
         {% include head.html %}
     </head>
-    <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-home">
+    <body {% if page.id %}id="page-{{ page.id }}"{% endif %} class="layout-{{ page.layout }}">
         <div class="wrapper wrapper-fixed text-zinc-600 dark:text-zinc-400">
             <header class="header-container">
                 {% include header.html %}
