@@ -3,6 +3,44 @@ layout: default
 id: post
 ---
 
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "@id": "{{ page.url | absolute_url }}#post",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ page.url | absolute_url }}#post"
+    },
+    "headline": "{{ page.title }}",
+    "description": "{{ page.description }}",
+    "image": [
+        "{{ page.image | absolute_url }}"
+    ],
+    "datePublished": "{{ page.date | date: "%Y-%m-%dT%H:%M:%S-05:00" }}",
+    "author": {
+        "@type": "Organization",
+        "name": "{{ site.title }}"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "{{ site.title }}",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "{{ site.url }}/assets/img/logo.svg"
+        }
+    },
+    "articleSection": "Articles",
+    "wordCount": {{ content | strip_html | strip_newlines | size }},
+    "isAccessibleForFree": true,
+    "potentialAction": {
+    "@type": "ReadAction",
+    "target":
+        "{{ page.url | absolute_url }}"
+    }
+}
+</script>
+
 {% capture body %}
 <nav class="text-sm text-zinc-600 dark:text-zinc-400 my-6">
     <a href="{{ '/articles' | relative_url }}" class="text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-100 hover:underline">Articles</a>
