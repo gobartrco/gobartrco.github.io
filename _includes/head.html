@@ -10,10 +10,14 @@
 
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width">
-<meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+{% if page.collection == 'categories' %}
+  {% assign browse_category = site.data.categories | where: "slug", page.slug | first %}
+{% endif %}
+{% assign meta_description = page.description | default: browse_category.description | default: site.description %}
+<meta name="description" content="{{ meta_description }}">
 
 <meta property="og:title" content="{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }} | {{site.slogan}}">
-<meta property="og:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+<meta property="og:description" content="{{ meta_description }}">
 <meta property="og:url" content="{{ page.url | replace:'index.html','' | prepend: site.baseurl | prepend: site.url }}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="{{ site.title }}">

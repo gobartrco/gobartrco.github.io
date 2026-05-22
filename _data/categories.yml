@@ -1,0 +1,82 @@
+- slug: acoustic-guitars
+  title: Acoustic Guitars
+  category_id: 5
+  description: Trade acoustic guitars with other musicians on Bartr. Browse dreadnoughts, parlors, and steel-strings available for swap, with deposits and dispute protection.
+- slug: bass-guitars
+  title: Bass Guitars
+  category_id: 6
+  description: Swap bass guitars on Bartr. Find precision basses, Jazz basses, and more from musicians who want to trade fairly with structured terms and ratings.
+- slug: electric-guitars
+  title: Electric Guitars
+  category_id: 4
+  description: Trade electric guitars on Bartr. Browse Stratocasters, Les Pauls, offsets, and other electrics listed by musicians ready to swap with secure deposits.
+- slug: other-stringed-instruments
+  title: Other Stringed Instruments
+  category_id: 15
+  description: Trade mandolins, ukuleles, banjos, and other stringed instruments on Bartr. Connect with musicians swapping niche string gear with clearer terms.
+- slug: bass-amps
+  title: Bass Amps
+  category_id: 8
+  description: Swap bass amps and bass heads on Bartr. Trade Ampeg, Markbass, and other bass amplification with musicians using deposits and delivery confirmation.
+- slug: guitar-amps
+  title: Guitar Amps
+  category_id: 7
+  description: Trade guitar amps on Bartr. Browse combo amps, amp heads, and tube or solid-state rigs musicians list for swap with structured trade protection.
+- slug: speaker-cabinets
+  title: Speaker Cabinets
+  category_id: 9
+  description: Swap speaker cabinets on Bartr. Trade 1x12, 2x12, 4x12 cabs and bass cabinets with clear listings, ratings, and dispute support when you ship.
+- slug: keyboard-accessories
+  title: Accessories
+  category_id: 20
+  group: Keyboards & Synths
+  description: Trade keyboard and synth accessories on Bartr. Swap stands, cases, pedals, and studio add-ons with musicians who trade gear safely online.
+- slug: midi-controllers
+  title: MIDI & Controllers
+  category_id: 19
+  description: Trade MIDI controllers and control surfaces on Bartr. Browse Ableton Push, APC, and other controllers musicians list for swap with protected terms.
+- slug: pianos-keyboards
+  title: Pianos & Keyboards
+  category_id: 18
+  description: Swap pianos and keyboards on Bartr. Trade stage pianos, workstations, and digital pianos with deposits, reviews, and dispute resolution built in.
+- slug: synths-sound-design
+  title: Synths & Sound Design
+  category_id: 17
+  description: Trade synthesizers and sound-design gear on Bartr. Swap modular, desktop synths, and creative instruments with musicians using structured trade protection.
+- slug: guitar-bass-effects-pedals
+  title: Guitar/Bass Effect Pedals
+  category_id: 10
+  description: Swap guitar and bass effects pedals on Bartr. Trade overdrive, delay, modulation, and boutique pedals with clear condition notes and safer swaps.
+- slug: multi-effects-processors
+  title: Multi-Effects & Processors
+  category_id: 11
+  description: Trade multi-effects units and processors on Bartr. Swap Line 6, Boss GT, and rack processors with musicians who want fair, documented gear trades.
+- slug: microphones
+  title: Microphones
+  category_id: 27
+  description: Swap microphones on Bartr. Trade dynamic, condenser, and ribbon mics for studio or stage with listings, ratings, and trade protection for shippers.
+- slug: recording-devices
+  title: Recording devices
+  category_id: 29
+  description: Trade recording devices on Bartr. Swap portable recorders and field recorders with musicians using deposits and delivery confirmation.
+- slug: studio-equipment
+  title: Studio equipment
+  category_id: 30
+  description: Swap studio equipment on Bartr. Trade monitors, outboard, interfaces, and studio hardware with structured terms, reviews, and dispute support.
+- slug: cymbals
+  title: Cymbals
+  category_id: 23
+  description: Trade cymbals on Bartr. Browse rides, crashes, hi-hats, and stacks musicians list for swap with clear condition details and protected online trades.
+- slug: drum-kits-sets
+  title: Drum Kits & Sets
+  category_id: 22
+  description: Swap drum kits and full sets on Bartr. Trade acoustic and electronic kits with musicians who document condition and use deposits for accountability.
+- slug: drum-hardware-accessories
+  title: Hardware & Accessories
+  category_id: 25
+  group: Drums & Cymbals
+  description: Trade drum hardware and accessories on Bartr. Swap stands, pedals, racks, and parts with clearer listings and safer musician-to-musician trades.
+- slug: snare-individual-drums
+  title: Snare & Individual Drums
+  category_id: 24
+  description: Trade snare drums and individual drums on Bartr. Swap snares, toms, and shells with condition photos, ratings, and dispute resolution when you ship.

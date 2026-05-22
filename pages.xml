@@ -29,6 +29,18 @@ permalink: /pages.xml
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
+  <url>
+    <loc>https://bartr.co/browse</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+{%- for category in site.categories %}
+  <url>
+    <loc>{{ category.url | absolute_url }}</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+{%- endfor %}
 {%- for post in site.posts %}
   <url>
     <loc>{{ post.url | absolute_url }}</loc>
