@@ -1,6 +1,6 @@
 ---
 layout: default
-title: Browse Gear
+title: Browse Listings
 description: "Browse and search guitars, amps, pedals, synths, drums, and recording gear on Bartr. Trade music equipment with musicians using deposits, ratings, and trade protection."
 id: browse
 permalink: /browse
@@ -9,7 +9,7 @@ permalink: /browse
 {% capture body %}
 <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center pb-15 pt-0">
   <div class="order-2 md:order-1">
-    <h1 class="text-6xl font-bold mb-2">Browse Gear</h1>
+    <h1 class="text-6xl font-bold mb-2">Browse Listings</h1>
     <h2 class="text-3xl font-medium max-w-200 mb-6">Trade what you have for what you want.</h2>
     <p class="text-2xl font-light max-w-200 mb-6">
         Join our community of musicians trading guitars, amps, pedals, studio gear, and more.
@@ -96,7 +96,7 @@ permalink: /browse
 <script>
   $(function () {
     var appUrl = {{ site.app_url | jsonify }};
-    $.ajax(appUrl + "/api/items?limit=8&sort=random")
+    $.ajax(appUrl + "/api/items?limit=12&sort=random")
       .done(function (data) {
         $.each(data.items, function (index, item) {
           $("#featured-listings").append(
