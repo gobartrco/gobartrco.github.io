@@ -4,6 +4,22 @@ id: category
 ---
 {% assign category = site.data.categories | where: "slug", page.slug | first %}
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  "@id": "{{ page.url | absolute_url }}#category",
+  "url": "{{ page.url | absolute_url }}",
+  "name": "{{ category.title }}",
+  "description": "{{ category.description }}",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "{{ site.app_url }}/search?category={{ category.category_id }}&q={q}",
+    "query-input": "required name=q"
+  }
+}
+</script>
+
 {% capture body %}
 <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pb-15 pt-0">
   <div>
