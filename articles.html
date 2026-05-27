@@ -35,7 +35,7 @@ permalink: /articles
       {% endif %}
     {% endif %}
     <article class="bg-white overflow-hidden dark:bg-zinc-900 border border-zinc-200 hover:border-zinc-300 dark:border-zinc-800 dark:hover:border-zinc-700 transition-all duration-200 rounded-lg">
-      <a href="{{ post.url | relative_url }}" class="group flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 rounded-lg">
+      <a href="{{ post.url | relative_url }}" class="group flex flex-col h-full focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 rounded-lg">
         <div class="aspect-[16/10] w-full overflow-hidden bg-zinc-100 dark:bg-zinc-800 shrink-0">
           {% if img_src %}
             <img src="{{ img_src | relative_url }}" alt="{{ post.title | escape }}" class="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-300" loading="lazy" width="640" height="400" />
@@ -44,9 +44,9 @@ permalink: /articles
           {% endif %}
         </div>
         <div class="flex flex-col flex-1 p-6 gap-3">
-          <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-violet-600 dark:group-hover:text-violet-400 transition-colors">{{ post.title }}</h2>
+          <h2 class="text-2xl font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-indigo-600 dark:group-hover:text-indigo-400 transition-colors">{{ post.title }}</h2>
           <span class="text-md font-semibold text-zinc-500 dark:text-zinc-100">Published on {{ post.date | date: "%B %d, %Y" }}</span>
-          <p class="flex items-center gap-2 text-violet-600 dark:text-violet-400 font-medium text-md">
+          <p class="flex items-center gap-2 text-indigo-600 dark:text-indigo-400 font-medium text-md">
             <span>Read article</span>
             <span class="text-sm text-zinc-500 dark:text-zinc-400 transition-margin duration-200 group-hover:ml-2">
               <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500 dark:text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
@@ -69,7 +69,7 @@ permalink: /articles
   <div class="grid grid-cols-1 lg:grid-cols-2 bg-white dark:bg-zinc-900 p-8 border border-zinc-200 dark:border-zinc-800 rounded-lg gap-4">
     {% for post in site.posts offset: 6 %}
       <div class="min-w-0">
-        <a href="{{ post.url | relative_url }}" class="flex items-center gap-2 w-full min-w-0 max-w-full text-lg text-violet-600 dark:text-violet-400 hover:text-violet-800 dark:hover:text-violet-200 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 group">
+        <a href="{{ post.url | relative_url }}" class="flex items-center gap-2 w-full min-w-0 max-w-full text-lg text-indigo-600 dark:text-indigo-400 hover:text-indigo-900 dark:hover:text-indigo-100 transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500 focus-visible:ring-offset-2 dark:focus-visible:ring-offset-zinc-900 group">
           <span class="truncate min-w-0">{{ post.title }}</span>
           <span class="shrink-0 text-sm text-zinc-500 dark:text-zinc-400 transition-margin duration-200 group-hover:ml-2">
             <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-zinc-500 dark:text-zinc-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-right-icon lucide-move-right"><path d="M18 8L22 12L18 16"/><path d="M2 12H22"/></svg>
