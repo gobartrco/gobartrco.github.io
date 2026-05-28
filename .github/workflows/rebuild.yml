@@ -32,10 +32,13 @@ jobs:
       - name: Build CSS
         run: npm run postcss:build
       - name: Build with Jekyll
+        env:
+          JEKYLL_ENV: production
         uses: actions/jekyll-build-pages@v1
         with:
           source: ./
           destination: ./_site
+          build_config: _config.production.yml
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
