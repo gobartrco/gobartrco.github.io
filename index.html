@@ -102,7 +102,8 @@ id: home
         </div>
     </div>
     <link href="https://api.mapbox.com" rel="preconnect" crossorigin />
-    <link href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" rel="stylesheet" />
+    <link rel="preload" href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.css"></noscript>
     <script src="https://api.mapbox.com/mapbox-gl-js/v3.19.1/mapbox-gl.js" defer></script>
     <div id="users-map-container" class="rounded-0 md:rounded-lg"></div>
 </div>
