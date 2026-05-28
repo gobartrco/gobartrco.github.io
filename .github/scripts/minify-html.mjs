@@ -1,22 +1,8 @@
 import { minify } from "html-minifier-terser";
 import { readdir, readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import postcss from "postcss";
-import cssnano from "cssnano";
 
 const siteDir = "_site";
-
-const cssnanoPlugin = cssnano({ preset: "default" });
-
-/** html-minifier-terser uses clean-css when minifyCSS is true; it cannot parse Tailwind v4. */
-async function minifyInlineCss(text) {
-  try {
-    const result = await postcss([cssnanoPlugin]).process(text, { from: undefined });
-    return result.css;
-  } catch {
-    return text;
-  }
-}
 
 async function collectHtmlFiles(dir) {
   const entries = await readdir(dir, { withFileTypes: true });
@@ -42,7 +28,7 @@ const minifyOptions = {
   removeScriptTypeAttributes: true,
   removeStyleLinkTypeAttributes: true,
   useShortDoctype: true,
-  minifyCSS: minifyInlineCss,
+  minifyCSS: false,
   minifyJS: true,
 };
 
