@@ -66,6 +66,8 @@ jobs:
         run: bundle exec jekyll build --source ./ --destination ./_site --config _config.yml,_config.production.yml
         env:
           JEKYLL_ENV: production
+      - name: Minify HTML
+        run: npm run minify:html
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
