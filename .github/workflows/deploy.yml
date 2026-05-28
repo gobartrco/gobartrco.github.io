@@ -49,6 +49,10 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Pages
         uses: actions/configure-pages@v5
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
@@ -58,13 +62,9 @@ jobs:
       - name: Build CSS
         run: npm run postcss:build
       - name: Build with Jekyll
+        run: bundle exec jekyll build --source ./ --destination ./_site --config _config.yml,_config.production.yml
         env:
           JEKYLL_ENV: production
-        uses: actions/jekyll-build-pages@v1
-        with:
-          source: ./
-          destination: ./_site
-          build_config: _config.production.yml
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
 
