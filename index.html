@@ -52,7 +52,7 @@ id: home
 {% capture body %}
 <script>
     $(document).ready(function() {
-        $.ajax('{{ site.app_url }}/api/items?limit=8&sort=random')
+        $.ajax({url: "{{ site.app_url }}/api/items?limit=8&sort=random", method: "GET", cache: true})
         .done(function(data) {
             $.each(data.items, function(index, item) {
                 let imgUrl = `{{ site.app_url }}/images/items/${item.image_uuids[0]}/640x640`;

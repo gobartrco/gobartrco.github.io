@@ -96,7 +96,7 @@ permalink: /browse
 <script>
   $(function () {
     var appUrl = {{ site.app_url | jsonify }};
-    $.ajax(appUrl + "/api/search?limit=12&sort=events&order=desc")
+    $.ajax({url: appUrl + "/api/search?limit=12&sort=events&order=desc", method: "GET", cache: true})
       .done(function (data) {
         $.each(data.items, function (index, item) {
           $("#featured-listings").append(

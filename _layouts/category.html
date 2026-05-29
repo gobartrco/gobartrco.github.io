@@ -52,7 +52,7 @@ id: category
   $(function () {
     var appUrl = {{ site.app_url | jsonify }};
     var categoryId = {{ category.category_id | jsonify }};
-    $.ajax(appUrl + "/api/search?category=" + categoryId + "&limit=12&sort=events&order=desc")
+    $.ajax({url: appUrl + "/api/search?category=" + categoryId + "&limit=12&sort=events&order=desc", method: "GET", cache: true})
       .done(function (data) {
         if (!data.items || data.items.length === 0) {
           $("#category-listings").append(
