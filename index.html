@@ -55,7 +55,7 @@ id: home
         $.ajax('{{ site.app_url }}/api/items?limit=8&sort=random')
         .done(function(data) {
             $.each(data.items, function(index, item) {
-                let imgUrl = "{{ site.app_url }}/images/items/${item.image_uuids[0]}/640x640";
+                let imgUrl = `{{ site.app_url }}/images/items/${item.image_uuids[0]}/640x640`;
                 $('#featured-listings').append(`{% include card.html item_id="${item.id}" title="${item.name}" source="${item.source}" username="${item.username}" description="${item.description || ''}" img_url="${imgUrl}" favorites="${item.favorites}" views="${item.views}" %}`);
             });
         });
