@@ -1,8 +1,12 @@
+---
+layout: null
+permalink: /sitemap.xml
+---
 <sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <sitemap>
-    <loc>https://bartr.co/pages.xml</loc>
+    <loc>{{ site.url }}/pages.xml</loc>
   </sitemap>
   <sitemap>
-    <loc>https://app.bartr.co/sitemap.xml</loc>
+    <loc>{{ site.app_url }}/sitemap.xml</loc>
   </sitemap>
 </sitemapindex>

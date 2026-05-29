@@ -17,7 +17,6 @@
     document.cookie = cookieString;
   }
 
-  // Helper function to extract root domain (e.g., ".bartr.co" from "bartr.co" or "app.bartr.co")
   function getRootDomain() {
     const hostname = window.location.hostname;
     const parts = hostname.split(".");
@@ -27,7 +26,6 @@
       return `.${hostname}`;
     }
 
-    // If it's a subdomain (e.g., "app.bartr.co"), extract the root domain
     if (parts.length > 2) {
       return `.${parts.slice(-2).join(".")}`;
     }

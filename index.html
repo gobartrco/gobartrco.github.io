@@ -52,10 +52,11 @@ id: home
 {% capture body %}
 <script>
     $(document).ready(function() {
-        $.ajax('https://app.bartr.co/api/items?limit=8&sort=random')
+        $.ajax('{{ site.app_url }}/api/items?limit=8&sort=random')
         .done(function(data) {
             $.each(data.items, function(index, item) {
-                $('#featured-listings').append(`{% include card.html item_id="${item.id}" title="${item.name}" source="${item.source}" username="${item.username}" description="${item.description || ''}" img_url="https://app.bartr.co/images/items/${item.image_uuids[0]}/640x640" favorites="${item.favorites}" views="${item.views}" %}`);
+                let imgUrl = "{{ site.app_url }}/images/items/${item.image_uuids[0]}/640x640";
+                $('#featured-listings').append(`{% include card.html item_id="${item.id}" title="${item.name}" source="${item.source}" username="${item.username}" description="${item.description || ''}" img_url="${imgUrl}" favorites="${item.favorites}" views="${item.views}" %}`);
             });
         });
     });
@@ -168,15 +169,16 @@ id: home
             var username = escapeHtml(user.username || "user");
             var el = document.createElement("div");
             el.className = "users-map-pin";
+            let avatarUrl = "{{ site.app_url }}/images/users/" + username;
             el.innerHTML =
-                '<a href="https://app.bartr.co/user/' + username + '" class="users-map-pin-avatar-wrapper">' +
-                    '<img class="users-map-pin-avatar" src="https://app.bartr.co/images/users/' + username + '" alt="' + firstName + '\'s avatar" onerror="this.style.display=\'none\';" />' +
+                '<a href="{{ site.app_url }}/user/' + username + '" class="users-map-pin-avatar-wrapper">' +
+                    '<img class="users-map-pin-avatar" src="' + avatarUrl + '" alt="' + firstName + '\'s avatar" onerror="this.style.display=\'none\';" />' +
                 "</a>" +
                 '<div class="users-map-pin-label">' + firstName + (lastInitial ? " " + lastInitial + "." : "") + "</div>";
             return el;
         }
 
-        var apiBase = "https://app.bartr.co";
+        var apiBase = "{{ site.app_url }}";
         var maxPins = 60;
         var pinTimeouts = [];
 
@@ -363,7 +365,7 @@ id: home
             var section = document.getElementById("recent-searches-section");
             if (!section) return;
 
-            fetch("https://app.bartr.co/api/search/recent", { credentials: "omit" })
+            fetch("{{ site.app_url }}/api/search/recent", { credentials: "omit" })
                 .then(function (r) { return r.ok ? r.json() : Promise.reject(); })
                 .then(function (data) {
                     var terms = [];
