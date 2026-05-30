@@ -1,0 +1,10 @@
+bartr.local:80 {
+    root * ./_site
+
+    @html {
+        file {path}.html
+    }
+    rewrite @html {path}.html
+    
+    file_server
+}
