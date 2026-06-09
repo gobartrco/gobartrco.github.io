@@ -81,4 +81,26 @@
   } else {
     discountToken = null;
   }
+
+  // Check for itemToken in query string
+  const queryItemToken = getQueryParam("itemToken");
+
+  if (queryItemToken) {
+    // Set cookie with 24-hour expiration and root domain scope
+    const rootDomain = getRootDomain();
+    setCookie("itemToken", queryItemToken, 1, rootDomain);
+  }
+
+  // Get the saved item token from cookie
+  const savedItemToken = getCookie("itemToken");
+
+  let itemToken;
+
+  if (savedItemToken) {
+    // Use saved item token if it exists
+    itemToken = savedItemToken;
+  } else {
+    itemToken = null;
+  }
+
 })();
