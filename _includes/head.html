@@ -17,6 +17,7 @@
 {% endif %}
 {% assign meta_description = page.description | default: browse_category.description | default: site.description %}
 <meta name="description" content="{{ meta_description }}">
+<meta name="trustcaptain-verification" content="ab75ca0656a0d3562390caaa9db9729053a343f8d8f204b57eef622b25b13c30" />
 
 <meta property="og:title" content="{% if page.title %}{{ page.title }} &mdash; {% endif %}{{ site.title }} | {{site.slogan}}">
 <meta property="og:description" content="{{ meta_description }}">
